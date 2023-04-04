@@ -1,25 +1,20 @@
-import * as React from 'react';
 import styled from 'styled-components';
 import Tooltip from '@mui/material/Tooltip';
 import HelpIcon from '@mui/icons-material/Help';
-
-interface Props {
-  text?: string;
-  margin?: string;
-}
+import TooltipType from './types';
 
 const defaultProps = {
   text: 'text를 props로 전달하세요.',
   margin: '0',
 };
 
-const Icon = styled(HelpIcon)<Props>`
+const Icon = styled(HelpIcon)<TooltipType>`
   font-size: 1.6rem !important;
   margin: ${(props) => props.margin};
   cursor: pointer;
 `;
 
-const CustomTooltip = (props: Props) => {
+const CustomTooltip = (props: TooltipType) => {
   const { text, margin } = props;
   return (
     <Tooltip title={text} arrow placement="top-start">

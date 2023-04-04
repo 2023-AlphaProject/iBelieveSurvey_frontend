@@ -6,7 +6,6 @@ import {
   LayoutProps,
   PositionProps,
   SpaceProps,
-  GridProps,
 } from 'styled-system';
 
 export interface BoxProps
@@ -15,7 +14,6 @@ export interface BoxProps
     LayoutProps,
     PositionProps,
     SpaceProps,
-    GridProps,
     HTMLAttributes<HTMLDivElement> {}
 
 export interface FlexProps extends BoxProps, FlexboxProps {}
