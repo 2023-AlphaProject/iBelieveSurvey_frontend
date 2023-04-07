@@ -1,15 +1,12 @@
 import styled from 'styled-components';
-import { fontSize, color, space, layout, fontWeight, background, border } from 'styled-system';
+import { fontSize, color, fontWeight } from 'styled-system';
+import Box from './Box';
 import { TypographyProps } from './types';
 
-const Label = styled.div<TypographyProps>`
+const Label = styled(Box)<TypographyProps>`
   ${fontSize}
   ${fontWeight}
   ${color}
-  ${space}
-  ${layout}
-  ${background}
-  ${border}
 `;
 
 export default Label;
