@@ -64,7 +64,7 @@ const Modal = () => {
         <ModalContents>{modalDataState.content}</ModalContents>
         <ModalFooter>
           <ModalButtonWithBorder onClick={closeModal}>Cancel</ModalButtonWithBorder>
-          <ModalButton onClick={modalDataState.callBack}>Ok</ModalButton>
+          <ModalButton onClick={modalDataState.callback}>Ok</ModalButton>
         </ModalFooter>
       </ModalBody>
     </ModalDimmer>
