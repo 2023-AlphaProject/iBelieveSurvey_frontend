@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { Menu } from 'components/Menu';
 import { Box, Flex } from 'components/Box';
+import { Footer } from 'components/Footer';
 
 const MainContainer = styled(Flex)`
   flex-direction: column;
@@ -19,6 +20,7 @@ const Layout = ({ children }: PropsWithChildren) => {
     <MainContainer>
       <Menu />
       <Content>{children || <Outlet />}</Content>
+      <Footer />
     </MainContainer>
   );
 };
