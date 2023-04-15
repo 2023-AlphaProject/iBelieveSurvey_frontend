@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { Menu } from 'components/Menu';
+import { Navbar } from 'components/Menu';
 import { Box, Flex } from 'components/Box';
 
 const MainContainer = styled(Flex)`
@@ -17,7 +17,7 @@ const Content = styled(Box)`
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <MainContainer>
-      <Menu />
+      <Navbar />
       <Content>{children || <Outlet />}</Content>
     </MainContainer>
   );
