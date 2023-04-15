@@ -96,7 +96,7 @@ const Navbar = () => {
               LOGO
             </Typography>
             {/* PC SearchBar */}
-            <Box sx={{ flexGrow: 2, display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ flexGrow: 2, display: 'flex' }}>
               <Search>
                 <SearchIconWrapper>
                   <SearchIcon />
@@ -105,7 +105,7 @@ const Navbar = () => {
               </Search>
             </Box>
             {/* PC Components */}
-            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, gap: '15px' }}>
+            <Box sx={{ flexGrow: 0, display: 'flex', gap: '15px' }}>
               <Link to="/">
                 <Button
                   onClick={handleCloseNavMenu}
@@ -148,7 +148,7 @@ const Navbar = () => {
         ) : (
           <Toolbar disableGutters>
             {/* Mobile SearchBar */}
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={{ flexGrow: 1, display: 'flex' }}>
               <Search>
                 <SearchIconWrapper>
                   <SearchIcon />
@@ -166,7 +166,7 @@ const Navbar = () => {
               sx={{
                 mr: 2,
                 ml: 4,
-                display: { xs: 'flex', md: 'none' },
+                display: 'flex',
                 flexGrow: 1,
                 fontFamily: 'monospace',
                 fontWeight: 700,
@@ -179,7 +179,7 @@ const Navbar = () => {
             </Typography>
 
             {/* Mobile Hamburger Components */}
-            <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none', color: '#000' } }}>
+            <Box sx={{ flexGrow: 0, display: 'flex', color: '#000' }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -205,7 +205,7 @@ const Navbar = () => {
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
                 sx={{
-                  display: { xs: 'block', md: 'none' },
+                  display: 'block',
                 }}
               >
                 <Link to="/">
