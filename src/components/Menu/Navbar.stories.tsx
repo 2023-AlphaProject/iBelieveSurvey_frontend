@@ -1,17 +1,17 @@
 import { BrowserRouter } from 'react-router-dom';
-import MenuComponent from './Menu';
+import NavbarComponent from './Navbar';
 
 export default {
   title: 'Components/Menu',
-  component: MenuComponent,
+  component: NavbarComponent,
 };
 
-export const Menu: React.FC = () => {
+export const Navbar: React.FC = () => {
   return (
     <div>
       <BrowserRouter>
-        <MenuComponent />
-        메뉴 컴포넌트
+        <NavbarComponent />
+        Navbar Component
       </BrowserRouter>
     </div>
   );
