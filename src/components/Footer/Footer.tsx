@@ -24,6 +24,10 @@ const FooterTop = styled(Flex)`
 const FooterAddress = styled.div`
   text-align: center;
   font-size: 13px;
+  @media (max-width: 820px) {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
 `;
 
 const FooterInfo = styled(Flex)`
