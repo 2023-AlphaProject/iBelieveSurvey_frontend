@@ -78,23 +78,11 @@ const Navbar = () => {
         {windowSize.width !== undefined && windowSize.width > 900 ? (
           <Toolbar disableGutters>
             {/* PC Logo */}
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 5,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'black',
-                textDecoration: 'none',
-              }}
-            >
-              LOGO
-            </Typography>
+            <img
+              src="/assets/images/logo-black.svg"
+              alt="IBELEVESURVEY Logo"
+              style={{ width: '7rem', marginRight: '2rem' }}
+            />
             {/* PC SearchBar */}
             <Box sx={{ flexGrow: 2, display: 'flex' }}>
               <Search>
@@ -149,7 +137,7 @@ const Navbar = () => {
           <Toolbar disableGutters>
             {/* Mobile SearchBar */}
             <Box sx={{ flexGrow: 1, display: 'flex' }}>
-              <Search>
+              <Search sx={{ width: '80%' }}>
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>
@@ -158,25 +146,11 @@ const Navbar = () => {
             </Box>
 
             {/* Mobile Logo */}
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                ml: 4,
-                display: 'flex',
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: '#000',
-                textDecoration: 'none',
-              }}
-            >
-              LOGO
-            </Typography>
+            <img
+              src="/assets/images/logo-black.svg"
+              alt="IBELEVESURVEY Logo"
+              style={{ width: '5rem' }}
+            />
 
             {/* Mobile Hamburger Components */}
             <Box sx={{ flexGrow: 0, display: 'flex', color: '#000' }}>
