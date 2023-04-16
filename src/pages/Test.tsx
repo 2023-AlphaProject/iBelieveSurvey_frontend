@@ -7,7 +7,6 @@ import {
   useCallback,
   useState,
 } from 'react';
-import Alert from 'components/common/Alert/Alert';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
 type IAlert = {
@@ -17,7 +16,6 @@ type IAlert = {
 
 const Test = () => {
   const { openModal } = useModal();
-  const [open, setOpen] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const handleAlert = useCallback(
