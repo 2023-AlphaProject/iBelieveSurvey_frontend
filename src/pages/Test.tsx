@@ -1,7 +1,10 @@
 import { useModal } from 'hooks/useModal';
+import { useState } from 'react';
+import Alert from 'components/common/Alert/Alert';
 
 const Test = () => {
   const { openModal } = useModal();
+  const [open, setOpen] = useState(false);
 
   const modalData = {
     title: 'modal title',
@@ -20,6 +23,10 @@ const Test = () => {
       <button onClick={() => openModal(modalData)} type="button">
         모달열기
       </button>
+      <button onClick={() => setOpen(true)} type="button">
+        alert
+      </button>
+      <Alert open={open} onClose={() => setOpen(false)} />
       <br />
       통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 법률로 정한다. 국가는
       과학기술의 혁신과 정보 및 인력의 개발을 통하여 국민경제의 발전에 노력하여야 한다. 국정의
