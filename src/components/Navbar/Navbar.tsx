@@ -28,6 +28,15 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
+  const AppBarContainer = styled(AppBar)`
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    background-color: #fff;
+  `;
+
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: '30px',
@@ -73,8 +82,8 @@ const Navbar = () => {
   }));
 
   return (
-    <AppBar position="static" style={{ backgroundColor: '#fff', padding: '0 15px' }}>
-      <Container maxWidth="xl">
+    <AppBarContainer>
+      <Container style={{ width: '100%', maxWidth: '1200px' }}>
         {windowSize.width !== undefined && windowSize.width > 900 ? (
           <Toolbar disableGutters>
             {/* PC Logo */}
@@ -202,7 +211,7 @@ const Navbar = () => {
           </Toolbar>
         )}
       </Container>
-    </AppBar>
+    </AppBarContainer>
   );
 };
 

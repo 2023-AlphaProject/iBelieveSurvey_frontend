@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { Navbar } from 'components/Menu';
+import { Navbar } from 'components/Navbar';
 import { Box, Flex } from 'components/Box';
 
 const MainContainer = styled(Flex)`
