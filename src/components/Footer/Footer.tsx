@@ -1,15 +1,22 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Flex from 'components/Box/Flex';
+import { Link } from 'react-router-dom';
 
 const FooterBox = styled(Flex)`
   width: 100%;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 1rem 3rem;
   margin-top: 1rem;
   background-color: #e77853;
   color: #fff;
+`;
+
+const FooterMaxContainer = styled.div`
+  width: 100%;
+  max-width: 1200px;
 `;
 
 const FooterTop = styled(Flex)`
@@ -35,10 +42,11 @@ const FooterInfo = styled(Flex)`
   justify-content: space-between;
 `;
 
-const FooterTerms = styled.a`
+const FooterTerms = styled.h1`
   font-size: 18px;
   font-weight: 800;
   :hover {
+    cursor: pointer;
     text-decoration: underline;
   }
 `;
@@ -53,24 +61,30 @@ const FooterBottom = styled(Flex)`
 const Footer = () => {
   return (
     <FooterBox>
-      <FooterTop>
-        <a href="/">
-          <img
-            src="/assets/images/logo-black.svg"
-            alt="IBELEVESURVEY Logo"
-            style={{ width: '7rem', marginRight: '2rem' }}
-          />
-        </a>
-        <FooterInfo>
-          <FooterTerms href="/">이용약관</FooterTerms>
-          <FooterTerms href="/">개인정보처리방침</FooterTerms>
-        </FooterInfo>
-        <FooterAddress>
-          아빌립서베이 | 국민대학교 | 서울특별시 성북구 정릉로 77 <br />
-          사업자번호: 327-69-00498
-        </FooterAddress>
-      </FooterTop>
-      <FooterBottom>copyright@IBelieveSurvey</FooterBottom>
+      <FooterMaxContainer>
+        <FooterTop>
+          <a href="/">
+            <img
+              src={`${process.env.REACT_APP_BASE_URL}/assets/images/logo-white.svg`}
+              alt="IBELEVESURVEY Logo"
+              style={{ width: '7rem', marginRight: '2rem' }}
+            />
+          </a>
+          <FooterInfo>
+            <Link to="/">
+              <FooterTerms>이용약관</FooterTerms>
+            </Link>
+            <Link to="/">
+              <FooterTerms>개인정보처리방침</FooterTerms>
+            </Link>
+          </FooterInfo>
+          <FooterAddress>
+            아빌립서베이 | 국민대학교 | 서울특별시 성북구 정릉로 77 <br />
+            사업자번호: 327-69-00498
+          </FooterAddress>
+        </FooterTop>
+        <FooterBottom>copyright@IBelieveSurvey</FooterBottom>
+      </FooterMaxContainer>
     </FooterBox>
   );
 };
