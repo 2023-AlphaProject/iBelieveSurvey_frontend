@@ -8,7 +8,7 @@ import { SnackbarProvider } from 'notistack';
 
 const App = () => {
   return (
-    <SnackbarProvider>
+    <SnackbarProvider maxSnack={3}>
       <RecoilRoot>
         <Modal />
         <GlobalStyles />

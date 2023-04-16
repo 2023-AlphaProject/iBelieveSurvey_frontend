@@ -1,12 +1,31 @@
 import { useModal } from 'hooks/useModal';
-import { useState } from 'react';
+import {
+  JSXElementConstructor,
+  ReactElement,
+  ReactFragment,
+  ReactPortal,
+  useCallback,
+  useState,
+} from 'react';
 import Alert from 'components/common/Alert/Alert';
 import { SnackbarProvider, useSnackbar } from 'notistack';
+
+type IAlert = {
+  message: string;
+  variant: 'success' | 'error' | 'warning' | 'info';
+};
 
 const Test = () => {
   const { openModal } = useModal();
   const [open, setOpen] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const handleAlert = useCallback(
+    (button: IAlert) => () => {
+      enqueueSnackbar(button.message, { variant: button.variant });
+    },
+    [enqueueSnackbar],
+  );
 
   const modalData = {
     title: 'modal title',
@@ -32,9 +51,32 @@ const Test = () => {
         중요한 사항에 관한 대통령의 자문에 응하기 위하여 국가원로로 구성되는 국가원로자문회의를 둘
         수 있다. 모든 국민은 자기의 행위가 아닌 친족의 행위로 인하여 불이익한 처우를 받지 아니한다.
       </div>
-      <button type="button" onClick={() => enqueueSnackbar('That was easy!')}>
-        Show snackbar
-      </button>
+
+      {/*
+      variant: success, error, warning, info*
+      */}
+      <div>
+        <button
+          type="button"
+          onClick={handleAlert({
+            variant: 'success',
+            message: 'Success snackbar 최대 stack 3개로 설정했슴다.',
+          })}
+        >
+          Show Success snackbar
+        </button>
+      </div>
+      <div>
+        <button
+          type="button"
+          onClick={handleAlert({
+            variant: 'error',
+            message: 'Error snackbar',
+          })}
+        >
+          Show Error snackbar
+        </button>
+      </div>
     </>
   );
 };

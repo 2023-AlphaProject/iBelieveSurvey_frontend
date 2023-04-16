@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import { SnackbarProvider } from 'notistack';
-import IAlert from './types';
 
-const Alert = ({ open, onClose }: IAlert) => {
+const Alert = () => {
   return <SnackbarProvider />;
 };
 
