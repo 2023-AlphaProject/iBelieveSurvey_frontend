@@ -1,4 +1,5 @@
 import { Flex } from 'components/Box';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ErrorContainer = styled(Flex)`
@@ -9,23 +10,31 @@ const ErrorContainer = styled(Flex)`
 
 const ErrorImg = styled.img`
   margin-top: 10vh;
-  width: 50%;
+  width: 380px;
   height: 30%;
 `;
 
 const ErrorMsg = styled.div`
   width: 100%;
-  margin-top: 3rem;
-  font-size: 3rem;
+  margin: 3rem 0 1rem 0;
+  font-size: 26px;
   font-weight: 700;
   text-align: center;
   color: #808080;
 `;
 
 const ToHomeButton = styled.button`
-  width: 5rem;
-  height: 2rem;
-  background-color: red;
+  width: 10rem;
+  height: 4rem;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  background-color: #e77853;
+  color: #fff;
+  border-radius: 15px;
+  :hover {
+  background-color: #FF7854;
+},
 `;
 
 const NotFound = () => {
@@ -36,7 +45,9 @@ const NotFound = () => {
         alt="404 Not Found Error Imgae"
       />
       <ErrorMsg>페이지를 찾을 수 없습니다.</ErrorMsg>
-      <ToHomeButton>홈으로 가기</ToHomeButton>
+      <Link to="/">
+        <ToHomeButton>홈으로가기</ToHomeButton>
+      </Link>
     </ErrorContainer>
   );
 };
