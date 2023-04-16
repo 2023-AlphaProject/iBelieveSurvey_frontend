@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Flex from 'components/Box/Flex';
+import { Link } from 'react-router-dom';
 
 const FooterBox = styled(Flex)`
   width: 100%;
@@ -41,10 +42,11 @@ const FooterInfo = styled(Flex)`
   justify-content: space-between;
 `;
 
-const FooterTerms = styled.a`
+const FooterTerms = styled.h1`
   font-size: 18px;
   font-weight: 800;
   :hover {
+    cursor: pointer;
     text-decoration: underline;
   }
 `;
@@ -69,8 +71,12 @@ const Footer = () => {
             />
           </a>
           <FooterInfo>
-            <FooterTerms href="/">이용약관</FooterTerms>
-            <FooterTerms href="/">개인정보처리방침</FooterTerms>
+            <Link to="/">
+              <FooterTerms>이용약관</FooterTerms>
+            </Link>
+            <Link to="/">
+              <FooterTerms>개인정보처리방침</FooterTerms>
+            </Link>
           </FooterInfo>
           <FooterAddress>
             아빌립서베이 | 국민대학교 | 서울특별시 성북구 정릉로 77 <br />
