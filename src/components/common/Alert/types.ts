@@ -1,6 +1,6 @@
-type IAlert = {
+type cardType = {
   open: boolean;
   onClose: () => void;
 };
 
-export default IAlert;
+export default cardType;
