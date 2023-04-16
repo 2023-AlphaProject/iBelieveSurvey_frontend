@@ -89,7 +89,7 @@ const Navbar = () => {
             {/* PC Logo */}
             <a href="/">
               <img
-                src="/assets/images/logo-black.svg"
+                src={`${process.env.REACT_APP_BASE_URL}/assets/images/logo-black.svg`}
                 alt="IBELEVESURVEY Logo"
                 style={{ width: '7rem', marginRight: '2rem' }}
               />
