@@ -8,11 +8,13 @@ import { Footer } from 'components/Footer';
 const MainContainer = styled(Flex)`
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 `;
 
 const Content = styled(Box)`
   max-width: 1200px;
   margin: 20px;
+  flex: 1;
 `;
 
 const Layout = ({ children }: PropsWithChildren) => {
