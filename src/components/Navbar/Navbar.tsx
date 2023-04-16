@@ -87,11 +87,13 @@ const Navbar = () => {
         {windowSize.width !== undefined && windowSize.width > 900 ? (
           <Toolbar disableGutters>
             {/* PC Logo */}
-            <img
-              src="/assets/images/logo-black.svg"
-              alt="IBELEVESURVEY Logo"
-              style={{ width: '7rem', marginRight: '2rem' }}
-            />
+            <a href="/">
+              <img
+                src="/assets/images/logo-black.svg"
+                alt="IBELEVESURVEY Logo"
+                style={{ width: '7rem', marginRight: '2rem' }}
+              />
+            </a>
             {/* PC SearchBar */}
             <Box sx={{ flexGrow: 2, display: 'flex' }}>
               <Search>
@@ -155,11 +157,13 @@ const Navbar = () => {
             </Box>
 
             {/* Mobile Logo */}
-            <img
-              src="/assets/images/logo-black.svg"
-              alt="IBELEVESURVEY Logo"
-              style={{ width: '5rem' }}
-            />
+            <a href="/">
+              <img
+                src="/assets/images/logo-black.svg"
+                alt="IBELEVESURVEY Logo"
+                style={{ width: '5rem' }}
+              />
+            </a>
 
             {/* Mobile Hamburger Components */}
             <Box sx={{ flexGrow: 0, display: 'flex', color: '#000' }}>
