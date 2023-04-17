@@ -20,7 +20,7 @@ const CategoryBtn = styled.button<ButtonProps>`
   border-radius: 1rem;
   cursor: pointer;
   color: black;
-  background: ${(props) => (props.isClicked ? '#D2D2D2' : 'transparent')};
+  background: ${(props) => (props.isClicked ? '#d0d0d0' : 'transparent')};
 `;
 
 const Category = (props: Props) => {
