@@ -2,7 +2,7 @@ const dummyCategorys = [
   {
     id: 1,
     content: '인구통계',
-    isClicked: true,
+    isClicked: false,
   },
   {
     id: 2,

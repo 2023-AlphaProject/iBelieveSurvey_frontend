@@ -7,19 +7,24 @@ interface ButtonProps {
   isClicked?: boolean;
 }
 
+interface Props {
+  color: string;
+}
+
 const CategoryBtn = styled.button<ButtonProps>`
   padding: 0.4rem;
   font-size: 0.9rem;
   font-weight: 600;
   border: 2px solid;
-  border-color: #5184b1;
+  border-color: ${(props) => props.color};
   border-radius: 1rem;
   cursor: pointer;
-  color: ${(props) => (props.isClicked ? 'white' : 'black')};
-  background: ${(props) => (props.isClicked ? '#91b2ce' : 'transparent')};
+  color: black;
+  background: ${(props) => (props.isClicked ? '#D2D2D2' : 'transparent')};
 `;
 
-const Category = () => {
+const Category = (props: Props) => {
+  const { color } = props;
   const [categorys, setCategory] = useState(dummyData);
 
   const handleClick = (id: number) => {
@@ -50,6 +55,7 @@ const Category = () => {
           onClick={() => {
             handleClick(category.id);
           }}
+          color={color}
         >
           {category.content}
         </CategoryBtn>
