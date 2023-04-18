@@ -1,5 +1,3 @@
-import Spinner from 'components/common/Spinner/Spinner';
-
 const Home = () => {
   return (
     <>
@@ -29,7 +27,6 @@ const Home = () => {
         원대하고, 있으며, 노년에게서 소리다.이것은 보내는 것이다.보라, 무엇을 되려니와, 보라. 얼음
         때에, 피부가 꽃 하는 사라지지 공자는 것이다.
       </div>
-      <Spinner />
     </>
   );
 };
