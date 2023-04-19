@@ -2,8 +2,6 @@ import { useModal } from 'hooks/useModal';
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 import { Sidebar } from 'components/common';
-import Card from 'components/Card/Card';
-import dummyCards from 'components/Card/dummyCards';
 
 type IAlert = {
   message: string;
