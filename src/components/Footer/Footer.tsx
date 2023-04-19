@@ -63,13 +63,13 @@ const Footer = () => {
     <FooterBox>
       <FooterMaxContainer>
         <FooterTop>
-          <a href="/">
+          <Link to="/">
             <img
               src={`${process.env.REACT_APP_BASE_URL}/assets/images/logo-white.svg`}
               alt="IBELEVESURVEY Logo"
               style={{ width: '7rem', marginRight: '2rem' }}
             />
-          </a>
+          </Link>
           <FooterInfo>
             <Link to="/">
               <FooterTerms>이용약관</FooterTerms>
