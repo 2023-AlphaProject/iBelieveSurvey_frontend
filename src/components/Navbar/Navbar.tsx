@@ -89,7 +89,7 @@ const Navbar = () => {
             {/* PC Logo */}
             <Link to="/">
               <img
-                src={`${process.env.REACT_APP_BASE_URL}/assets/images/logo-black.svg`}
+                src={`${process.env.PUBLIC_URL}/assets/images/logo-black.svg`}
                 alt="IBELEVESURVEY Logo"
                 style={{ width: '7rem', marginRight: '2rem' }}
               />
@@ -159,7 +159,7 @@ const Navbar = () => {
             {/* Mobile Logo */}
             <Link to="/">
               <img
-                src={`${process.env.REACT_APP_BASE_URL}/assets/images/logo-black.svg`}
+                src={`${process.env.PUBLIC_URL}/assets/images/logo-black.svg`}
                 alt="IBELEVESURVEY Logo"
                 style={{ width: '5rem' }}
               />
