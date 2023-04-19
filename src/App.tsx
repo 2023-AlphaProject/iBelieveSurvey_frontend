@@ -4,22 +4,24 @@ import Layout from 'layouts/Layout';
 import { Home, Test, NotFound } from 'pages';
 import Modal from 'components/common/Modal/Modal';
 import { RecoilRoot } from 'recoil';
+import { SnackbarProvider } from 'notistack';
 
 const App = () => {
   return (
-    <RecoilRoot>
-      <Modal />
-      <GlobalStyles />
-      <Router>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/test" element={<Test />} />
-            <Route path="/*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </Router>
-    </RecoilRoot>
+    <SnackbarProvider maxSnack={3}>
+      <RecoilRoot>
+        <Modal />
+        <GlobalStyles />
+        <Router>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/test" element={<Test />} />
+            </Route>
+          </Routes>
+        </Router>
+      </RecoilRoot>
+    </SnackbarProvider>
   );
 };
 
