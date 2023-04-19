@@ -1,13 +1,9 @@
 import { useModal } from 'hooks/useModal';
-import {
-  JSXElementConstructor,
-  ReactElement,
-  ReactFragment,
-  ReactPortal,
-  useCallback,
-  useState,
-} from 'react';
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { useCallback } from 'react';
+import { useSnackbar } from 'notistack';
+import { Sidebar } from 'components/common';
+import Card from 'components/Card/Card';
+import dummyCards from 'components/Card/dummyCards';
 
 type IAlert = {
   message: string;
@@ -16,7 +12,7 @@ type IAlert = {
 
 const Test = () => {
   const { openModal } = useModal();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleAlert = useCallback(
     (button: IAlert) => () => {
@@ -35,7 +31,6 @@ const Test = () => {
         <li>modal content</li>
       </ul>
     ),
-    callback: () => console.log('modal!'),
   };
   return (
     <>
@@ -75,6 +70,24 @@ const Test = () => {
           Show Error snackbar
         </button>
       </div>
+      <br />
+
+      <Sidebar
+        title="카테고리 선택"
+        categorys={[
+          '인구통계',
+          '라이프스타일',
+          '기술',
+          '건강과 웰빙',
+          '정치 및 사회문제',
+          '소비자 행동',
+          '직장과 경력',
+          '교육',
+          '여행 및 관광',
+          '엔터테인먼트',
+        ]}
+      />
+      <br />
     </>
   );
 };
