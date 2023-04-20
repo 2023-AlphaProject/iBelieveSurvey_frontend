@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Flex } from 'components/Box';
 import styled from 'styled-components';
 
@@ -23,11 +23,24 @@ const Divider = styled.div`
 `;
 
 const Filterbar = () => {
-  const [text, setText] = useState('정렬');
+  const [text, setText] = useState('최신 순');
   const [visible, setVisible] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const clickOutside = (e: any) => {
+      if (visible && !modalRef.current?.contains(e.target)) {
+        setVisible(false);
+      }
+    };
+    document.addEventListener('mousedown', clickOutside);
+    return () => {
+      document.removeEventListener('mousedown', clickOutside);
+    };
+  }, [visible]);
 
   return (
-    <Flex width="7.25rem" flexDirection="column" alignItems="center">
+    <Flex width="7.25rem" flexDirection="column" alignItems="center" ref={modalRef}>
       <Filter
         onClick={() => {
           setVisible(!visible);
@@ -38,14 +51,32 @@ const Filterbar = () => {
       {visible ? (
         <Flex
           width="7.2rem"
-          height="8rem"
+          height="9.6rem"
           borderRadius="1rem"
           mt={2}
-          p="0.4rem"
+          p="0.2rem"
           background="#E77853"
           flexDirection="column"
           alignItems="center"
         >
+          <FilterBtn
+            onClick={() => {
+              setText('최신 순');
+              setVisible(!visible);
+            }}
+          >
+            최신 순
+          </FilterBtn>
+          <Divider />
+          <FilterBtn
+            onClick={() => {
+              setText('마감 임박 순');
+              setVisible(!visible);
+            }}
+          >
+            마감 임박 순
+          </FilterBtn>
+          <Divider />
           <FilterBtn
             onClick={() => {
               setText('참여자 많은 순');
@@ -64,15 +95,7 @@ const Filterbar = () => {
             참여자 적은 순
           </FilterBtn>
           <Divider />
-          <FilterBtn
-            onClick={() => {
-              setText('마감 임박 순');
-              setVisible(!visible);
-            }}
-          >
-            마감 임박 순
-          </FilterBtn>
-          <Divider />
+
           <FilterBtn
             onClick={() => {
               setText('당첨 확률 높은 순');
