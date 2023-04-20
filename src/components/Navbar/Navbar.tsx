@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -18,7 +18,7 @@ import SearchIcon from '@mui/icons-material/Search';
 const Navbar = () => {
   const windowSize = useWindowSize();
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -89,7 +89,7 @@ const Navbar = () => {
             {/* PC Logo */}
             <Link to="/">
               <img
-                src={`${process.env.REACT_APP_BASE_URL}/assets/images/logo-black.svg`}
+                src={`${process.env.PUBLIC_URL}/assets/images/logo-black.svg`}
                 alt="IBELEVESURVEY Logo"
                 style={{ width: '7rem', marginRight: '2rem' }}
               />
@@ -159,7 +159,7 @@ const Navbar = () => {
             {/* Mobile Logo */}
             <Link to="/">
               <img
-                src={`${process.env.REACT_APP_BASE_URL}/assets/images/logo-black.svg`}
+                src={`${process.env.PUBLIC_URL}/assets/images/logo-black.svg`}
                 alt="IBELEVESURVEY Logo"
                 style={{ width: '5rem' }}
               />

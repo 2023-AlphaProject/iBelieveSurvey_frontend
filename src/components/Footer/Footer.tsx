@@ -65,7 +65,7 @@ const Footer = () => {
         <FooterTop>
           <Link to="/">
             <img
-              src={`${process.env.REACT_APP_BASE_URL}/assets/images/logo-white.svg`}
+              src={`${process.env.PUBLIC_URL}/assets/images/logo-white.svg`}
               alt="IBELEVESURVEY Logo"
               style={{ width: '7rem', marginRight: '2rem' }}
             />

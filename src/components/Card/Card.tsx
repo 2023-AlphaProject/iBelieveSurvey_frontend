@@ -12,7 +12,7 @@ const Card = (props: Props) => {
   return (
     <>
       <Box width="15rem" height="10rem" borderRadius="1.25rem" background="#fff8d6" />
-      <Flex p={2} flexDirection="column" gridGap={1}>
+      <Flex p={2} flexDirection="column" gap="5px">
         <Flex>
           <Label
             height="1.2rem"

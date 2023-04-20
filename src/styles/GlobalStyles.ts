@@ -4,6 +4,7 @@ import reset from 'styled-reset';
 const GlobalStyles = createGlobalStyle`
   ${reset}
   html {
+    font-family: 'Pr-Light';
   }
   a{
     text-decoration: none;

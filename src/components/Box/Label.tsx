@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import { fontSize, color, fontWeight } from 'styled-system';
+import { typography } from 'styled-system';
 import Box from './Box';
-import { TypographyProps } from './types';
+import { LabelProps } from './types';
 
-const Label = styled(Box)<TypographyProps>`
-  ${fontSize}
-  ${fontWeight}
-  ${color}
+const Label = styled(Box)<LabelProps>`
+  ${typography}
 `;
 
 export default Label;

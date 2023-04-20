@@ -41,7 +41,7 @@ const NotFound = () => {
   return (
     <ErrorContainer>
       <ErrorImg
-        src={`${process.env.REACT_APP_BASE_URL}/assets/images/Error-404.png`}
+        src={`${process.env.PUBLIC_URL}/assets/images/Error-404.png`}
         alt="404 Not Found Error Imgae"
       />
       <ErrorMsg>페이지를 찾을 수 없습니다.</ErrorMsg>
