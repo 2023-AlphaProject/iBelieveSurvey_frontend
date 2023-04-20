@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { Flex } from 'components/Box';
-import dummyData from './dummyCategorys';
+import dummyData from './dummyCategories';
 
 interface ButtonProps {
   isClicked?: boolean;
@@ -25,11 +25,11 @@ const CategoryBtn = styled.button<ButtonProps>`
 
 const Category = (props: Props) => {
   const { color } = props;
-  const [categorys, setCategory] = useState(dummyData);
+  const [categories, setCategories] = useState(dummyData);
 
   const handleClick = (id: number) => {
-    setCategory(
-      categorys.map((data) => {
+    setCategories(
+      categories.map((data) => {
         if (data.id === id) {
           return {
             ...data,
@@ -47,8 +47,8 @@ const Category = (props: Props) => {
     );
   };
   return (
-    <Flex gridGap={2} flexWrap="wrap">
-      {categorys.map((category) => (
+    <Flex gap="0.5rem" flexWrap="wrap">
+      {categories.map((category) => (
         <CategoryBtn
           key={category.id}
           isClicked={category.isClicked}
