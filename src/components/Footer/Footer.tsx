@@ -71,10 +71,10 @@ const Footer = () => {
             />
           </Link>
           <FooterInfo>
-            <Link to="/">
+            <Link to="/tos">
               <FooterTerms>이용약관</FooterTerms>
             </Link>
-            <Link to="/">
+            <Link to="/privacy">
               <FooterTerms>개인정보처리방침</FooterTerms>
             </Link>
           </FooterInfo>
