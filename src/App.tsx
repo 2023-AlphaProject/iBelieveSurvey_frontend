@@ -1,7 +1,7 @@
 import GlobalStyles from 'styles/GlobalStyles';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from 'layouts/Layout';
-import { Home, Test, NotFound } from 'pages';
+import { Home, Test, NotFound, Tos, Privacy } from 'pages';
 import { Modal } from 'components/common';
 import { RecoilRoot } from 'recoil';
 import { SnackbarProvider } from 'notistack';
@@ -18,6 +18,8 @@ const App = () => {
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
               <Route path="/test" element={<Test />} />
+              <Route path="/tos" element={<Tos />} />
+              <Route path="/privacy" element={<Privacy />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
