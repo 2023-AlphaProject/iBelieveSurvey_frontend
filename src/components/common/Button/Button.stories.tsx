@@ -2,15 +2,15 @@ import { Box } from 'components/Box';
 import { capitalize } from 'lodash';
 import { ThemeProvider } from 'styled-components';
 import { theme, GlobalStyles } from 'styles';
-import Button from './Button';
+import Btn from './Button';
 import { variants, scales } from './types';
 
 export default {
-  title: 'Components/Common/Buttons',
-  component: Button,
+  title: 'Components/Common/Button',
+  component: Btn,
 };
 
-export const Default = () => {
+export const Button = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -23,27 +23,27 @@ export const Default = () => {
             <Box key={variant} mb="32px">
               {Object.values(scales).map((scale) => {
                 return (
-                  <Button key={scale} variant={variant} scale={scale} mr="8px">
+                  <Btn key={scale} variant={variant} scale={scale} mr="8px">
                     {`${capitalize(variant)} ${scale.toUpperCase()}`}
-                  </Button>
+                  </Btn>
                 );
               })}
             </Box>
           );
         })}
         <Box>
-          <Button mr="8px" disabled>
+          <Btn mr="8px" disabled>
             Disabled
-          </Button>
-          <Button variant="basic" mr="8px" disabled>
+          </Btn>
+          <Btn variant="basic" mr="8px" disabled>
             basic
-          </Button>
-          <Button variant="secondary" mr="8px" disabled>
+          </Btn>
+          <Btn variant="secondary" mr="8px" disabled>
             secondary
-          </Button>
-          <Button variant="secondaryBasic" disabled>
+          </Btn>
+          <Btn variant="secondaryBasic" disabled>
             secondaryBasic
-          </Button>
+          </Btn>
         </Box>
       </Box>
     </ThemeProvider>

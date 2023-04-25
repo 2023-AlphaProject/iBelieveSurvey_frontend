@@ -26,7 +26,7 @@ const getDisabledStyles = ({ isLoading }: TransientButtonProps) => {
     &:disabled,
     &.button--disabled {
       background-color: ${COLORS.gray};
-      border: 1px solid;
+      border: 2px solid;
       border-color: ${COLORS.gray};
       cursor: not-allowed;
     }
