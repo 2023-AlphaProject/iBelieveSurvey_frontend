@@ -10,9 +10,9 @@ interface Props {
 const Card = (props: Props) => {
   const { card } = props;
   return (
-    <>
+    <Flex flexDirection="column" pb={3}>
       <Box width="15rem" height="10rem" borderRadius="1.25rem" background="#fff8d6" />
-      <Flex p={2} flexDirection="column" gap="5px">
+      <Flex p={2} flexDirection="column" gap="8px">
         <Flex>
           <Label
             height="1.2rem"
@@ -36,7 +36,7 @@ const Card = (props: Props) => {
           </Flex>
         </Flex>
 
-        <Label width="14.5rem" fontSize="1rem" fontWeight={800}>
+        <Label width="14.6rem" fontSize="1rem" fontWeight={800}>
           {card.title}
         </Label>
         <Flex>
@@ -55,7 +55,7 @@ const Card = (props: Props) => {
           ))}
         </Flex>
       </Flex>
-    </>
+    </Flex>
   );
 };
 

@@ -2,6 +2,9 @@ import { useModal } from 'hooks/useModal';
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 import { Sidebar } from 'components/common';
+import SurveyCardWrapper from 'components/SurveyCardWrapper/SurveyCardWrapper';
+import Card from 'components/Card/Card';
+import dummyCards from 'components/Card/dummyCards';
 
 type IAlert = {
   message: string;
@@ -69,7 +72,6 @@ const Test = () => {
         </button>
       </div>
       <br />
-
       <Sidebar
         title="카테고리 선택"
         categorys={[
@@ -85,7 +87,20 @@ const Test = () => {
           '엔터테인먼트',
         ]}
       />
-      <br />
+      <SurveyCardWrapper>
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+        <Card card={dummyCards} />
+      </SurveyCardWrapper>
     </>
   );
 };
