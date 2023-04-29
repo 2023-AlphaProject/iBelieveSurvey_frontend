@@ -2,9 +2,6 @@ import { useModal } from 'hooks/useModal';
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 import { Sidebar } from 'components/common';
-import SurveyCardWrapper from 'components/SurveyCardWrapper/SurveyCardWrapper';
-import Card from 'components/Card/Card';
-import dummyCards from 'components/Card/dummyCards';
 
 type IAlert = {
   message: string;
@@ -87,20 +84,6 @@ const Test = () => {
           '엔터테인먼트',
         ]}
       />
-      <SurveyCardWrapper>
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-        <Card card={dummyCards} />
-      </SurveyCardWrapper>
     </>
   );
 };
