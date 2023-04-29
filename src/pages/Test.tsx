@@ -2,7 +2,6 @@ import { useModal } from 'hooks/useModal';
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 import { Sidebar } from 'components/common';
-import NewSurveyBtn from 'components/NewSurveyBtn/NewSurveyBtn';
 
 type IAlert = {
   message: string;
@@ -86,8 +85,6 @@ const Test = () => {
           '엔터테인먼트',
         ]}
       />
-      <br />
-      <NewSurveyBtn />
     </>
   );
 };
