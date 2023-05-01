@@ -9,7 +9,7 @@ type IAlert = {
 };
 
 export default {
-  title: 'Components/common/Alert',
+  title: 'Components/Common/Alert',
   component: AlertComponent,
 };
 
