@@ -1,4 +1,3 @@
-import { BrowserRouter } from 'react-router-dom';
 import FooterComponent from './Footer';
 
 export default {
@@ -9,10 +8,8 @@ export default {
 export const Menu: React.FC = () => {
   return (
     <div>
-      <BrowserRouter>
-        <FooterComponent />
-        Footer
-      </BrowserRouter>
+      <FooterComponent />
+      Footer
     </div>
   );
 };

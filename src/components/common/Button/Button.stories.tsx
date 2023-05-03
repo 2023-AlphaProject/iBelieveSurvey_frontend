@@ -1,7 +1,5 @@
 import { Box } from 'components/Box';
 import { capitalize } from 'lodash';
-import { ThemeProvider } from 'styled-components';
-import { theme, GlobalStyles } from 'styles';
 import Btn from './Button';
 import { variants, scales } from './types';
 
@@ -12,8 +10,7 @@ export default {
 
 export const Button = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
+    <>
       <Box mb="32px">
         <button type="button">Unstyled Button</button>
       </Box>
@@ -46,6 +43,7 @@ export const Button = () => {
           </Btn>
         </Box>
       </Box>
-    </ThemeProvider>
+    </>
+    // </ThemeProvider>
   );
 };

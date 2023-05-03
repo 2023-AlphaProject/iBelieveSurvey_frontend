@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { ElementType } from 'react';
 import StyledButton from './StyledButton';
 import { ButtonProps, scales, variants } from './types';
