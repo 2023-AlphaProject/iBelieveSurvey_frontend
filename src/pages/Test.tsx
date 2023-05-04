@@ -1,7 +1,7 @@
 import { useModal } from 'hooks/useModal';
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
-import { Sidebar, Button } from 'components/common';
+import { Sidebar, Button, Input } from 'components/common';
 
 type IAlert = {
   message: string;
@@ -34,6 +34,8 @@ const Test = () => {
   return (
     <>
       <div>
+        <br />
+        <Input type="text" placeholder="test" />
         <Button onClick={() => openModal(modalData)}>모달열기</Button>
         <br />
         <br />
