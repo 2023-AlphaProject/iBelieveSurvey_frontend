@@ -2,6 +2,7 @@ import { useModal } from 'hooks/useModal';
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 import { Sidebar, Button, Input } from 'components/common';
+import useInput from 'hooks/useInput';
 
 type IAlert = {
   message: string;
@@ -11,6 +12,8 @@ type IAlert = {
 const Test = () => {
   const { openModal, closeModal } = useModal();
   const { enqueueSnackbar } = useSnackbar();
+
+  const [testValue, onChangeTestValue] = useInput('');
 
   const handleAlert = useCallback(
     (button: IAlert) => () => {
@@ -34,8 +37,14 @@ const Test = () => {
   return (
     <>
       <div>
+        <Input
+          limit={50}
+          value={testValue}
+          onChange={onChangeTestValue}
+          type="text"
+          placeholder="테스트를 작성해 보세요."
+        />
         <br />
-        <Input type="text" placeholder="test" />
         <Button onClick={() => openModal(modalData)}>모달열기</Button>
         <br />
         <br />
