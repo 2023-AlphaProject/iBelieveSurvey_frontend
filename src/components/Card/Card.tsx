@@ -10,9 +10,9 @@ interface Props {
 const Card = (props: Props) => {
   const { card } = props;
   return (
-    <>
+    <Flex flexDirection="column" pb={3}>
       <Box width="15rem" height="10rem" borderRadius="1.25rem" background="#fff8d6" />
-      <Flex p={2} flexDirection="column" gap="5px">
+      <Flex p={2} flexDirection="column" gap="8px">
         <Flex>
           <Label
             height="1.2rem"
@@ -22,10 +22,11 @@ const Card = (props: Props) => {
             background="#ffa869"
             p={1}
             mt={1}
+            fontFamily="Pr-Bold"
           >
             {card.status}
           </Label>
-          <Label fontSize="0.7rem" color="#888888" m={2} mr={3}>
+          <Label fontSize="0.7rem" color="#888888" fontFamily="Pr-Regular" m={2} mr={3}>
             {useDate(new Date())} ~ {useDate(new Date())}
           </Label>
           <Flex flexDirection="column">
@@ -36,7 +37,7 @@ const Card = (props: Props) => {
           </Flex>
         </Flex>
 
-        <Label width="14.5rem" fontSize="1rem" fontWeight={800}>
+        <Label width="14.6rem" fontSize="1rem" fontFamily="Pr-Bold">
           {card.title}
         </Label>
         <Flex>
@@ -44,6 +45,7 @@ const Card = (props: Props) => {
             <Label
               key={category}
               fontSize="0.1rem"
+              fontFamily="Pr-Regular"
               color="white"
               borderRadius={10}
               background="#949494"
@@ -55,7 +57,7 @@ const Card = (props: Props) => {
           ))}
         </Flex>
       </Flex>
-    </>
+    </Flex>
   );
 };
 

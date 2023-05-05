@@ -81,7 +81,6 @@ const Test = () => {
         </button>
       </div>
       <br />
-
       <Sidebar
         title="카테고리 선택"
         categorys={[
@@ -97,7 +96,6 @@ const Test = () => {
           '엔터테인먼트',
         ]}
       />
-      <br />
     </>
   );
 };
