@@ -1,6 +1,6 @@
 type cardType = {
-  status: string;
   title: string;
+  status: string;
   cnt: number;
   categorys: string[];
 };

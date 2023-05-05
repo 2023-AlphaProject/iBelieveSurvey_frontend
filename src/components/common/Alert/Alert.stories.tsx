@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import AlertComponent from './Alert';
 
 type IAlert = {
@@ -9,7 +8,7 @@ type IAlert = {
 };
 
 export default {
-  title: 'Components/common/Alert',
+  title: 'Components/Common/Alert',
   component: AlertComponent,
 };
 
@@ -23,7 +22,7 @@ export const Alert: React.FC = () => {
     [enqueueSnackbar],
   );
   return (
-    <BrowserRouter>
+    <>
       <button
         type="button"
         onClick={handleAlert({
@@ -34,6 +33,6 @@ export const Alert: React.FC = () => {
         Show Error snackbar
       </button>
       <AlertComponent />
-    </BrowserRouter>
+    </>
   );
 };

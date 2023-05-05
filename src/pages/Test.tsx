@@ -1,7 +1,8 @@
 import { useModal } from 'hooks/useModal';
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
-import { Sidebar } from 'components/common';
+import { Sidebar, Button, Input } from 'components/common';
+import useInput from 'hooks/useInput';
 
 type IAlert = {
   message: string;
@@ -9,8 +10,10 @@ type IAlert = {
 };
 
 const Test = () => {
-  const { openModal } = useModal();
+  const { openModal, closeModal } = useModal();
   const { enqueueSnackbar } = useSnackbar();
+
+  const [testValue, onChangeTestValue] = useInput('');
 
   const handleAlert = useCallback(
     (button: IAlert) => () => {
@@ -29,13 +32,22 @@ const Test = () => {
         <li>modal content</li>
       </ul>
     ),
+    callback: closeModal,
   };
   return (
     <>
       <div>
-        <button onClick={() => openModal(modalData)} type="button">
-          모달열기
-        </button>
+        <Input
+          limit={50}
+          value={testValue}
+          onChange={onChangeTestValue}
+          type="text"
+          placeholder="테스트를 작성해 보세요."
+        />
+        <br />
+        <Button onClick={() => openModal(modalData)}>모달열기</Button>
+        <br />
+        <br />
         <br />
         통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 법률로 정한다. 국가는
         과학기술의 혁신과 정보 및 인력의 개발을 통하여 국민경제의 발전에 노력하여야 한다. 국정의
@@ -69,7 +81,6 @@ const Test = () => {
         </button>
       </div>
       <br />
-
       <Sidebar
         title="카테고리 선택"
         categorys={[

@@ -4,7 +4,7 @@ import Tooltip from './Tooltip';
 import TooltipType from './types';
 
 export default {
-  title: 'Components/Tooltip',
+  title: 'Components/Common/Tooltip',
   component: Tooltip,
 };
 
