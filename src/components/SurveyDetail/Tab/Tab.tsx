@@ -3,7 +3,11 @@ import { Flex, Box } from 'components/Box';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 
-const Btn = styled.button`
+interface ButtonProps {
+  isClicked?: boolean;
+}
+
+const Btn = styled.button<ButtonProps>`
   font-family: 'Pr-Bold';
   color: ${(props) => (props.isClicked ? 'black' : '#888888')};
   cursor: pointer;
@@ -13,7 +17,7 @@ const Tab = () => {
   const labels = ['요약', '질문', '개별보기'];
   const [isClicked, setClick] = useState([true, false, false]);
 
-  const handleClickDate = (id) => {
+  const handleClickDate = (id: number) => {
     setClick(
       isClicked.map((data, idx) => {
         let newData = data;
