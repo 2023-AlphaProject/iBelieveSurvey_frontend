@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Flex from 'components/Box/Flex';
 import { Link } from 'react-router-dom';
+import { COLORS } from 'constants/COLOR';
 
 const FooterBox = styled(Flex)`
   width: 100%;
@@ -10,7 +11,7 @@ const FooterBox = styled(Flex)`
   flex-wrap: wrap;
   padding: 1rem 3rem;
   margin-top: 1rem;
-  background-color: #e77853;
+  background-color: ${COLORS.secondary};
   color: #fff;
 `;
 
