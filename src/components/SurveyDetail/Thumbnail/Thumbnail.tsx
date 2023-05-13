@@ -27,7 +27,7 @@ const Label = styled.div`
   position: absolute;
   top: 1rem;
   left: 1.25rem;
-  font-weight: 600;
+  font-family: 'Pr-Bold';
 `;
 
 const Thumbnail = () => {
