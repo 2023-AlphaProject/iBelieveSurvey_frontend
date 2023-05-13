@@ -1,26 +1,14 @@
 import { useModal } from 'hooks/useModal';
 import { useCallback } from 'react';
-import { useSnackbar } from 'notistack';
 import { Sidebar, Button, Input } from 'components/common';
+import { useSnackBar } from 'hooks';
 import useInput from 'hooks/useInput';
-
-type IAlert = {
-  message: string;
-  variant: 'success' | 'error' | 'warning' | 'info';
-};
 
 const Test = () => {
   const { openModal, closeModal } = useModal();
-  const { enqueueSnackbar } = useSnackbar();
+  const { handleSnackBar } = useSnackBar();
 
   const [testValue, onChangeTestValue] = useInput('');
-
-  const handleAlert = useCallback(
-    (button: IAlert) => () => {
-      enqueueSnackbar(button.message, { variant: button.variant });
-    },
-    [enqueueSnackbar],
-  );
 
   const modalData = {
     title: 'modal title',
@@ -61,7 +49,7 @@ const Test = () => {
       <div>
         <button
           type="button"
-          onClick={handleAlert({
+          onClick={handleSnackBar({
             variant: 'success',
             message: 'Success snackbar 최대 stack 3개로 설정했슴다.',
           })}
@@ -72,7 +60,7 @@ const Test = () => {
       <div>
         <button
           type="button"
-          onClick={handleAlert({
+          onClick={handleSnackBar({
             variant: 'error',
             message: 'Error snackbar',
           })}
