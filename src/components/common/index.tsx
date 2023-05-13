@@ -6,3 +6,4 @@ export { default as Tag } from './Tag/Tag';
 export { default as Tooltip } from './Tooltip/Tooltip';
 export { default as Input } from './Input/Input';
 export { default as Toggle } from './Toggle/Toggle';
+export { default as Blur } from './Blur/Blur';
