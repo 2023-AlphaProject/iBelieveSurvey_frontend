@@ -11,7 +11,7 @@ const FooterBox = styled(Flex)`
   flex-wrap: wrap;
   padding: 1rem 3rem;
   margin-top: 1rem;
-  background-color: ${COLORS.secondary};
+  background-color: ${COLORS.primary};
   color: #fff;
 `;
 
