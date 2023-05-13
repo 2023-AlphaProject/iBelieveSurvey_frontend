@@ -3,6 +3,8 @@ import { useCallback } from 'react';
 import { Sidebar, Button, Input } from 'components/common';
 import { useSnackBar } from 'hooks';
 import useInput from 'hooks/useInput';
+import CardView from 'components/Gifticon/CardView/CardView';
+import dummyCards from 'components/Gifticon/CardView/dummyCards';
 
 const Test = () => {
   const { openModal, closeModal } = useModal();
@@ -84,6 +86,7 @@ const Test = () => {
           '엔터테인먼트',
         ]}
       />
+      <CardView card={dummyCards} />
     </>
   );
 };
