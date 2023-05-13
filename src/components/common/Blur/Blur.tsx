@@ -19,7 +19,7 @@ const BlurImg = styled.img`
   height: 100%;
 `;
 
-const BlurBotton = styled(Button)`
+const BlurButton = styled(Button)`
   position: absolute;
   height: 4rem;
 `;
@@ -28,7 +28,7 @@ const Blur = () => {
   return (
     <Container>
       <BlurImg src={`${process.env.PUBLIC_URL}/assets/images/blur.png`} alt="Blur Image" />
-      <BlurBotton onClick={() => console.log('login page')}>로그인 후 결과 보기</BlurBotton>
+      <BlurButton onClick={() => console.log('login page')}>로그인 후 결과 보기</BlurButton>
     </Container>
   );
 };
