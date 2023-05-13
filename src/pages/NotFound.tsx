@@ -1,6 +1,7 @@
 import { Flex } from 'components/Box';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { COLORS } from 'constants/COLOR';
 
 const ErrorContainer = styled(Flex)`
   width: 100%;
@@ -29,11 +30,11 @@ const ToHomeButton = styled.button`
   font-size: 26px;
   font-weight: 700;
   text-align: center;
-  background-color: #e77853;
+  background-color: ${COLORS.secondary};
   color: #fff;
   border-radius: 15px;
   :hover {
-  background-color: #FF7854;
+  background-color: ${COLORS.secondaryVariant};
 },
 `;
 
