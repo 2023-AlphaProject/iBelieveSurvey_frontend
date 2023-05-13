@@ -5,6 +5,7 @@ import {
   Home,
   MyPage,
   Survey,
+  SurveySearch,
   SurveyDetail,
   SurveyResult,
   SurveyGiftResult,
@@ -37,8 +38,10 @@ const App = () => {
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/tos" element={<Tos />} />
                 <Route path="/privacy" element={<Privacy />} />
+                <Route path="*" element={<NotFound />} />
+
                 <Route path="/survey" element={<Survey />} />
-                <Route path="/survey/search" element={<Home />} />
+                <Route path="/survey/search" element={<SurveySearch />} />
                 <Route path="/survey/:id" element={<SurveyDetail />} />
                 <Route path="/survey/:id/result" element={<SurveyResult />} />
                 <Route path="/survey/:id/gift-result" element={<SurveyGiftResult />} />
@@ -47,7 +50,6 @@ const App = () => {
                 <Route path="/survey/new/form" element={<NewSurveyForm />} />
                 <Route path="/survey/new/gift" element={<NewSurveyGift />} />
                 <Route path="/survey/new/gift/gifticons" element={<NewSurveyGifticons />} />
-                <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
           </Router>

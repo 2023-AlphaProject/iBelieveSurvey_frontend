@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useSnackBar, useInput } from 'hooks';
+import { useSnackBar, useInput, useModal } from 'hooks';
 import { COLORS } from 'constants/COLOR';
 import { Input, Button } from 'components/common';
 
@@ -13,6 +13,20 @@ const TempSubmitButton = styled(Button)`
 const NewSurvey = () => {
   const [testValue, onChangeTestValue] = useInput('');
   const { handleSnackBar } = useSnackBar();
+  const { openModal, closeModal } = useModal();
+
+  const modalData = {
+    title: 'modal title',
+    content: (
+      <ul>
+        <li>modal content</li>
+        <li>modal content</li>
+        <li>modal content</li>
+        <li>modal content</li>
+      </ul>
+    ),
+    callback: closeModal,
+  };
   return (
     <>
       <Input
@@ -22,6 +36,7 @@ const NewSurvey = () => {
         type="text"
         placeholder="테스트를 작성해 보세요."
       />
+      <Button onClick={() => openModal(modalData)}>모달열기</Button>
       <TempSubmitButton
         type="button"
         style={{ backgroundColor: 'transparent', color: '#000' }}

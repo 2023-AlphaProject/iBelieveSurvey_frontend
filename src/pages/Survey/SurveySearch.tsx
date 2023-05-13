@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Sidebar, Button } from 'components/common';
 
-const Survey = () => {
+const SurveySearch = () => {
   return (
     <>
       <Link to="/survey/new">
@@ -26,4 +26,4 @@ const Survey = () => {
   );
 };
 
-export default Survey;
+export default SurveySearch;

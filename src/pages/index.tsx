@@ -4,6 +4,7 @@ export { default as NotFound } from 'pages/NotFound';
 export { default as Tos } from 'pages/Tos';
 export { default as Privacy } from 'pages/Privacy';
 export { default as Survey } from 'pages/Survey/Survey';
+export { default as SurveySearch } from 'pages/Survey/SurveySearch';
 export { default as SurveyDetail } from 'pages/Survey/SurveyDetail';
 export { default as SurveyResult } from 'pages/Survey/SurveyResult';
 export { default as SurveyGiftResult } from 'pages/Survey/SurveyGiftResult';
