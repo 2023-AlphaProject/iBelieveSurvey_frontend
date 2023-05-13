@@ -2,15 +2,20 @@ import { Flex } from 'components/Box';
 import styled from 'styled-components';
 import { StageSpinner } from 'react-spinners-kit';
 
-const LoadingContainer = styled(Flex)`
+const Container = styled(Flex)`
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  height: 90%;
+`;
+
+const LoadingContainer = styled(Flex)`
+  flex-wrap: wrap;
   justify-content: center;
 `;
 
 const LoadingImg = styled.img`
   width: 20rem;
-  height: 30%;
 `;
 
 const LoadingTextContainer = styled(Flex)`
@@ -27,16 +32,18 @@ const LoadingText = styled.div`
 
 const LoadingComponent = () => {
   return (
-    <LoadingContainer>
-      <LoadingImg
-        src={`${process.env.PUBLIC_URL}/assets/images/loading.png`}
-        alt="IBELEVESURVEY Logo"
-      />
-      <LoadingTextContainer>
-        <LoadingText>Loading</LoadingText>
-        <StageSpinner size={100} color="#000" />
-      </LoadingTextContainer>
-    </LoadingContainer>
+    <Container>
+      <LoadingContainer>
+        <LoadingImg
+          src={`${process.env.PUBLIC_URL}/assets/images/loading.png`}
+          alt="IBELEVESURVEY Logo"
+        />
+        <LoadingTextContainer>
+          <LoadingText>Loading</LoadingText>
+          <StageSpinner size={100} color="#000" />
+        </LoadingTextContainer>
+      </LoadingContainer>
+    </Container>
   );
 };
 export default LoadingComponent;
