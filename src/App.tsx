@@ -13,7 +13,6 @@ import {
   NewSurveyForm,
   NewSurveyGift,
   NewSurveyGifticons,
-  Test,
   NotFound,
   Tos,
   Privacy,
@@ -37,6 +36,8 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/survey" element={<Survey />} />
+                <Route path="/tos" element={<Tos />} />
+                <Route path="/privacy" element={<Privacy />} />
                 {/* <Route path="/survey/search?=:id" element={<Home />} /> */}
                 <Route path="/survey/:id" element={<SurveyDetail />} />
                 <Route path="/survey/:id/result" element={<SurveyResult />} />
@@ -46,9 +47,6 @@ const App = () => {
                 <Route path="/survey/new/form" element={<NewSurveyForm />} />
                 <Route path="/survey/new/gift" element={<NewSurveyGift />} />
                 <Route path="/survey/new/gift/gifticons" element={<NewSurveyGifticons />} />
-                <Route path="/test" element={<Test />} />
-                <Route path="/tos" element={<Tos />} />
-                <Route path="/privacy" element={<Privacy />} />
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
