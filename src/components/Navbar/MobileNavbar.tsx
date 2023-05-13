@@ -68,19 +68,19 @@ const MobileNavbar = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }: ID
             display: 'block',
           }}
         >
-          <Link to="/">
+          <Link to="/survey">
             <MenuItem onClick={handleCloseNavMenu}>
               <Typography textAlign="center">설문 게시판</Typography>
             </MenuItem>
           </Link>
-          <Link to="/test">
+          <Link to="/mypage">
             <MenuItem onClick={handleCloseNavMenu}>
               <Typography textAlign="center">마이페이지</Typography>
             </MenuItem>
           </Link>
           <Link to="/">
             <MenuItem onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">123</Typography>
+              <Typography textAlign="center">로그인</Typography>
             </MenuItem>
           </Link>
         </Menu>

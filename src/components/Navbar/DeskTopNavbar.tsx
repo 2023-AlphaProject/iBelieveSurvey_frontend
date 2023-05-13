@@ -37,7 +37,7 @@ const DeskTopNavbar = ({ anchorElNav, handleCloseNavMenu }: IDeskTopNavbar) => {
       {/* PC Components */}
 
       <Box sx={{ flexGrow: 0, display: 'flex', gap: '15px' }}>
-        <Link to="/">
+        <Link to="/survey">
           <Button
             onClick={handleCloseNavMenu}
             sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
@@ -45,7 +45,7 @@ const DeskTopNavbar = ({ anchorElNav, handleCloseNavMenu }: IDeskTopNavbar) => {
             설문 게시판
           </Button>
         </Link>
-        <Link to="/test">
+        <Link to="/mypage">
           <Button
             onClick={handleCloseNavMenu}
             sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
