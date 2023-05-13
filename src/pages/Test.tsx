@@ -3,6 +3,8 @@ import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 import { Sidebar, Button, Input } from 'components/common';
 import useInput from 'hooks/useInput';
+import CardView from 'components/Gifticon/CardView/CardView';
+import dummyCards from 'components/Gifticon/CardView/dummyCards';
 
 type IAlert = {
   message: string;
@@ -96,6 +98,7 @@ const Test = () => {
           '엔터테인먼트',
         ]}
       />
+      <CardView card={dummyCards} />
     </>
   );
 };
