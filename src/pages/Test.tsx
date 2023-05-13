@@ -3,7 +3,6 @@ import { useCallback } from 'react';
 import { useSnackbar } from 'notistack';
 import { Sidebar, Button, Input } from 'components/common';
 import useInput from 'hooks/useInput';
-import ThumbnailBtn from 'components/Survey/ThumbnailBtn/ThumbnailBtn';
 
 type IAlert = {
   message: string;
@@ -97,7 +96,6 @@ const Test = () => {
           '엔터테인먼트',
         ]}
       />
-      <ThumbnailBtn />
     </>
   );
 };
