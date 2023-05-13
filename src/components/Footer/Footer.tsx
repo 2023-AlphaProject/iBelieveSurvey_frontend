@@ -48,7 +48,6 @@ const FooterTerms = styled.h1`
   font-weight: 800;
   :hover {
     cursor: pointer;
-    text-decoration: underline;
   }
 `;
 
