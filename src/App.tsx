@@ -35,10 +35,10 @@ const App = () => {
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/mypage" element={<MyPage />} />
-                <Route path="/survey" element={<Survey />} />
                 <Route path="/tos" element={<Tos />} />
                 <Route path="/privacy" element={<Privacy />} />
-                {/* <Route path="/survey/search?=:id" element={<Home />} /> */}
+                <Route path="/survey" element={<Survey />} />
+                <Route path="/survey/search" element={<Home />} />
                 <Route path="/survey/:id" element={<SurveyDetail />} />
                 <Route path="/survey/:id/result" element={<SurveyResult />} />
                 <Route path="/survey/:id/gift-result" element={<SurveyGiftResult />} />
