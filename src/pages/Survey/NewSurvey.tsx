@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useSnackBar, useInput } from 'hooks';
 import { COLORS } from 'constants/COLOR';
 import { Input, Button } from 'components/common';
-import { useSnackBar, useInput } from 'hooks';
 
 const TempSubmitButton = styled(Button)`
   background-color: transparent;
@@ -40,7 +41,9 @@ const NewSurvey = () => {
       >
         임시저장 실패
       </Button>
-      <Button>다음단계</Button>
+      <Link to="/survey/new/form">
+        <Button>다음단계</Button>
+      </Link>
     </>
   );
 };
