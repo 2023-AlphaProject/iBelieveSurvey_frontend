@@ -14,6 +14,7 @@ import { useWindowSize } from 'hooks/useWindowSize';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import { COLORS } from 'constants/COLOR';
 
 const Navbar = () => {
   const windowSize = useWindowSize();
@@ -40,7 +41,7 @@ const Navbar = () => {
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: '30px',
-    border: '2px solid #E77853',
+    border: `2px solid ${COLORS.secondary}`,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -59,7 +60,7 @@ const Navbar = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#E77853',
+    color: `${COLORS.secondary}`,
   }));
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -74,7 +75,7 @@ const Navbar = () => {
         width: '30ch',
         '&:focus': {
           borderRadius: '30px',
-          border: '1px solid #E77853',
+          border: `1px solid ${COLORS.secondary}`,
           width: '33ch',
         },
       },
@@ -129,13 +130,13 @@ const Navbar = () => {
                     width: '7rem',
                     textAlign: 'center',
                     color: '#fff',
-                    backgroundColor: '#E77853',
+                    backgroundColor: `${COLORS.secondary}`,
                     my: 2,
                     fontWeight: '700',
                     borderRadius: '30px',
                     boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
                     '&:hover': {
-                      backgroundColor: '#FF7854',
+                      backgroundColor: `${COLORS.secondaryVariant}`,
                     },
                   }}
                 >
