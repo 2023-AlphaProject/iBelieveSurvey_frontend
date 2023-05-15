@@ -1,4 +1,5 @@
 export { default as Home } from 'pages/Home';
+export { default as KakaoAuth } from 'pages/KakaoAuth';
 export { default as MyPage } from 'pages/MyPage';
 export { default as NotFound } from 'pages/NotFound';
 export { default as Tos } from 'pages/Tos';

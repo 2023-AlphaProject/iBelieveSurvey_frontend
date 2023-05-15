@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from 'layouts/Layout';
 import {
   Home,
+  KakaoAuth,
   MyPage,
   Survey,
   SurveySearch,
@@ -35,6 +36,7 @@ const App = () => {
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
+                <Route path="/user/kakao/callback" element={<KakaoAuth />} />
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/tos" element={<Tos />} />
                 <Route path="/privacy" element={<Privacy />} />
