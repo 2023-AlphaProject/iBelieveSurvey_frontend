@@ -18,25 +18,29 @@ const KakaoAuth = () => {
 
   useEffect(() => {
     const code = new URL(window.location.href).searchParams.get('code');
+    const grantType = 'authorization_code';
+    const REDIRECT_URL = `${process.env.REACT_APP_KAKAO_REDIRECT_URL}`;
+    const REST_API_KEY = `${process.env.REACT_APP_KAKAO_REST_API_KEY}`;
     console.log(code);
-    console.log(`${process.env.REACT_APP_KAKAO_REDIRECT_URL}?code=${code}`);
     axios
-      .get(`${process.env.REACT_APP_KAKAO_REDIRECT_URL}?code=${code}`)
+      .get(`https://localhost/user/kakao/callback?code=${code}`)
       .then((res) => {
-        console.log(res);
-        /* if (res.status === 200) {
+        if (res.status === 200) {
           // 카카오계정 연결에 성공한 경우, 회원 정보 유무 확인
-          getMyFridge(res.data.toString()).then((data) => {
-            if (!data) {
-              navigate('/init', { state: { kakaoId: res.data } });
-            } else {
-              setUserID({ ref: data.id, kakao: data.kakaoId, link: data.link });
-              navigate(`/refrigerator/${data.kakaoId}`);
-            }
-          });
-        } */
+          // getMyFridge(res.data.toString()).then((data) => {
+          //   if (!data) {
+          //     navigate("/init", { state: { kakaoId: res.data } });
+          //   } else {
+          //     setUserID({ ref: data.id, kakao: data.kakaoId, link: data.link });
+          //     navigate(`/refrigerator/${data.kakaoId}`);
+          //   }
+          // });
+          console.log(res);
+        }
       })
-      .catch(() => setShowModal(true));
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   return (
     <>asd</>
