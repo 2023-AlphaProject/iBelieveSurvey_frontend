@@ -26,7 +26,7 @@ const Sidebar = (props: Props) => {
   const [selected, setSelected] = useState(categorys[0]);
 
   return (
-    <Flex flexDirection="column" width="15rem" justifyContent="center">
+    <Flex flexDirection="column" width="15rem">
       <Label
         background={COLORS.secondary}
         p={10}
@@ -42,7 +42,7 @@ const Sidebar = (props: Props) => {
       <Flex flexDirection="column" gap="1.5rem" pl="3.5rem">
         {categorys.map((category) => (
           <Category
-            width="auto"
+            width="12rem"
             key={`sidebar_${category}`}
             fontFamily="Pr-SemiBold"
             fontSize={18}

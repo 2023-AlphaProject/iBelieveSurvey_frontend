@@ -8,3 +8,4 @@ export { default as Input } from './Input/Input';
 export { default as Toggle } from './Toggle/Toggle';
 export { default as LoadingComponent } from './Loading/LoadingComponent';
 export { default as Blur } from './Blur/Blur';
+export { default as Filterbar } from './Filterbar/Filterbar';
