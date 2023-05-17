@@ -2,7 +2,7 @@ import { useState, useCallback, ChangeEvent } from 'react';
 
 export type onChangeType = (e: ChangeEvent<HTMLInputElement>) => void;
 
-const useInput = (initValue = '') => {
+export const useInput = (initValue = '') => {
   const [value, setValue] = useState(initValue);
   const handler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
