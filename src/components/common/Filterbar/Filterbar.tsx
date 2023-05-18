@@ -40,7 +40,15 @@ const Filterbar = () => {
   }, [visible]);
 
   return (
-    <Flex width="7.25rem" flexDirection="column" alignItems="center" ref={modalRef}>
+    <Flex
+      width="7.25rem"
+      flexDirection="column"
+      alignItems="center"
+      ref={modalRef}
+      position="absolute"
+      top="0.75rem"
+      right="2rem"
+    >
       <Filter
         onClick={() => {
           setVisible(!visible);

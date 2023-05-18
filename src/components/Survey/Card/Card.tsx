@@ -12,12 +12,7 @@ const Card = (props: Props) => {
   const { card } = props;
   return (
     <Flex flexDirection="column" pb={3}>
-      <Box
-        width="14.25rem"
-        height="10rem"
-        borderRadius="1.25rem"
-        background={COLORS.primaryVariant}
-      />
+      <Box width="14rem" height="10rem" borderRadius="1.25rem" background={COLORS.primaryVariant} />
       <Flex p={2} flexDirection="column" gap="8px">
         <Flex>
           <Label
@@ -43,7 +38,7 @@ const Card = (props: Props) => {
           </Flex>
         </Flex>
 
-        <Label width="13.8rem" fontSize="0.95rem" fontFamily="Pr-Bold">
+        <Label width="13.6rem" fontSize="0.95rem" fontFamily="Pr-Bold">
           {card.title}
         </Label>
         <Flex>

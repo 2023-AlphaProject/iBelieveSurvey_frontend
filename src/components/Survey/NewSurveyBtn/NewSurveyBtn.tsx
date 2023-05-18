@@ -5,7 +5,7 @@ const NewSurveyBtn = () => {
   return (
     <Flex flexDirection="column" gap="0.75rem">
       <Box
-        width="14.25rem"
+        width="14rem"
         height="10rem"
         borderRadius="1.25rem"
         border="3px solid"
@@ -17,8 +17,8 @@ const NewSurveyBtn = () => {
           style={{ width: '3rem', margin: '3.5rem 5.4rem', cursor: 'pointer' }}
         />
       </Box>
-      <Box width="14.25rem" height="5rem" borderRadius="1.25rem" background={COLORS.primaryVariant}>
-        <Label color="white" fontFamily="Pr-Bold" mt={30} ml={66}>
+      <Box width="14rem" height="5rem" borderRadius="1.25rem" background={COLORS.primaryVariant}>
+        <Label color="white" fontFamily="Pr-Bold" mt={30} ml={60}>
           새 설문 작성하기
         </Label>
       </Box>
