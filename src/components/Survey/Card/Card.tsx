@@ -11,7 +11,7 @@ interface Props {
 const Card = (props: Props) => {
   const { card } = props;
   return (
-    <Flex flexDirection="column" pb={3}>
+    <Flex flexDirection="column" pb={3} cursor="pointer">
       <Box width="14rem" height="10rem" borderRadius="1.25rem" background={COLORS.primaryVariant} />
       <Flex p={2} flexDirection="column" gap="8px">
         <Flex>
