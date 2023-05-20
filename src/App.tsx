@@ -18,8 +18,7 @@ import {
   Tos,
   Privacy,
 } from 'pages';
-import { Modal } from 'components/common';
-import { Banner } from 'components/SurveyDetail';
+import { Modal, Banner } from 'components/common';
 import { RecoilRoot } from 'recoil';
 import { SnackbarProvider } from 'notistack';
 import { ThemeProvider } from 'styled-components';
