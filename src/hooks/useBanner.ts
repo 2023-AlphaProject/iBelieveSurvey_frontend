@@ -3,9 +3,9 @@ import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { bannerState } from 'states/stateBanner';
 
-type OpenModalType = {
-  title: string;
+type openBannerType = {
   content: JSX.Element | string;
+  title: string;
   callback?: () => any;
 };
 
@@ -13,22 +13,22 @@ export const useBanner = () => {
   const [bannerDataState, setBannerDataState] = useRecoilState(bannerState);
 
   const closeBanner = useCallback(
-      () =>
-          setBannerDataState((prev) => {
-            return { ...prev, isOpen: false };
-          }),
-      [setBannerDataState],
+    () =>
+      setBannerDataState((prev) => {
+        return { ...prev, isOpen: false };
+      }),
+    [setBannerDataState],
   );
 
   const openBanner = useCallback(
-      ({ title, content, callback }: OpenModalType) =>
-          setBannerDataState({
-            isOpen: true,
-            title,
-            content,
-            callback,
-          }),
-      [setBannerDataState],
+    ({ title, content, callback }: openBannerType) =>
+      setBannerDataState({
+        title,
+        isOpen: true,
+        content,
+        callback,
+      }),
+    [setBannerDataState],
   );
 
   return { bannerDataState, openBanner, closeBanner };

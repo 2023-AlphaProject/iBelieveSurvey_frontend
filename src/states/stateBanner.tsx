@@ -11,8 +11,8 @@ type ModalType = {
 export const bannerState = atom<ModalType>({
   key: 'bannerState',
   default: {
-    isOpen: false,
     title: '',
+    isOpen: false,
     content: '',
   },
 });
