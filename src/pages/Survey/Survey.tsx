@@ -7,6 +7,9 @@ const Survey = () => {
       <Link to="/survey/new">
         <Button>설문 작성</Button>
       </Link>
+      <Link to="/survey/1">
+        <Button>설문 상세</Button>
+      </Link>
       <Sidebar
         title="카테고리 선택"
         categorys={[

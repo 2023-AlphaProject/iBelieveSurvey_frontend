@@ -1,8 +1,9 @@
 import { useLocation } from 'react-router-dom';
-import { useBanner } from 'hooks/useBanner';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { bannerState } from 'states/stateBanner';
 
 const BannerContainer = styled.div`
   display: flex;
@@ -40,14 +41,12 @@ const BannerButton = styled.button`
 `;
 
 const Banner = () => {
-  const { bannerDataState, openBanner, closeBanner } = useBanner();
+  const [bannerDataState, setBannerDataState] = useRecoilState(bannerState);
   const location = useLocation();
 
-  useEffect(() => {
-    console.log(location);
-  }, []);
+  const URL = location.pathname.split('/');
 
-  return (
+  return URL.length === 3 ? (
     <BannerContainer>
       <BannerInnerContainer>
         <BannerTitle>{bannerDataState.title}</BannerTitle>
@@ -56,6 +55,8 @@ const Banner = () => {
         </BannerButton>
       </BannerInnerContainer>
     </BannerContainer>
+  ) : (
+    <div />
   );
 };
 

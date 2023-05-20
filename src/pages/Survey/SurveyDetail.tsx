@@ -1,8 +1,18 @@
-import { useBanner } from 'hooks/useBanner';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { bannerState } from 'states/stateBanner';
 
 const SurveyDetail = () => {
-  const { bannerDataState, setBannerDataState, openBanner, closeBanner } = useBanner();
-  openBanner({ title: 'asd', content: 'asd' });
+  const [bannerDataState, setBannerDataState] = useRecoilState(bannerState);
+  const [temp, setTemp] = useState(false);
+
+  if (!temp) {
+    setBannerDataState({
+      title: 'asd',
+      content: 'asd',
+    });
+    setTemp(true);
+  }
 
   return <>SurveyDetail</>;
 };
