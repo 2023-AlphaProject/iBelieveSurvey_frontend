@@ -23,7 +23,7 @@ const KakaoAuth = () => {
     const REST_API_KEY = `${process.env.REACT_APP_KAKAO_REST_API_KEY}`;
     console.log(code);
     axios
-      .get(`https://localhost/user/kakao/callback?code=${code}`)
+      .get(`http://localhost/user/kakao/callback?code=${code}`)
       .then((res) => {
         if (res.status === 200) {
           // 카카오계정 연결에 성공한 경우, 회원 정보 유무 확인
