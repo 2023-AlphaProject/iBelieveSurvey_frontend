@@ -1,12 +1,10 @@
-import { SurveyDetailBanner } from 'components/SurveyDetail';
+import { useBanner } from 'hooks/useBanner';
 
 const SurveyDetail = () => {
-  return (
-    <>
-      <div>SurveyDetail</div>
-      <SurveyDetailBanner />
-    </>
-  );
+  const { bannerDataState, setBannerDataState, openBanner, closeBanner } = useBanner();
+  openBanner({ title: 'asd', content: 'asd' });
+
+  return <>SurveyDetail</>;
 };
 
 export default SurveyDetail;

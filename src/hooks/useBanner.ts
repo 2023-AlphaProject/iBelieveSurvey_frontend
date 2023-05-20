@@ -31,5 +31,5 @@ export const useBanner = () => {
     [setBannerDataState],
   );
 
-  return { bannerDataState, openBanner, closeBanner };
+  return { bannerDataState, setBannerDataState, openBanner, closeBanner };
 };

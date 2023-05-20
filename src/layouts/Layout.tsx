@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Navbar } from 'components/Navbar';
 import { Box, Flex } from 'components/Box';
 import { Footer } from 'components/Footer';
+import { Banner } from 'components/SurveyDetail';
 
 const MainContainer = styled(Flex)`
   flex-direction: column;
@@ -21,6 +22,7 @@ const Layout = ({ children }: PropsWithChildren) => {
   return (
     <MainContainer>
       <Navbar />
+      <Banner />
       <Content>{children || <Outlet />}</Content>
       <Footer />
     </MainContainer>

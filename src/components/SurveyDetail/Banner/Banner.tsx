@@ -1,12 +1,12 @@
+import { useLocation } from 'react-router-dom';
 import { useBanner } from 'hooks/useBanner';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const BannerContainer = styled.div`
-  position: absolute;
   display: flex;
   justify-content: center;
-  top: 4.3rem;
   width: 100%;
   height: 2.5rem;
   padding: 0 2rem 0 2rem;
@@ -41,8 +41,13 @@ const BannerButton = styled.button`
 
 const Banner = () => {
   const { bannerDataState, openBanner, closeBanner } = useBanner();
+  const location = useLocation();
 
-  return bannerDataState.isOpen ? (
+  useEffect(() => {
+    console.log(location);
+  }, []);
+
+  return (
     <BannerContainer>
       <BannerInnerContainer>
         <BannerTitle>{bannerDataState.title}</BannerTitle>
@@ -51,8 +56,6 @@ const Banner = () => {
         </BannerButton>
       </BannerInnerContainer>
     </BannerContainer>
-  ) : (
-    <div />
   );
 };
 
