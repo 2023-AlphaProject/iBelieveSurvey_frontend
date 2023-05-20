@@ -15,7 +15,7 @@ import InputBase from '@mui/material/InputBase';
 
 const DeskTopNavbar = ({ anchorElNav, handleCloseNavMenu }: IDeskTopNavbar) => {
   return (
-    <Toolbar disableGutters>
+    <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* PC Logo */}
       <Link to="/">
         <img

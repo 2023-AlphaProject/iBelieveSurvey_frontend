@@ -19,6 +19,7 @@ import {
   Privacy,
 } from 'pages';
 import { Modal } from 'components/common';
+import { Banner } from 'components/SurveyDetail';
 import { RecoilRoot } from 'recoil';
 import { SnackbarProvider } from 'notistack';
 import { ThemeProvider } from 'styled-components';
@@ -29,6 +30,7 @@ const App = () => {
     <SnackbarProvider maxSnack={3}>
       <ThemeProvider theme={theme}>
         <RecoilRoot>
+          <Banner />
           <Modal />
           <GlobalStyles />
           <Router>

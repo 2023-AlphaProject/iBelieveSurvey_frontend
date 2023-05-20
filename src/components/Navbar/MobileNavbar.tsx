@@ -16,7 +16,7 @@ import Typography from '@mui/material/Typography';
 
 const MobileNavbar = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }: IDeskTopNavbar) => {
   return (
-    <Toolbar disableGutters>
+    <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* Mobile SearchBar */}
       <Box sx={{ flexGrow: 1, display: 'flex' }}>
         <Search sx={{ width: '80%' }}>
