@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const Box = styled.div`
-  width: 30rem;
-  height: 30rem;
+  width: 24rem;
+  height: 24rem;
   position: relative;
 `;
 
@@ -11,7 +11,7 @@ const IconBox = styled.div`
   height: 6rem;
   position: absolute;
   top: -1rem;
-  right: 1rem;
+  right: 0.75rem;
 `;
 
 const Icon = styled.img`
@@ -37,8 +37,8 @@ const Thumbnail = () => {
         src={`${process.env.PUBLIC_URL}/assets/images/starbucks.jpg`}
         alt="GIFTICON"
         style={{
-          width: '30rem',
-          height: '30rem',
+          width: '24rem',
+          height: '24rem',
           borderRadius: '1.2rem',
         }}
       />
