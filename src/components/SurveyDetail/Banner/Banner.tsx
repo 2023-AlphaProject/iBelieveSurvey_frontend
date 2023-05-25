@@ -40,8 +40,9 @@ const Banner = () => {
   const location = useLocation();
 
   const URL = location.pathname.split('/');
+  const isBanner = URL[1] === 'survey' && URL[2] && URL[2] !== 'new' && !URL[3];
 
-  return URL.length === 3 ? (
+  return isBanner ? (
     <BannerContainer>
       <BannerInnerContainer>
         <BannerTitle>{bannerDataState.title}</BannerTitle>
