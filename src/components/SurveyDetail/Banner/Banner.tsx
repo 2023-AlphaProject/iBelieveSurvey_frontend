@@ -1,12 +1,13 @@
-import { useLocation } from 'react-router-dom';
-import { COLORS } from 'constants/COLOR';
-import styled from 'styled-components';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import styled from 'styled-components';
+import { Flex } from 'components/Box';
+import { Button } from 'components/common';
+import { COLORS } from 'constants/COLOR';
 import { bannerState } from 'states/stateBanner';
 
-const BannerContainer = styled.div`
-  display: flex;
+const BannerContainer = styled(Flex)`
   justify-content: center;
   width: 100%;
   height: 2.5rem;
@@ -14,8 +15,7 @@ const BannerContainer = styled.div`
   background-color: ${COLORS.secondary};
 `;
 
-const BannerInnerContainer = styled.div`
-  display: flex;
+const BannerInnerContainer = styled(Flex)`
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -28,16 +28,11 @@ const BannerTitle = styled.h1`
   font-weight: 900;
 `;
 
-const BannerButton = styled.button`
-  text-align: center;
-  width: 5rem;
+const BannerButton = styled(Button)`
   height: 1.4rem;
   border: 2.5px solid #fff;
   border-radius: 5px;
-  color: #fff;
-  :hover {
-    background-color: ${COLORS.secondaryVariant};
-  }
+  background-color: transparent;
 `;
 
 const Banner = () => {
