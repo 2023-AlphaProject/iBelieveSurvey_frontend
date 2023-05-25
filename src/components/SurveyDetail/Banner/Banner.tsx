@@ -39,8 +39,9 @@ const Banner = () => {
   const [bannerDataState, setBannerDataState] = useRecoilState(bannerState);
   const location = useLocation();
 
-  const URL = location.pathname.split('/');
-  const isBanner = URL[1] === 'survey' && URL[2] && URL[2] !== 'new' && !URL[3];
+  const URL = location.pathname;
+  const URLRegex = /^\/survey\/[0-9]+$/;
+  const isBanner = URLRegex.test(URL);
 
   return isBanner ? (
     <BannerContainer>
