@@ -1,6 +1,15 @@
 export { default as Home } from 'pages/Home';
-export { default as Test } from 'pages/Test';
+export { default as MyPage } from 'pages/MyPage';
 export { default as NotFound } from 'pages/NotFound';
 export { default as Tos } from 'pages/Tos';
 export { default as Privacy } from 'pages/Privacy';
-export { default as NewSurvey } from 'pages/Survey/New';
+export { default as Survey } from 'pages/Survey/Survey';
+export { default as SurveySearch } from 'pages/Survey/SurveySearch';
+export { default as SurveyDetail } from 'pages/Survey/SurveyDetail';
+export { default as SurveyResult } from 'pages/Survey/SurveyResult';
+export { default as SurveyGiftResult } from 'pages/Survey/SurveyGiftResult';
+export { default as SurveySubmit } from 'pages/Survey/SurveySubmit';
+export { default as NewSurvey } from 'pages/Survey/NewSurvey';
+export { default as NewSurveyForm } from 'pages/Survey/NewSurveyForm';
+export { default as NewSurveyGift } from 'pages/Survey/NewSurveyGift';
+export { default as NewSurveyGifticons } from 'pages/Survey/NewSurveyGifticons';
