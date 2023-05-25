@@ -12,10 +12,10 @@ import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
-import { loginWithKakao } from 'apis';
+import { useLoginWithKakao } from 'hooks';
 
 const DeskTopNavbar = ({ anchorElNav }: IDeskTopNavbar) => {
-  const { KakaoLogin } = loginWithKakao();
+  const { KakaoLogin } = useLoginWithKakao();
 
   return (
     <Toolbar disableGutters>
