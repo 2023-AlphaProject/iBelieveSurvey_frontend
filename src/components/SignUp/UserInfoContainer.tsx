@@ -1,7 +1,9 @@
+import { Flex } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import React from 'react';
 import styled from 'styled-components';
+import { useSnackBar } from 'hooks';
 import UserInfoType from './SignUp';
 
 type StyleProps = {
@@ -14,7 +16,7 @@ type StyleProps = {
 type UserInfoType = {
   realName: string;
   phoneNumber: string;
-  birth: number;
+  birth: string;
   gender: any;
 };
 
@@ -24,8 +26,8 @@ type UserInfoProps = {
 };
 
 const Container = styled.div`
-  padding: 1rem 1.5rem 1.5rem 1.5rem;
-  width: 25rem;
+  padding: 1.5rem;
+  width: 23rem;
   height: 35rem;
   border: 3px solid;
   border-radius: 2rem;
@@ -44,11 +46,15 @@ const Input = styled.input`
 const InfoLabel = styled.div<StyleProps>`
   width: ${(props) => props.width || '5rem'};
   line-height: 2rem;
-  margin-top: 20px;
   text-align: center;
   border-radius: 15px;
   background-color: ${COLORS.secondary};
   color: #fff;
+`;
+
+const Select = styled.select`
+  margin-left: 10px;
+  width: 70%;
 `;
 
 const GenderButton = styled(Button)<StyleProps>`
@@ -61,7 +67,10 @@ const GenderButton = styled(Button)<StyleProps>`
 `;
 
 const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
-  const onUserInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { handleSnackBar } = useSnackBar();
+  const onUserInfoChange = (
+    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
+  ) => {
     const {
       target: { name, value },
     } = e;
@@ -94,52 +103,76 @@ const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
     }
   };
 
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (
+      !userInfo.realName ||
+      userInfo.phoneNumber === '010' ||
+      !userInfo.birth ||
+      !userInfo.gender
+    ) {
+      handleSnackBar({
+        variant: 'error',
+        message: '임시저장에 실패했습니다.',
+      });
+      // return;
+    }
+    // postData
+  };
+
   return (
     <Container>
-      <InfoLabel margin="0">이름</InfoLabel>
-      <Input
-        value={userInfo.realName}
-        onChange={onUserInfoChange}
-        type="text"
-        placeholder="이름을 입력하세요."
-        name="realName"
-      />
-      <InfoLabel width="7rem">휴대폰 번호</InfoLabel>
-      <Input
-        value={userInfo.phoneNumber}
-        onChange={onUserInfoChange}
-        type="tel"
-        placeholder="휴대폰 번호를 - 없이 입력하세요."
-        name="phoneNumber"
-        maxLength={13}
-      />
-      <InfoLabel>성별</InfoLabel>
-      <GenderButton
-        name="gender"
-        value="male"
-        onClick={(e: any) => onUserInfoChange(e)}
-        backgroundcolor={userInfo.gender === 'male' ? COLORS.primary : '#fff'}
-        color={userInfo.gender === 'male' ? '#fff' : '#000'}
-      >
-        남성
-      </GenderButton>
-      <GenderButton
-        name="gender"
-        value="female"
-        onClick={(e: React.ChangeEvent<HTMLInputElement>) => onUserInfoChange(e)}
-        backgroundcolor={userInfo.gender === 'female' ? COLORS.primary : '#fff'}
-        color={userInfo.gender === 'female' ? '#fff' : '#000'}
-      >
-        여성
-      </GenderButton>
-      <InfoLabel width="6rem">출생연도</InfoLabel>
-      <Input
-        value={userInfo.realName}
-        onChange={onUserInfoChange}
-        type="text"
-        placeholder="태어난 연도를 입력해주세요."
-        name="realName"
-      />
+      <Flex flexWrap="wrap" alignItems="center" height="100%">
+        <InfoLabel margin="0">이름</InfoLabel>
+        <Input
+          value={userInfo.realName}
+          onChange={onUserInfoChange}
+          type="text"
+          placeholder="이름을 입력하세요."
+          name="realName"
+        />
+        <InfoLabel width="7rem">휴대폰 번호</InfoLabel>
+        <Input
+          value={userInfo.phoneNumber}
+          onChange={onUserInfoChange}
+          type="tel"
+          placeholder="휴대폰 번호를 - 없이 입력하세요."
+          name="phoneNumber"
+          maxLength={13}
+        />
+        <InfoLabel>성별</InfoLabel>
+        <div>
+          <GenderButton
+            name="gender"
+            value="male"
+            onClick={(e: any) => onUserInfoChange(e)}
+            backgroundcolor={userInfo.gender === 'male' ? COLORS.primary : '#fff'}
+            color={userInfo.gender === 'male' ? '#fff' : '#000'}
+          >
+            남성
+          </GenderButton>
+          <GenderButton
+            name="gender"
+            value="female"
+            onClick={(e: React.ChangeEvent<HTMLInputElement>) => onUserInfoChange(e)}
+            backgroundcolor={userInfo.gender === 'female' ? COLORS.primary : '#fff'}
+            color={userInfo.gender === 'female' ? '#fff' : '#000'}
+          >
+            여성
+          </GenderButton>
+        </div>
+        <InfoLabel width="6rem">출생연도</InfoLabel>
+        <Select name="birth" onChange={(e) => onUserInfoChange(e)}>
+          {Array.from({ length: 2024 - 1960 }, (_, index) => (
+            <option key={index}>{1960 + index}</option>
+          ))}
+        </Select>
+        <Flex width="100%" justifyContent="center">
+          <Button width="50%" onClick={(e: React.FormEvent<Element>) => onSubmit(e)}>
+            가나다
+          </Button>
+        </Flex>
+      </Flex>
     </Container>
   );
 };

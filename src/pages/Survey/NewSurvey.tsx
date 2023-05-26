@@ -40,19 +40,23 @@ const NewSurvey = () => {
       <TempSubmitButton
         type="button"
         style={{ backgroundColor: 'transparent', color: '#000' }}
-        onClick={handleSnackBar({
-          variant: 'success',
-          message: '임시저장 완료되었습니다.',
-        })}
+        onClick={() => {
+          handleSnackBar({
+            variant: 'success',
+            message: '임시저장 완료되었습니다.',
+          });
+        }}
       >
         임시저장 성공
       </TempSubmitButton>
       <Button
         type="button"
-        onClick={handleSnackBar({
-          variant: 'error',
-          message: '임시저장에 실패했습니다.',
-        })}
+        onClick={() => {
+          handleSnackBar({
+            variant: 'error',
+            message: '임시저장에 실패했습니다.',
+          });
+        }}
       >
         임시저장 실패
       </Button>
