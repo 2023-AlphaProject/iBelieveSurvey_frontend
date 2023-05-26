@@ -6,25 +6,7 @@ import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import UserInfoType from './SignUp';
-
-type StyleProps = {
-  width?: string;
-  margin?: string;
-  backgroundcolor?: string;
-  color?: string;
-};
-
-type UserInfoType = {
-  realName: string;
-  phoneNumber: string;
-  birthYear: string;
-  gender: any;
-};
-
-type UserInfoProps = {
-  userInfo: UserInfoType;
-  setUserInfo: any;
-};
+import { StyleProps, UserInfoProps } from './types';
 
 const Container = styled.div`
   padding: 1.5rem;
