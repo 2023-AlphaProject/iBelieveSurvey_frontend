@@ -11,7 +11,7 @@ const KakaoAuth = () => {
   const init = {
     realName: '',
     phoneNumber: '010',
-    birth: '',
+    birthYear: '',
     gender: '',
   };
 
@@ -28,15 +28,6 @@ const KakaoAuth = () => {
       .get(`http://localhost/user/kakao/callback?code=${code}`)
       .then((res) => {
         if (res.status === 200) {
-          // 카카오계정 연결에 성공한 경우, 회원 정보 유무 확인
-          // getMyFridge(res.data.toString()).then((data) => {
-          //   if (!data) {
-          //     navigate("/init", { state: { kakaoId: res.data } });
-          //   } else {
-          //     setUserID({ ref: data.id, kakao: data.kakaoId, link: data.link });
-          //     navigate(`/refrigerator/${data.kakaoId}`);
-          //   }
-          // });
           console.log(res);
         }
       })

@@ -1,9 +1,10 @@
+import React from 'react';
+import axios from 'axios';
+import { useSnackBar } from 'hooks';
 import { Flex } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
-import React from 'react';
 import styled from 'styled-components';
-import { useSnackBar } from 'hooks';
 import UserInfoType from './SignUp';
 
 type StyleProps = {
@@ -16,7 +17,7 @@ type StyleProps = {
 type UserInfoType = {
   realName: string;
   phoneNumber: string;
-  birth: string;
+  birthYear: string;
   gender: any;
 };
 
@@ -27,20 +28,28 @@ type UserInfoProps = {
 
 const Container = styled.div`
   padding: 1.5rem;
-  width: 23rem;
-  height: 35rem;
+  width: 20rem;
+  height: 33rem;
   border: 3px solid;
   border-radius: 2rem;
   border-color: ${COLORS.primary};
+  // 자동완성 background auto filled 지우기
+  :-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  }
 `;
 
 const Input = styled.input`
   width: 90%;
   font-size: 1rem;
-  height: 3rem;
-  margin-left: 10px;
+  height: 2rem;
+  margin: 0 0 10px 10px;
   border: none;
   border-bottom: 2px solid ${COLORS.primary};
+  // 자동완성 background auto filled 지우기
+  :-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  }
 `;
 
 const InfoLabel = styled.div<StyleProps>`
@@ -53,14 +62,19 @@ const InfoLabel = styled.div<StyleProps>`
 `;
 
 const Select = styled.select`
+  width: 90%;
   margin-left: 10px;
-  width: 70%;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-bottom: 2px solid ${COLORS.primary};
+  outline: none;
 `;
 
 const GenderButton = styled(Button)<StyleProps>`
   height: 2rem;
-  width: 3.5rem;
-  margin: 15px 20px 0 0;
+  width: 2rem;
+  margin: 0 10px 10px 0;
   color: ${(props) => props.color};
   border: 3px solid ${COLORS.primary};
   background-color: ${(props) => props.backgroundcolor};
@@ -95,10 +109,10 @@ const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
         gender: value,
       });
     }
-    if (name === 'birth') {
+    if (name === 'birthYear') {
       setUserInfo({
         ...userInfo,
-        birth: value,
+        birthYear: value,
       });
     }
   };
@@ -108,16 +122,30 @@ const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
     if (
       !userInfo.realName ||
       userInfo.phoneNumber === '010' ||
-      !userInfo.birth ||
+      !userInfo.birthYear ||
       !userInfo.gender
     ) {
       handleSnackBar({
         variant: 'error',
-        message: '임시저장에 실패했습니다.',
+        message: '공백 없이 작성해주세요.',
       });
       // return;
     }
-    // postData
+    axios
+      .put('http://localhost/user/update', {
+        realName: userInfo.realName,
+        phoneNumber: userInfo.phoneNumber,
+        gender: userInfo.gender,
+        birthyear: userInfo.birthYear,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -162,14 +190,14 @@ const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
           </GenderButton>
         </div>
         <InfoLabel width="6rem">출생연도</InfoLabel>
-        <Select name="birth" onChange={(e) => onUserInfoChange(e)}>
+        <Select name="birthYear" onChange={(e) => onUserInfoChange(e)}>
           {Array.from({ length: 2024 - 1960 }, (_, index) => (
             <option key={index}>{1960 + index}</option>
           ))}
         </Select>
         <Flex width="100%" justifyContent="center">
           <Button width="50%" onClick={(e: React.FormEvent<Element>) => onSubmit(e)}>
-            가나다
+            회원가입
           </Button>
         </Flex>
       </Flex>
