@@ -37,11 +37,7 @@ const KakaoAuth = () => {
   }, []);
   console.log(userInfo);
 
-  return (
-    <Flex height="100%" flexWrap="wrap" alignItems="center">
-      <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} />
-    </Flex>
-  );
+  return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} />;
 };
 
 export default KakaoAuth;
