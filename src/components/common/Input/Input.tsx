@@ -34,10 +34,12 @@ const Input = ({ value, onChange, limit, ...rest }: InputProps) => {
       borderColor={COLORS.primary}
     >
       <StyledInput value={value} onChange={onChange} maxLength={limit} {...rest} />
-      {limit && (
+      {limit !== 0 ? (
         <Limit>
           {value.length} / {limit}자
         </Limit>
+      ) : (
+        <div />
       )}
     </Flex>
   );
