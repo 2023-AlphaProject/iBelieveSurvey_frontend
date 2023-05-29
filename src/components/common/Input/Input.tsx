@@ -1,11 +1,11 @@
-import { Flex } from 'components/Box';
+import { Box } from 'components/Box';
 import { COLORS } from 'constants/COLOR';
 import { onChangeType } from 'hooks/useInput';
 import { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
-  width: 90%;
+  width: 100%;
   font-family: 'Pr-Regular';
   font-size: 1rem;
   height: 3rem;
@@ -13,6 +13,10 @@ const StyledInput = styled.input`
 `;
 
 const Limit = styled.span`
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translate(0%, -50%);
   color: ${(props) => props.theme.colors.gray};
   font-size: 0.9rem;
 `;
@@ -25,21 +29,18 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = ({ value, onChange, limit, ...rest }: InputProps) => {
   return (
-    <Flex
+    <Box
+      position="relative"
       p="0 1.5rem"
       border="3px solid"
       borderRadius="2rem"
-      justifyContent="space-between"
-      alignItems="center"
       borderColor={COLORS.primary}
     >
-      <StyledInput value={value} onChange={onChange} maxLength={limit} {...rest} />
-      {limit && (
-        <Limit>
-          {value.length} / {limit}자
-        </Limit>
-      )}
-    </Flex>
+      <StyledInput value={value} onChange={onChange} {...rest} />
+      <Limit>
+        {value.length}/{limit}자
+      </Limit>
+    </Box>
   );
 };
 

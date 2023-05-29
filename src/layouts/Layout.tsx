@@ -13,7 +13,9 @@ const MainContainer = styled(Flex)`
 
 const Content = styled(Box)`
   max-width: 1200px;
-  margin: 20px;
+  width: 100vw;
+  margin-top: 20px;
+  padding: 2rem;
   flex: 1;
 `;
 
