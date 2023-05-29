@@ -44,7 +44,7 @@ const NewSurvey = () => {
         placeholder="테스트를 작성해 보세요."
       />
       <TextArea value={info} setValue={setInfo} limit={1000} placeholder="소개글을 입력해주세요" />
-      {/* <ThumbnailBtn /> */}
+      <ThumbnailBtn />
       <Button onClick={() => openModal(modalData)}>모달열기</Button>
       <TempSubmitButton
         type="button"
