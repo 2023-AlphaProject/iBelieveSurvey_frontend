@@ -4,7 +4,7 @@ import { useSnackBar, useInput, useModal } from 'hooks';
 import { COLORS } from 'constants/COLOR';
 import { Input, Button, TextArea } from 'components/common';
 import { useState } from 'react';
-import { StepProgress, ThumbnailBtn } from 'components/Survey';
+import { StepProgress, CategoryPicker, ThumbnailBtn } from 'components/Survey';
 
 const TempSubmitButton = styled(Button)`
   background-color: transparent;
@@ -13,6 +13,7 @@ const TempSubmitButton = styled(Button)`
 `;
 
 const NewSurvey = () => {
+  const [category, setCategory] = useState('');
   const [testValue, onChangeTestValue] = useInput('', 50);
   const { handleSnackBar } = useSnackBar();
   const { openModal, closeModal } = useModal();
@@ -34,6 +35,7 @@ const NewSurvey = () => {
   return (
     <>
       <StepProgress />
+      <CategoryPicker category={category} setCategory={setCategory} />
       <Input
         limit={50}
         value={testValue}
@@ -42,7 +44,7 @@ const NewSurvey = () => {
         placeholder="테스트를 작성해 보세요."
       />
       <TextArea value={info} setValue={setInfo} limit={1000} placeholder="소개글을 입력해주세요" />
-      <ThumbnailBtn />
+      {/* <ThumbnailBtn /> */}
       <Button onClick={() => openModal(modalData)}>모달열기</Button>
       <TempSubmitButton
         type="button"
