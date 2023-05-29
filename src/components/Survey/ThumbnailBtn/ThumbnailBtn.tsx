@@ -29,6 +29,7 @@ const ThumbnailBtn = () => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleImageChange = (e: any) => {
     const imageFile = e.target.files[0];
     const imageUrl = URL.createObjectURL(imageFile);

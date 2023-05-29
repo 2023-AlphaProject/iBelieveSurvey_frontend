@@ -23,6 +23,7 @@ const Limit = styled.span`
 
 interface TextAreaProps {
   value: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: any;
   limit: number;
   placeholder?: string;
