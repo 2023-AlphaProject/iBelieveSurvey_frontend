@@ -12,8 +12,11 @@ const MainContainer = styled(Flex)`
 `;
 
 const Content = styled(Box)`
-  max-width: 1300px;
+  max-width: 1250px;
   margin: 2rem 1rem;
+  width: 100vw;
+  margin-top: 20px;
+  padding: 2rem;
   flex: 1;
 `;
 
