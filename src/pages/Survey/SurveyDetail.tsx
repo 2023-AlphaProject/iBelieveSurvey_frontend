@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { bannerState } from 'states/stateBanner';
 import { Flex, Box, Label } from 'components/Box';
 import { Thumbnail } from 'components/SurveyDetail';
 import { Tag, Button } from 'components/common';
@@ -5,6 +9,20 @@ import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
 
 const SurveyDatail = () => {
+  const SurveyDetail = () => {
+  const navigate = useNavigate();
+  const [bannerDataState, setBannerDataState] = useRecoilState(bannerState);
+  const [temp, setTemp] = useState(false);
+
+  if (!temp) {
+    setBannerDataState({
+      title: '로그인 후 기프티콘 결과를 확인하세요!',
+      content: '로그인',
+      callback: () => navigate('/login'),
+    });
+    setTemp(true);
+  }
+    
   return (
     <Flex alignItems="center" flexDirection="column" gap="2rem">
       <Label fontFamily="Pr-Bold" fontSize="1.25rem">
