@@ -4,7 +4,7 @@ import { Tag, Button } from 'components/common';
 import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
 
-const MyPage = () => {
+const SurveyDatail = () => {
   return (
     <Flex alignItems="center" flexDirection="column" gap="2rem">
       <Label fontFamily="Pr-Bold" fontSize="1.25rem">
@@ -79,4 +79,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default SurveyDatail;
