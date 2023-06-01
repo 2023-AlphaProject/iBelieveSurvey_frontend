@@ -22,6 +22,7 @@
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-spinners-kit": "^1.9.1",
+    "react-textarea-autosize": "^8.4.1",
     "recoil": "^0.7.7",
     "styled-components": "^5.3.9",
     "styled-reset": "^4.4.5",

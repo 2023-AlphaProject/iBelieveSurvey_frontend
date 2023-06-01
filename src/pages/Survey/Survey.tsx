@@ -38,7 +38,7 @@ const Survey = () => {
             <Label fontFamily="Pr-Regular" fontSize="0.8rem" mt="0.5rem">
               총 1,000개
             </Label>
-            <Filterbar />
+            <Filterbar right="0" />
           </Flex>
           <Flex>
             <Label fontFamily="Pr-Bold" fontSize="0.8rem" mt="0.5rem">
