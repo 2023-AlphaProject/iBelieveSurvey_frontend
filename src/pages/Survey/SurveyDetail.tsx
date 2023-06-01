@@ -9,7 +9,6 @@ import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
 
 const SurveyDatail = () => {
-  const SurveyDetail = () => {
   const navigate = useNavigate();
   const [bannerDataState, setBannerDataState] = useRecoilState(bannerState);
   const [temp, setTemp] = useState(false);
@@ -22,7 +21,7 @@ const SurveyDatail = () => {
     });
     setTemp(true);
   }
-    
+
   return (
     <Flex alignItems="center" flexDirection="column" gap="2rem">
       <Label fontFamily="Pr-Bold" fontSize="1.25rem">
