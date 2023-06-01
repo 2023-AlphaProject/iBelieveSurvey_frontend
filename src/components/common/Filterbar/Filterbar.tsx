@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Flex } from 'components/Box';
 import styled from 'styled-components';
 
+interface Props {
+  right: string;
+}
+
 const Filter = styled.div`
   font-size: 0.9rem;
   font-weight: 600;
@@ -22,7 +26,8 @@ const Divider = styled.div`
   background: white;
 `;
 
-const Filterbar = () => {
+const Filterbar = (props: Props) => {
+  const { right } = props;
   const [text, setText] = useState('최신 순');
   const [visible, setVisible] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -40,7 +45,15 @@ const Filterbar = () => {
   }, [visible]);
 
   return (
-    <Flex width="7.25rem" flexDirection="column" alignItems="center" ref={modalRef}>
+    <Flex
+      width="7.25rem"
+      flexDirection="column"
+      alignItems="center"
+      ref={modalRef}
+      position="absolute"
+      top="0.75rem"
+      right={right}
+    >
       <Filter
         onClick={() => {
           setVisible(!visible);
