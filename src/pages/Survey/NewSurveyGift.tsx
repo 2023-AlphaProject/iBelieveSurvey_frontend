@@ -34,18 +34,18 @@ const NewSurveyGift = () => {
     );
   };
   return (
-    <Flex flexDirection="column" gap="0.75rem">
-      <Flex gap="7rem" justifyContent="center">
+    <Flex flexDirection="column" gap="0.6rem" justifyContent="center">
+      <Flex gap="7rem" justifyContent="center" flexWrap="wrap">
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/starbucks.jpg`}
           alt="GIFTICON"
           style={{
-            width: '24rem',
-            height: '24rem',
+            width: '25rem',
+            height: '25rem',
             borderRadius: '1.25rem',
           }}
         />
-        <Flex flexDirection="column" gap="1.5rem" pt={4}>
+        <Flex flexDirection="column" gap="1.5rem" pt={4} mb={5}>
           <Label fontSize="0.9rem" fontFamily="Pr-Bold" color={COLORS.primary}>
             스타벅스
           </Label>
@@ -58,7 +58,7 @@ const NewSurveyGift = () => {
           <Selector />
         </Flex>
       </Flex>
-      <Flex>
+      <Flex ml="7.5%">
         <CategoryBtn
           isClicked={isClicked[0]}
           onClick={() => {
@@ -76,7 +76,7 @@ const NewSurveyGift = () => {
           상세 정보
         </CategoryBtn>
       </Flex>
-      <Box background={COLORS.primaryVariant} height="3px" />
+      <Box background={COLORS.primaryVariant} height="2px" width="85%" ml="7.5%" />
     </Flex>
   );
 };

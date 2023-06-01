@@ -38,7 +38,7 @@ const Selector = () => {
             }
           }}
         />
-        <Label fontFamily="Pr-Bold" mt={2} ml="12rem">
+        <Label fontFamily="Pr-Bold" mt={2} ml="12.1rem">
           {cnt}
         </Label>
         <AddIcon
