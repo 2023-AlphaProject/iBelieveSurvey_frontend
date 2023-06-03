@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Flex, Label, Box } from 'components/Box';
+import { Button } from 'components/common';
 import Selector from 'components/Gifticon/Selector/Selector';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
@@ -13,6 +14,14 @@ const CategoryBtn = styled.button<ButtonProps>`
   font-family: 'Pr-Bold';
   font-size: 0.9rem;
   color: ${(props) => (props.isClicked ? 'black' : '#888888')};
+`;
+
+const PayBtn = styled.button`
+  width: 9rem;
+  text-align: center;
+  font-family: 'Pr-Bold';
+  border: solid ${COLORS.secondary};
+  border-radius: 1.5rem;
 `;
 
 const NewSurveyGift = () => {
@@ -34,7 +43,7 @@ const NewSurveyGift = () => {
     );
   };
   return (
-    <Flex flexDirection="column" gap="0.6rem" justifyContent="center">
+    <Flex flexDirection="column" gap="0.6rem" justifyContent="center" position="relative">
       <Flex gap="7rem" justifyContent="center" flexWrap="wrap">
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/starbucks.jpg`}
@@ -77,6 +86,25 @@ const NewSurveyGift = () => {
         </CategoryBtn>
       </Flex>
       <Box background={COLORS.primaryVariant} height="2px" width="85%" ml="7.5%" />
+      <Box width="80%" background="#8888" ml="10%" p="2%">
+        상품 설명 링크
+      </Box>
+      <Flex flexDirection="column" gap="1rem" height="10rem">
+        <Flex gap="8rem" position="absolute" right="5rem" bottom="6.5rem">
+          <Label fontFamily="Pr-Bold" mt={1} ml="3rem">
+            총 금액
+          </Label>
+          <Label fontSize="1.4rem" fontFamily="Pr-Bold">
+            9,600원
+          </Label>
+        </Flex>
+        <Flex gap="1rem" position="absolute" right="4.5rem" bottom="3rem">
+          <Button variant="secondary" width="7rem" scale="xs">
+            장바구니
+          </Button>
+          <PayBtn>결제하기</PayBtn>
+        </Flex>
+      </Flex>
     </Flex>
   );
 };
