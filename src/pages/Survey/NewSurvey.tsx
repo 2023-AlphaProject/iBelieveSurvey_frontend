@@ -4,7 +4,8 @@ import { useSnackBar, useInput, useModal } from 'hooks';
 import { COLORS } from 'constants/COLOR';
 import { Input, Button, TextArea } from 'components/common';
 import { useState } from 'react';
-import { StepProgress, CategoryPicker, ThumbnailBtn } from 'components/Survey';
+import { StepProgress, CategoryPicker, ThumbnailBtn, DatePicker } from 'components/Survey';
+import dayjs, { Dayjs } from 'dayjs';
 
 const TempSubmitButton = styled(Button)`
   background-color: transparent;
@@ -15,6 +16,8 @@ const TempSubmitButton = styled(Button)`
 const NewSurvey = () => {
   const [category, setCategory] = useState('');
   const [testValue, onChangeTestValue] = useInput('', 50);
+
+  const [endDate, setEndDate] = useState<Dayjs | null>(dayjs().add(7, 'day'));
   const { handleSnackBar } = useSnackBar();
   const { openModal, closeModal } = useModal();
   const [info, setInfo] = useState('');
