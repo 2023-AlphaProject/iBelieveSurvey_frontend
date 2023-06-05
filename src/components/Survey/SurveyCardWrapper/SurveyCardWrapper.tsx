@@ -9,7 +9,7 @@ interface WrapperProps {
 const SurveyCardWrapper = ({ children }: WrapperProps) => {
   return (
     <Flex flexDirection="column" alignItems="center">
-      <Flex flexWrap="wrap" gap="1rem">
+      <Flex flexWrap="wrap" gap="0.1rem">
         {children}
       </Flex>
       <Pagination count={5} />

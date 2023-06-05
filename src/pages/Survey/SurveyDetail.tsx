@@ -95,5 +95,4 @@ const SurveyDatail = () => {
     </Flex>
   );
 };
-
 export default SurveyDatail;
