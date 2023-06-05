@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useSnackBar, useInput, useModal } from 'hooks';
 import { COLORS } from 'constants/COLOR';
 import { Input, Button, TextArea } from 'components/common';
-import { useState } from 'react';
-import { StepProgress, CategoryPicker, ThumbnailBtn } from 'components/Survey';
+import { useEffect, useState } from 'react';
+import { StepProgress, CategoryPicker, ThumbnailBtn, Agreement } from 'components/Survey';
 
 const TempSubmitButton = styled(Button)`
   background-color: transparent;
@@ -13,11 +13,13 @@ const TempSubmitButton = styled(Button)`
 `;
 
 const NewSurvey = () => {
+  const [info, setInfo] = useState('');
   const [category, setCategory] = useState('');
   const [testValue, onChangeTestValue] = useInput('', 50);
+  const [agreement, setAgreement] = useState(true);
+
   const { handleSnackBar } = useSnackBar();
   const { openModal, closeModal } = useModal();
-  const [info, setInfo] = useState('');
 
   const modalData = {
     title: 'modal title',
@@ -32,6 +34,10 @@ const NewSurvey = () => {
     callback: closeModal,
   };
 
+  useEffect(() => {
+    console.log(agreement);
+  }, [agreement]);
+
   return (
     <>
       <StepProgress />
@@ -45,6 +51,7 @@ const NewSurvey = () => {
       />
       <TextArea value={info} setValue={setInfo} limit={1000} placeholder="소개글을 입력해주세요" />
       <ThumbnailBtn />
+      <Agreement value={agreement} setValue={setAgreement} />
       <Button onClick={() => openModal(modalData)}>모달열기</Button>
       <TempSubmitButton
         type="button"
