@@ -28,7 +28,7 @@ const Agreement = ({ value, setValue }: Props) => {
         <Label fontFamily="Pr-SemiBold" mr="12px">
           종료시 결과 공개여부 체크
         </Label>
-        <Tooltip text="설문 종료 시 결과를 전체공개 설정 유무입니다." />
+        <Tooltip text="설문 종료 후 결과 전체공개 설정 유무입니다." />
         <Label fontSize="12px" ml="6px">
           설문 공개여부는 뭔가요?
         </Label>
