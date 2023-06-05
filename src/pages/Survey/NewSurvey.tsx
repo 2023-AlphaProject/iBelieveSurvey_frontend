@@ -48,6 +48,8 @@ const NewSurvey = () => {
       />
       <TextArea value={info} setValue={setInfo} limit={1000} placeholder="소개글을 입력해주세요" />
       <ThumbnailBtn />
+      <DatePicker value={endDate} setValue={setEndDate} />
+      <br />
       <Button onClick={() => openModal(modalData)}>모달열기</Button>
       <TempSubmitButton
         type="button"
