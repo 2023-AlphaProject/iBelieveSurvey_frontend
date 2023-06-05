@@ -1,5 +1,7 @@
+import { GiftList } from 'components/Gifticon';
+
 const SurveyGiftResult = () => {
-  return <>SurveyGiftResult</>;
+  return <GiftList />;
 };
 
 export default SurveyGiftResult;
