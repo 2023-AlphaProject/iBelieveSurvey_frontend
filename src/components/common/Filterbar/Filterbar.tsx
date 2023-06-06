@@ -33,6 +33,7 @@ const Filterbar = (props: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const clickOutside = (e: any) => {
       if (visible && !modalRef.current?.contains(e.target)) {
         setVisible(false);

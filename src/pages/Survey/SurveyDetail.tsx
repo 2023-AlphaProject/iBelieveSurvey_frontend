@@ -10,7 +10,7 @@ import { COLORS } from 'constants/COLOR';
 
 const SurveyDatail = () => {
   const navigate = useNavigate();
-  const [bannerDataState, setBannerDataState] = useRecoilState(bannerState);
+  const [, setBannerDataState] = useRecoilState(bannerState);
   const [temp, setTemp] = useState(false);
 
   if (!temp) {

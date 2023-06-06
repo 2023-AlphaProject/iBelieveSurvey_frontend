@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
@@ -36,7 +35,7 @@ const BannerButton = styled(Button)`
 `;
 
 const Banner = () => {
-  const [bannerDataState, setBannerDataState] = useRecoilState(bannerState);
+  const [bannerDataState] = useRecoilState(bannerState);
   const location = useLocation();
 
   const URL = location.pathname;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Sidebar, Button } from 'components/common';
 
 const SurveySearch = () => {
-  const [label, setLabel] = useState('결제한 설문 내역');
+  const [, setLabel] = useState('결제한 설문 내역');
   return (
     <>
       <Link to="/survey/new">
