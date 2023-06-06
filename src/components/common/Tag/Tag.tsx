@@ -7,6 +7,7 @@ import { scaleVariants, styleVariants } from './theme';
 const StyledTag = styled.div<BaseTagProps>`
   color: white;
   border: 0;
+  box-sizing: border-box;
   justify-content: center;
   border-radius: 1rem;
   font-family: 'Pr-SemiBold';
