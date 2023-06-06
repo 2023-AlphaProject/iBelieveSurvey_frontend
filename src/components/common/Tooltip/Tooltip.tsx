@@ -9,7 +9,7 @@ const defaultProps = {
 };
 
 const Icon = styled(HelpIcon)<TooltipType>`
-  font-size: 1.6rem !important;
+  font-size: 1rem !important;
   margin: ${(props) => props.margin};
   cursor: pointer;
 `;
