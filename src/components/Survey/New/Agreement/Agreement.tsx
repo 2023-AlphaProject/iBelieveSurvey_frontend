@@ -13,16 +13,34 @@ const Radio = styled.input.attrs({ type: 'radio' })`
   accent-color: ${COLORS.primary};
 `;
 
+const AgreeWrapper = styled(Flex)`
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 2.5rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    border-radius: 10rem;
+  }
+`;
+
+const RadioGroup = styled(Flex)`
+  justify-content: flex-end;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    margin-left: 1rem;
+  }
+`;
+
 const Agreement = ({ value, setValue }: Props) => {
   return (
-    <Flex
-      background={COLORS.primaryVariant}
-      p="10px 2.5rem"
-      justifyContent="space-between"
-      alignItems="center"
-      borderRadius="2rem"
-      width="80%"
-    >
+    <AgreeWrapper background={COLORS.primaryVariant} borderRadius="2rem">
       <Flex alignItems="center">
         <Box background="black" width="8px" height="8px" mr="10px" />
         <Label fontFamily="Pr-SemiBold" mr="12px">
@@ -33,7 +51,7 @@ const Agreement = ({ value, setValue }: Props) => {
           설문 공개여부는 뭔가요?
         </Label>
       </Flex>
-      <Flex justifyContent="flex-end" alignItems="center">
+      <RadioGroup>
         <Label fontSize="14px" fontFamily="Pr-SemiBold">
           비동의
         </Label>
@@ -42,8 +60,8 @@ const Agreement = ({ value, setValue }: Props) => {
           동의
         </Label>
         <Radio checked={value} onChange={() => setValue(true)} />
-      </Flex>
-    </Flex>
+      </RadioGroup>
+    </AgreeWrapper>
   );
 };
 

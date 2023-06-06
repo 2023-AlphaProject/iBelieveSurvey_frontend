@@ -58,7 +58,7 @@ const CategoryPicker = ({ category, setCategory }: Props) => {
         </Label>
       </Flex>
       <Flex borderRadius="3rem" justifyContent="center" background={COLORS.primaryVariant}>
-        <Scroll width="95%" gap="10px" flexWrap="nowrap" p="12px 12px 12px 2px">
+        <Scroll m="12px 2rem" gap="10px" flexWrap="nowrap">
           {categorys.map((e) => {
             return (
               <CategoryBtn isSelected={category === e} key={e} onClick={() => setCategory(e)}>
