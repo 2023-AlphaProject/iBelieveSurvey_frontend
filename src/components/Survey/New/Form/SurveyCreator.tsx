@@ -17,7 +17,8 @@ const Surveycreator = () => {
   koLocale.ed.addNewQuestion = '문항 추가하기';
   koLocale.ed.addNewTypeQuestion = '문항 {0}';
 
-  creator.saveSurveyFunc = (saveNo: any, callback: any) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  creator.saveSurveyFunc = (saveNo: number, callback: any) => {
     localStorage.setItem('survey-json', creator.text);
     callback(saveNo, true);
   };
