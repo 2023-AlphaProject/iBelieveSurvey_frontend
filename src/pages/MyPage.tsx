@@ -23,7 +23,7 @@ const MyPage = () => {
             <Label fontFamily="Pr-Bold" fontSize="1.25rem">
               {label}
             </Label>
-            <Filterbar />
+            <Filterbar right="0" />
           </Flex>
           <SurveyCardWrapper>
             <Card card={dummyCards} />

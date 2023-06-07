@@ -18,7 +18,7 @@ const NewSurveyBtn = () => {
         />
       </Box>
       <Box width="14rem" height="5rem" borderRadius="1.25rem" background={COLORS.primaryVariant}>
-        <Label color="white" fontFamily="Pr-Bold" mt={30} ml={60}>
+        <Label color="white" fontFamily="Pr-Bold" mt={30} ml={66}>
           새 설문 작성하기
         </Label>
       </Box>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import {
@@ -11,11 +10,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
-import InputBase from '@mui/material/InputBase';
 
-const DeskTopNavbar = ({ anchorElNav, handleCloseNavMenu }: IDeskTopNavbar) => {
+const DeskTopNavbar = ({ handleCloseNavMenu }: IDeskTopNavbar) => {
   return (
-    <Toolbar disableGutters>
+    <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* PC Logo */}
       <Link to="/">
         <img

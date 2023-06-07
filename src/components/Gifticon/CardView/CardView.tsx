@@ -9,17 +9,17 @@ interface Props {
 const Card = (props: Props) => {
   const { card } = props;
   return (
-    <Flex flexDirection="column">
+    <Flex flexDirection="column" mr={1}>
       <img
         src={`${process.env.PUBLIC_URL}/assets/images/${card.thumbnail}`}
         alt="GIFTICON"
-        style={{ width: '14rem', height: '14.25rem', borderRadius: '1.2rem' }}
+        style={{ width: '12.5rem', height: '12.75rem', borderRadius: '1.2rem', cursor: 'pointer' }}
       />
       <Flex p={2} flexDirection="column" gap="0.5rem">
-        <Label fontFamily="Pr-Bold" fontSize="0.9rem" color={COLORS.primary}>
+        <Label fontFamily="Pr-Bold" fontSize="0.85rem" color={COLORS.primary}>
           {card.brand}
         </Label>
-        <Label fontFamily="Pr-Regular" fontSize="0.9rem">
+        <Label fontFamily="Pr-Regular" fontSize="0.85rem">
           {card.gift}
         </Label>
 

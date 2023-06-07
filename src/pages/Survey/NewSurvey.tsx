@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSnackBar, useInput, useModal } from 'hooks';
 import { COLORS } from 'constants/COLOR';
-import { Input, Button } from 'components/common';
+import { Input, Button, TextArea } from 'components/common';
+import { useState } from 'react';
+import { ThumbnailBtn } from 'components/Survey';
 
 const TempSubmitButton = styled(Button)`
   background-color: transparent;
@@ -11,9 +13,10 @@ const TempSubmitButton = styled(Button)`
 `;
 
 const NewSurvey = () => {
-  const [testValue, onChangeTestValue] = useInput('');
+  const [testValue, onChangeTestValue] = useInput('', 50);
   const { handleSnackBar } = useSnackBar();
   const { openModal, closeModal } = useModal();
+  const [info, setInfo] = useState('');
 
   const modalData = {
     title: 'modal title',
@@ -27,6 +30,7 @@ const NewSurvey = () => {
     ),
     callback: closeModal,
   };
+
   return (
     <>
       <Input
@@ -36,6 +40,8 @@ const NewSurvey = () => {
         type="text"
         placeholder="테스트를 작성해 보세요."
       />
+      <TextArea value={info} setValue={setInfo} limit={1000} placeholder="소개글을 입력해주세요" />
+      <ThumbnailBtn />
       <Button onClick={() => openModal(modalData)}>모달열기</Button>
       <TempSubmitButton
         type="button"

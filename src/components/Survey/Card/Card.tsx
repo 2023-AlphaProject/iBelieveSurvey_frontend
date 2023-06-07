@@ -38,7 +38,7 @@ const Card = (props: Props) => {
           </Flex>
         </Flex>
 
-        <Label width="13.6rem" fontSize="0.95rem" fontFamily="Pr-Bold">
+        <Label width="13.6rem" fontSize="0.9rem" fontFamily="Pr-Bold">
           {card.title}
         </Label>
         <Flex>
