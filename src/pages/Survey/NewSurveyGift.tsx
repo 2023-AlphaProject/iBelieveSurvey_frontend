@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Flex, Label, Box } from 'components/Box';
 import { Button } from 'components/common';
 import Selector from 'components/Gifticon/Selector/Selector';
+import { StepProgress } from 'components/Survey';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 
@@ -44,6 +45,7 @@ const NewSurveyGift = () => {
   };
   return (
     <Flex flexDirection="column" gap="0.6rem" justifyContent="center" position="relative">
+      <StepProgress />
       <Flex gap="7rem" justifyContent="center" flexWrap="wrap">
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/starbucks.jpg`}

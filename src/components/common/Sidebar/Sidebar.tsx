@@ -22,8 +22,7 @@ const Category = styled(Label)<CategoryProps>`
   }
 `;
 
-const Sidebar = (props: Props) => {
-  const { title, categorys, setLabel } = props;
+const Sidebar = ({ title, categorys, setLabel }: Props) => {
   const [selected, setSelected] = useState(categorys[0]);
 
   const handleChange = (category: string) => {
