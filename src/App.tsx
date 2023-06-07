@@ -12,8 +12,9 @@ import {
   SurveySubmit,
   NewSurvey,
   NewSurveyForm,
-  NewSurveyGift,
-  NewSurveyGifticons,
+  NewSurveyPayment,
+  NewSurveyGiftItem,
+  NewSurveyGifts,
   NotFound,
   Tos,
   Privacy,
@@ -48,8 +49,9 @@ const App = () => {
                   <Route path="/survey/:id/submit" element={<SurveySubmit />} />
                   <Route path="/survey/new" element={<NewSurvey />} />
                   <Route path="/survey/new/form" element={<NewSurveyForm />} />
-                  <Route path="/survey/new/gift" element={<NewSurveyGift />} />
-                  <Route path="/survey/new/gift/gifticons" element={<NewSurveyGifticons />} />
+                  <Route path="/survey/new/payment" element={<NewSurveyPayment />} />
+                  <Route path="/survey/new/gift" element={<NewSurveyGifts />} />
+                  <Route path="/survey/new/gift/:id" element={<NewSurveyGiftItem />} />
                   <Route path="*" element={<NotFound />} />
                 </Route>
               </Routes>

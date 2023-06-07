@@ -11,5 +11,6 @@ export { default as SurveyGiftResult } from 'pages/Survey/SurveyGiftResult';
 export { default as SurveySubmit } from 'pages/Survey/SurveySubmit';
 export { default as NewSurvey } from 'pages/Survey/NewSurvey';
 export { default as NewSurveyForm } from 'pages/Survey/NewSurveyForm';
-export { default as NewSurveyGift } from 'pages/Survey/NewSurveyGift';
-export { default as NewSurveyGifticons } from 'pages/Survey/NewSurveyGifticons';
+export { default as NewSurveyPayment } from 'pages/Survey/NewSurveyPayment';
+export { default as NewSurveyGiftItem } from 'pages/Survey/NewSurveyGiftItem';
+export { default as NewSurveyGifts } from 'pages/Survey/NewSurveyGifts';

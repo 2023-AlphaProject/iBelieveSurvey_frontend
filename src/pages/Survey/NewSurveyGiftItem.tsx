@@ -25,7 +25,7 @@ const PayBtn = styled.button`
   border-radius: 1.5rem;
 `;
 
-const NewSurveyGift = () => {
+const NewSurveyGiftItem = () => {
   const [isClicked, setClicked] = useState([true, false]);
   const handleClick = (id: number) => {
     setClicked(
@@ -111,4 +111,4 @@ const NewSurveyGift = () => {
   );
 };
 
-export default NewSurveyGift;
+export default NewSurveyGiftItem;

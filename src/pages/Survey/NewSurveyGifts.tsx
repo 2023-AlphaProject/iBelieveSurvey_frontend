@@ -3,7 +3,7 @@ import { Flex, Label } from 'components/Box';
 import { Category, Sidebar, CategoryBox, BrandBox } from 'components/Gifticon';
 import { Filterbar } from 'components/common';
 
-const NewSurveyGifticons = () => {
+const NewSurveyGifts = () => {
   const [label, setLabel] = useState('카테고리별 보기');
   return (
     <Flex alignItems="center" flexDirection="column" gap="3.5rem">
@@ -25,4 +25,4 @@ const NewSurveyGifticons = () => {
   );
 };
 
-export default NewSurveyGifticons;
+export default NewSurveyGifts;
