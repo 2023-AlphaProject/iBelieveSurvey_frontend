@@ -53,6 +53,7 @@ const Survey = () => {
           <SurveyCardWrapper
             currentPage={data?.data?.current_page}
             totalPages={data?.data?.total_pages}
+            setPage={setPage}
           >
             {data?.data?.results?.map((survey: surveyType) => {
               return <Card key={`survey_${survey.id}`} survey={survey} />;
