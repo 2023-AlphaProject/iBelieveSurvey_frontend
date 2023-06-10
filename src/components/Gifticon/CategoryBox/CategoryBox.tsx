@@ -4,7 +4,7 @@ import dummyCards from 'components/Gifticon/CardView/dummyCards';
 
 const CategoryBox = () => {
   return (
-    <SurveyCardWrapper>
+    <SurveyCardWrapper currentPage={1} totalPages={10}>
       <CardView card={dummyCards} />
       <CardView card={dummyCards} />
       <CardView card={dummyCards} />

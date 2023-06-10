@@ -3,8 +3,8 @@ import { Flex, Label } from 'components/Box';
 import { Sidebar, Filterbar } from 'components/common';
 import { Card, SurveyCardWrapper } from 'components/Survey';
 import Checkbox from '@mui/material/Checkbox';
-import dummyCards from 'components/Survey/Card/dummyCards';
 import { useSurveyListQuery } from 'hooks/queries/surveys';
+import { surveyType } from 'types/surveyType';
 
 const Survey = () => {
   const [label, setLabel] = useState('인구통계');
@@ -50,13 +50,13 @@ const Survey = () => {
             </Label>
             <Checkbox sx={{ width: '2rem', height: '1.8rem' }} />
           </Flex>
-          <SurveyCardWrapper>
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
+          <SurveyCardWrapper
+            currentPage={data?.data?.current_page}
+            totalPages={data?.data?.total_pages}
+          >
+            {data?.data?.results?.map((survey: surveyType) => {
+              return <Card key={`survey_${survey.id}`} survey={survey} />;
+            })}
           </SurveyCardWrapper>
           {label === '결제한 설문 내역' ? (
             <Label fontFamily="Pr-Bold" fontSize="1.25rem">
