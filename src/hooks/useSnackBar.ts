@@ -9,8 +9,11 @@ interface ISnackbar {
 export const useSnackBar = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleSnackBar = (button: ISnackbar) => {
-    enqueueSnackbar(button.message, { variant: button.variant });
-  };
+  const handleSnackBar = useCallback(
+    (button: ISnackbar) => () => {
+      enqueueSnackbar(button.message, { variant: button.variant });
+    },
+    [enqueueSnackbar],
+  );
   return { handleSnackBar };
 };
