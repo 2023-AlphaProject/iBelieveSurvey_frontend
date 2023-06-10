@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sidebar, Button } from 'components/common';
 
 const SurveySearch = () => {
+  const [, setLabel] = useState('결제한 설문 내역');
   return (
     <>
       <Link to="/survey/new">
@@ -21,6 +23,7 @@ const SurveySearch = () => {
           '여행 및 관광',
           '엔터테인먼트',
         ]}
+        setLabel={setLabel}
       />
     </>
   );

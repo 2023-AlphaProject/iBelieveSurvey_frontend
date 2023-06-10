@@ -1,8 +1,23 @@
+import { createTheme } from '@mui/material';
 import { COLORS } from 'constants/COLOR';
 import { DefaultTheme } from 'styled-components';
 
-const theme: DefaultTheme = {
+export const styledTheme: DefaultTheme = {
   colors: COLORS,
 };
 
-export default theme;
+export const muiTheme = createTheme({
+  palette: {
+    primary: {
+      main: COLORS.primary,
+      light: COLORS.primaryVariant,
+    },
+    secondary: {
+      main: COLORS.secondary,
+      light: COLORS.secondaryVariant,
+    },
+  },
+  typography: {
+    fontFamily: 'Pr-Regular',
+  },
+});

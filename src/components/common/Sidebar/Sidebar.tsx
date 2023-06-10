@@ -7,6 +7,7 @@ import { LabelProps } from 'components/Box/types';
 interface Props {
   title: string;
   categorys: string[];
+  setLabel: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface CategoryProps extends LabelProps {
@@ -21,12 +22,16 @@ const Category = styled(Label)<CategoryProps>`
   }
 `;
 
-const Sidebar = (props: Props) => {
-  const { title, categorys } = props;
+const Sidebar = ({ title, categorys, setLabel }: Props) => {
   const [selected, setSelected] = useState(categorys[0]);
 
+  const handleChange = (category: string) => {
+    setLabel(category);
+    setSelected(category);
+  };
+
   return (
-    <Flex flexDirection="column" width="15rem" justifyContent="center">
+    <Flex flexDirection="column" width="14rem">
       <Label
         background={COLORS.secondary}
         p={10}
@@ -42,12 +47,12 @@ const Sidebar = (props: Props) => {
       <Flex flexDirection="column" gap="1.5rem" pl="3.5rem">
         {categorys.map((category) => (
           <Category
-            width="auto"
+            width="12rem"
             key={`sidebar_${category}`}
             fontFamily="Pr-SemiBold"
             fontSize={18}
             selected={selected === category}
-            onClick={() => setSelected(category)}
+            onClick={() => handleChange(category)}
           >
             {category}
           </Category>

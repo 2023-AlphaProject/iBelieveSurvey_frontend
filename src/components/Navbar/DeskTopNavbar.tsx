@@ -18,7 +18,7 @@ const DeskTopNavbar = ({ anchorElNav }: IDeskTopNavbar) => {
   const { KakaoLogin } = useLoginWithKakao();
 
   return (
-    <Toolbar disableGutters>
+    <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* PC Logo */}
       <Link to="/">
         <img
