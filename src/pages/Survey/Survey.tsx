@@ -4,9 +4,13 @@ import { Sidebar, Filterbar } from 'components/common';
 import { Card, SurveyCardWrapper } from 'components/Survey';
 import Checkbox from '@mui/material/Checkbox';
 import dummyCards from 'components/Survey/Card/dummyCards';
+import { useSurveyListQuery } from 'hooks/queries/surveys';
 
 const Survey = () => {
   const [label, setLabel] = useState('인구통계');
+  const [page, setPage] = useState(1);
+  const { data } = useSurveyListQuery(page);
+
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
       <Label fontFamily="Pr-Bold" fontSize="1.25rem">
