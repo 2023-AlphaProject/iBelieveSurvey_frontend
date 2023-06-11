@@ -22,17 +22,16 @@ const KakaoAuth = () => {
     const grantType = 'authorization_code';
     const REDIRECT_URL = `${process.env.REACT_APP_KAKAO_REDIRECT_URL}`;
     const REST_API_KEY = `${process.env.REACT_APP_KAKAO_REST_API_KEY}`;
-    console.log(code);
 
     axios
-      .get(`http://localhost/user/kakao/callback?code=${code}`)
+      .get(`https://api.ibelievesurvey.com/user/kakao/callback?code=${code}`)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res);
+          console.log('res: ', res);
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log('err: ', err);
       });
   }, []);
   console.log(userInfo);
