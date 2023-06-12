@@ -36,8 +36,8 @@ const App = () => {
             <GlobalStyles />
             <Router>
               <Routes>
+                <Route path="/" element={<Home />} />
                 <Route element={<Layout />}>
-                  <Route path="/" element={<Home />} />
                   <Route path="/mypage" element={<MyPage />} />
                   <Route path="/tos" element={<Tos />} />
                   <Route path="/privacy" element={<Privacy />} />
