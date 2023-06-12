@@ -114,7 +114,7 @@ const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
       // return;
     }
     axios
-      .put('http://localhost/user/update', {
+      .put('https://api.ibelievesurvey.com/user/update', {
         realName: userInfo.realName,
         phoneNumber: userInfo.phoneNumber,
         gender: userInfo.gender,
