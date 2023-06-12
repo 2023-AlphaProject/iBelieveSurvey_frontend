@@ -14071,6 +14071,11 @@ survey-core@1.9.90:
   resolved "https://registry.yarnpkg.com/survey-core/-/survey-core-1.9.90.tgz#af26a3af5e753818f2127977aa297fab5cca2120"
   integrity sha512-hwke6n4kUtDEChJM+xPO9Okd3ND1ExjQXuuqZOFhv28x3qRpzTb8DZydlfcei0Yt5o3I3DHxI4p+UHFvjKNBhA==
 
+survey-core@^1.9.91:
+  version "1.9.91"
+  resolved "https://registry.yarnpkg.com/survey-core/-/survey-core-1.9.91.tgz#b6d43a05819e7d585308ea43445ad1cc68008308"
+  integrity sha512-jUUJEu2gzQGDbN/tRVE9TXEjqHwnjK477CsOTr/gJbIHMw1omgM+kpNLrdp2wTit2CgB2G/0wEV7BfBR1JOGCw==
+
 survey-creator-core@1.9.90:
   version "1.9.90"
   resolved "https://registry.yarnpkg.com/survey-creator-core/-/survey-creator-core-1.9.90.tgz#c39131ed66c221cbbc3346298cd1fc3296f3adcd"

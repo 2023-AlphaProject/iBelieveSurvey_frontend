@@ -5,7 +5,6 @@ const NewSurveyForm = () => {
     <>
       <StepProgress />
       <SurveyCreator />
-      NewSurveyForm
     </>
   );
 };
