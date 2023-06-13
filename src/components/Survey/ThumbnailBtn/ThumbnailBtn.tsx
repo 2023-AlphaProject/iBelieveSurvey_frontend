@@ -1,7 +1,8 @@
-import { useState, useRef } from 'react';
-import styled from 'styled-components';
+import { useState, useRef, useEffect } from 'react';
+import { useMediaQuery } from '@mui/material';
 import { Flex, Box, Label } from 'components/Box';
 import { COLORS } from 'constants/COLOR';
+import styled from 'styled-components';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import dummyImgs from './dummyImgs';
@@ -19,9 +20,22 @@ const Image = styled.img`
 `;
 
 const ThumbnailBtn = () => {
+  const isDesktop = useMediaQuery('(min-width: 1200px)');
+  const isMobile = useMediaQuery('(max-width: 960px)');
   const inputRef = useRef<HTMLInputElement>(null);
+  const [num, setNum] = useState(3);
   const [cnt, setCnt] = useState(1);
   const [image, setimage] = useState<{ file: null; url: string }>({ file: null, url: '' });
+
+  useEffect(() => {
+    if (isDesktop === true) {
+      setNum(3);
+    } else if (isMobile === true) {
+      setNum(1);
+    } else {
+      setNum(2);
+    }
+  });
 
   const onButtonClick = () => {
     if (inputRef.current !== null) {
@@ -37,7 +51,7 @@ const ThumbnailBtn = () => {
   };
 
   const cntUp = () => {
-    if (cnt < dummyImgs.length / 3) {
+    if (cnt < dummyImgs.length / num) {
       setCnt(cnt + 1);
     } else {
       setCnt(1);
@@ -46,79 +60,78 @@ const ThumbnailBtn = () => {
 
   const cntDown = () => {
     if (cnt <= 1) {
-      setCnt(dummyImgs.length / 3);
+      setCnt(dummyImgs.length / num);
     } else {
       setCnt(cnt - 1);
     }
   };
 
   const insertImg = (cnt: number) => {
-    let range = cnt * 3;
+    let range = cnt * num;
     if (range > dummyImgs.length) {
-      range -= 3 - (dummyImgs.length % 3);
+      range -= num - (dummyImgs.length % num);
     }
     const newArr = [];
-    for (let i = cnt * 3 - 3; i < range; i += 1) {
+    for (let i = cnt * num - num; i < range; i += 1) {
       newArr.push(<Img key={i} src={`${process.env.PUBLIC_URL}/assets/images/${dummyImgs[i]}`} />);
     }
     return newArr;
   };
 
   return (
-    <Flex gap="2rem" m={5}>
-      <Flex flexDirection="column" alignItems="center" gap="1rem">
-        <Label fontFamily="Pr-Bold">이미지 업로드</Label>
-        <Box
-          width="13.8rem"
-          height="13.8rem"
-          borderRadius="1.75rem"
-          border="3px solid"
-          borderColor={COLORS.primary}
-        >
-          <input
-            name="imggeUpload"
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            ref={inputRef}
-            style={{ display: 'none' }}
-          />
-          {image.url ? (
-            <Image alt="article_image" src={image.url} />
-          ) : (
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/images/thumbnail-icon.svg`}
-              alt="IBELEVESURVEY Logo"
-              style={{ width: '2.5rem', margin: '42%', cursor: 'pointer' }}
-              onClick={onButtonClick}
-              onKeyDown={onButtonClick}
+    <Flex gap="1rem" justifyContent="center">
+      <Flex gap="2rem" flexWrap="wrap" justifyContent="center">
+        <Flex flexDirection="column" gap="1rem">
+          <Label fontFamily="Pr-Bold">이미지 업로드</Label>
+          <Box
+            width="14.5rem"
+            height="14.5rem"
+            borderRadius="1.75rem"
+            border="3px solid"
+            borderColor={COLORS.primary}
+          >
+            <input
+              name="imggeUpload"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              ref={inputRef}
+              style={{ display: 'none' }}
             />
-          )}
-        </Box>
-      </Flex>
-      <Flex flexDirection="column" gap="0.75rem">
-        <Flex>
-          <Label fontFamily="Pr-Bold" ml="2.4rem">
-            기본 이미지 선택
-          </Label>
-          <Label fontFamily="Pr-Regular" ml="1rem">
-            IBelieveSurvey는 다양한 썸네일 이미지를 제공합니다.
-          </Label>
+            {image.url ? (
+              <Image alt="article_image" src={image.url} />
+            ) : (
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/images/thumbnail-icon.svg`}
+                alt="IBELEVESURVEY Logo"
+                style={{ width: '2.5rem', margin: '42%', cursor: 'pointer' }}
+                onClick={onButtonClick}
+                onKeyDown={onButtonClick}
+              />
+            )}
+          </Box>
         </Flex>
-        <Flex gap="0.75rem">
-          <ArrowBackIosIcon
-            sx={{ margin: '6rem 0 0 0', cursor: 'pointer', fontSize: '2rem', color: '#4F4B5C' }}
-            onClick={() => {
-              cntDown();
-            }}
-          />
-          {insertImg(cnt)}
-          <ArrowForwardIosIcon
-            sx={{ margin: '6rem 0 0 0', cursor: 'pointer', fontSize: '2rem', color: '#4F4B5C' }}
-            onClick={() => {
-              cntUp();
-            }}
-          />
+        <Flex flexDirection="column" gap="0.75rem">
+          <Flex>
+            <Label fontFamily="Pr-Bold" ml="2.4rem">
+              기본 이미지 선택
+            </Label>
+          </Flex>
+          <Flex gap="1.2rem">
+            <ArrowBackIosIcon
+              sx={{ margin: '6rem 0 0 0', cursor: 'pointer', fontSize: '2rem', color: '#4F4B5C' }}
+              onClick={() => {
+                cntDown();
+              }}
+            />
+            {insertImg(cnt)}
+            <ArrowForwardIosIcon
+              sx={{ margin: '6rem 0 0 0', cursor: 'pointer', fontSize: '2rem', color: '#4F4B5C' }}
+              onClick={() => {
+                cntUp();
+              }}
+            />
+          </Flex>
         </Flex>
       </Flex>
     </Flex>

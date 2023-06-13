@@ -14,7 +14,7 @@ const NewSurveyBtn = () => {
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/add-icon.svg`}
           alt="IBELEVESURVEY Logo"
-          style={{ width: '3rem', margin: '3.5rem 6rem', cursor: 'pointer' }}
+          style={{ width: '3rem', margin: '3.5rem 5.4rem', cursor: 'pointer' }}
         />
       </Box>
       <Box width="14rem" height="5rem" borderRadius="1.25rem" background={COLORS.primaryVariant}>
