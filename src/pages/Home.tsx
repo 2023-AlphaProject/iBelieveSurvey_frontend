@@ -1,4 +1,4 @@
-import { Flex, Box, Label } from 'components/Box';
+import { Flex, Label } from 'components/Box';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import { Navbar } from 'components/Navbar';
