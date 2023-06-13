@@ -55,7 +55,6 @@ const Select = styled.select`
 
 const GenderButton = styled(Button)<StyleProps>`
   height: 2rem;
-  width: 2rem;
   margin: 0 10px 10px 0;
   color: ${(props) => props.color};
   border: 3px solid ${COLORS.primary};
@@ -131,59 +130,61 @@ const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
   };
 
   return (
-    <Container>
-      <Flex flexWrap="wrap" alignItems="center" height="100%">
-        <InfoLabel margin="0">이름</InfoLabel>
-        <Input
-          value={userInfo.realName}
-          onChange={onUserInfoChange}
-          type="text"
-          placeholder="이름을 입력하세요."
-          name="realName"
-        />
-        <InfoLabel width="7rem">휴대폰 번호</InfoLabel>
-        <Input
-          value={userInfo.phoneNumber}
-          onChange={onUserInfoChange}
-          type="tel"
-          placeholder="휴대폰 번호를 - 없이 입력하세요."
-          name="phoneNumber"
-          maxLength={13}
-        />
-        <InfoLabel>성별</InfoLabel>
-        <div>
-          <GenderButton
-            name="gender"
-            value="male"
-            onClick={(e: any) => onUserInfoChange(e)}
-            backgroundcolor={userInfo.gender === 'male' ? COLORS.primary : '#fff'}
-            color={userInfo.gender === 'male' ? '#fff' : '#000'}
-          >
-            남성
-          </GenderButton>
-          <GenderButton
-            name="gender"
-            value="female"
-            onClick={(e: React.ChangeEvent<HTMLInputElement>) => onUserInfoChange(e)}
-            backgroundcolor={userInfo.gender === 'female' ? COLORS.primary : '#fff'}
-            color={userInfo.gender === 'female' ? '#fff' : '#000'}
-          >
-            여성
-          </GenderButton>
-        </div>
-        <InfoLabel width="6rem">출생연도</InfoLabel>
-        <Select name="birthYear" onChange={(e) => onUserInfoChange(e)}>
-          {Array.from({ length: 2024 - 1960 }, (_, index) => (
-            <option key={index}>{1960 + index}</option>
-          ))}
-        </Select>
-        <Flex width="100%" justifyContent="center">
-          <Button width="50%" onClick={(e: React.FormEvent<Element>) => onSubmit(e)}>
-            회원가입
-          </Button>
+    <Flex justifyContent="center" alignItems="center" height="100%">
+      <Container>
+        <Flex flexWrap="wrap" alignItems="center" height="100%">
+          <InfoLabel margin="0">이름</InfoLabel>
+          <Input
+            value={userInfo.realName}
+            onChange={onUserInfoChange}
+            type="text"
+            placeholder="이름을 입력하세요."
+            name="realName"
+          />
+          <InfoLabel width="7rem">휴대폰 번호</InfoLabel>
+          <Input
+            value={userInfo.phoneNumber}
+            onChange={onUserInfoChange}
+            type="tel"
+            placeholder="휴대폰 번호를 - 없이 입력하세요."
+            name="phoneNumber"
+            maxLength={13}
+          />
+          <InfoLabel>성별</InfoLabel>
+          <div>
+            <GenderButton
+              name="gender"
+              value="male"
+              onClick={(e: any) => onUserInfoChange(e)}
+              backgroundcolor={userInfo.gender === 'male' ? COLORS.primary : '#fff'}
+              color={userInfo.gender === 'male' ? '#fff' : '#000'}
+            >
+              남성
+            </GenderButton>
+            <GenderButton
+              name="gender"
+              value="female"
+              onClick={(e: React.ChangeEvent<HTMLInputElement>) => onUserInfoChange(e)}
+              backgroundcolor={userInfo.gender === 'female' ? COLORS.primary : '#fff'}
+              color={userInfo.gender === 'female' ? '#fff' : '#000'}
+            >
+              여성
+            </GenderButton>
+          </div>
+          <InfoLabel width="6rem">출생연도</InfoLabel>
+          <Select name="birthYear" onChange={(e) => onUserInfoChange(e)}>
+            {Array.from({ length: 2024 - 1960 }, (_, index) => (
+              <option key={index}>{1960 + index}</option>
+            ))}
+          </Select>
+          <Flex width="100%" justifyContent="center">
+            <Button width="50%" onClick={(e: React.FormEvent<Element>) => onSubmit(e)}>
+              회원가입
+            </Button>
+          </Flex>
         </Flex>
-      </Flex>
-    </Container>
+      </Container>
+    </Flex>
   );
 };
 
