@@ -7,10 +7,6 @@ const NewSurveyGifts = () => {
   const [label, setLabel] = useState('카테고리별 보기');
   return (
     <Flex alignItems="center" flexDirection="column" gap="3.5rem">
-      <Label fontFamily="Pr-Bold" fontSize="1.25rem">
-        설문 작성 페이지
-      </Label>
-
       <Flex gap="2rem">
         <Sidebar setLabel={setLabel} />
         <Flex flexDirection="column" gap="2rem" pt={1} position="relative">
@@ -18,7 +14,7 @@ const NewSurveyGifts = () => {
           <Category />
           {label === '카테고리별 보기' ? <CategoryBox /> : <BrandBox />}
 
-          <Filterbar right="4rem" />
+          <Filterbar right="5rem" />
         </Flex>
       </Flex>
     </Flex>
