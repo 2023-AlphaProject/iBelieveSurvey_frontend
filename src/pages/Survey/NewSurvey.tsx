@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSnackBar, useInput, useModal } from 'hooks';
+import { useSnackBar, useInput } from 'hooks';
 import { Input, Button, TextArea, Tag } from 'components/common';
 import {
   StepProgress,
@@ -11,8 +11,6 @@ import {
 } from 'components/Survey';
 import dayjs, { Dayjs } from 'dayjs';
 import { Box, Flex, Label } from 'components/Box';
-import styled from 'styled-components';
-import { COLORS } from 'constants/COLOR';
 
 const NewSurvey = () => {
   const TITLE_LIMIT = 50;
