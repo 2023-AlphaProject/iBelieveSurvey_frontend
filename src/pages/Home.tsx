@@ -27,7 +27,7 @@ const Home = () => {
       <Navbar />
       <Flex
         width="100%"
-        height="38rem"
+        height="36rem"
         background="linear-gradient( #6795BD, #F08B69);"
         justifyContent="center"
         position="relative"
@@ -38,12 +38,12 @@ const Home = () => {
           style={{
             width: '42rem',
             position: 'absolute',
-            top: '-18.5rem',
-            left: '-1rem',
+            top: '-20rem',
+            left: '-2rem',
           }}
         />
-        <Flex width="88%" flexWrap="wrap" position="relative">
-          <Flex position="relative" flexDirection="column" width="38rem" height="40vh" pt={5}>
+        <Flex width="88%" flexWrap="wrap" position="relative" justifyContent="space-between">
+          <Flex position="relative" flexDirection="column" width="38rem" height="45vh" pt={5}>
             <TextBox>
               <Label fontFamily="Pr-SemiBold" fontSize="0.95rem" color="white" lineHeight="1.25">
                 ‘아빌립서베이’에서는 다양한 주제의 설문 조사를 찾아보고, 직접 참여하거나 설문을
@@ -62,7 +62,7 @@ const Home = () => {
               </Label>
             </TextBox>
           </Flex>
-          <Flex flexDirection="column" gap="0.4rem" position="absolute" right="0" top="45%">
+          <Flex flexDirection="column" gap="0.4rem" mt="15rem" position="relative">
             <img
               src={`${process.env.PUBLIC_URL}/assets/images/loading.png`}
               alt="IBELEVESURVEY Logo"
@@ -81,14 +81,14 @@ const Home = () => {
                 src={`${process.env.PUBLIC_URL}/assets/images/logo-white.svg`}
                 alt="LOGO"
                 style={{
-                  width: '16.5rem',
+                  width: '16.2rem',
                 }}
               />
               <Label
                 fontFamily="Pr-SemiBold"
-                fontSize="2.8rem"
+                fontSize="2.6rem"
                 color="white"
-                width="14rem"
+                width="13rem"
                 lineHeight="1.2"
                 m={3}
               >
