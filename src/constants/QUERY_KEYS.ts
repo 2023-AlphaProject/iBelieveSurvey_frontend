@@ -1,1 +1,2 @@
 export const SURVEY_LIST = 'SURVEY_LIST';
+export const KAKAO_AUTH_CALLBACK = 'KAKAO_AUTH_CALLBACK';
