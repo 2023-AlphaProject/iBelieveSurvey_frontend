@@ -39,7 +39,6 @@ const NewSurvey = () => {
   return (
     <Flex flexDirection="column" justifyContent="center" p="1rem 0 5rem 0" m="0 1rem">
       <StepProgress />
-      <Box height="6rem" />
       <CategoryPicker category={category} setCategory={setCategory} />
       <Box m="4rem 0">
         <Tag scale="md" variant="secondary" mb="0.5rem">

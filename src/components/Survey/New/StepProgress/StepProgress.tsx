@@ -26,7 +26,11 @@ const StepProgress = () => {
   }, [location]);
 
   return (
-    <Stepper activeStep={getStep()} alternativeLabel>
+    <Stepper
+      activeStep={getStep()}
+      alternativeLabel
+      sx={{ marginTop: '1rem', marginBottom: '6rem' }}
+    >
       <Step key="new">
         <StepLabel>설문 개요 작성</StepLabel>
       </Step>
