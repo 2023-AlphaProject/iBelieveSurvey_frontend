@@ -18,14 +18,14 @@ const Survey = () => {
         <Flex position="relative">
           <Filterbar right="0" />
         </Flex>
-        <SurveyCardWrapper>
+        <SurveyCardWrapper currentPage={1} totalPages={1} setPage={() => ''}>
           <Flex flexWrap="wrap" gap="40px" mt="10px">
+            {/* <Card card={dummyCards} />
             <Card card={dummyCards} />
             <Card card={dummyCards} />
             <Card card={dummyCards} />
             <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
+            <Card card={dummyCards} /> */}
           </Flex>
         </SurveyCardWrapper>
         {label === '결제한 설문 내역' ? (
