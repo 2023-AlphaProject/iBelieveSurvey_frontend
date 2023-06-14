@@ -9,10 +9,11 @@ export interface UserInfoType {
   realName: string;
   phoneNumber: string;
   birthYear: string;
-  gender: any;
+  gender: string;
 }
 
 export interface UserInfoProps {
   userInfo: UserInfoType;
-  setUserInfo: any;
+  setUserInfo: React.Dispatch<React.SetStateAction<UserInfoType>>;
+  onSubmit: (e: React.FormEvent) => void;
 }

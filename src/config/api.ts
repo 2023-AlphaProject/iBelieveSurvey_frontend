@@ -8,6 +8,7 @@ const createInstance = () => {
     withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
+      'X-CSRFToken': sessionStorage.getItem('userToken'),
     },
   });
 };

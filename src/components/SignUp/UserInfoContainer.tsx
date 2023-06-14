@@ -1,12 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { useUserUpdate } from 'hooks/queries/auth';
-import { useSnackBar } from 'hooks';
 import { Flex } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
-import UserInfoType from './SignUp';
 import { StyleProps, UserInfoProps } from './types';
 
 const Container = styled.div`
@@ -62,8 +59,7 @@ const GenderButton = styled(Button)<StyleProps>`
   background-color: ${(props) => props.backgroundcolor};
 `;
 
-const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
-  const { handleSnackBar } = useSnackBar();
+const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) => {
   const onUserInfoChange = (
     e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
   ) => {
@@ -99,37 +95,21 @@ const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
     }
   };
 
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (
-      !userInfo.realName ||
-      userInfo.phoneNumber === '010' ||
-      !userInfo.birthYear ||
-      !userInfo.gender
-    ) {
-      handleSnackBar({
-        variant: 'error',
-        message: '공백 없이 작성해주세요.',
-      });
-      const { data } = useUserUpdate();
-      // return;
-    }
-    axios
-      .put('https://api.ibelievesurvey.com/user/update', {
-        realName: userInfo.realName,
-        phoneNumber: userInfo.phoneNumber,
-        gender: userInfo.gender,
-        birthyear: userInfo.birthYear,
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(res);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const onSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (
+  //     !userInfo.realName ||
+  //     userInfo.phoneNumber === '010' ||
+  //     !userInfo.birthYear ||
+  //     !userInfo.gender
+  //   ) {
+  //     handleSnackBar({
+  //       variant: 'error',
+  //       message: '공백 없이 작성해주세요.',
+  //     })();
+  //     console.log('asd');
+  //   }
+  // };
 
   return (
     <Flex justifyContent="center" alignItems="center" height="100%">

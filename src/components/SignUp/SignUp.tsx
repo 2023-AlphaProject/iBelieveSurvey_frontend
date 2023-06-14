@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Flex } from 'components/Box';
+import { useSnackBar } from 'hooks';
 import { Button } from 'components/common';
-import { useKakaoCallback } from 'hooks/queries/auth';
+import { useKakaoCallback, useUserUpdate } from 'hooks/queries/auth';
 import UserInfoContainer from './UserInfoContainer';
 
 const KakaoAuth = () => {
   const navigate = useNavigate();
+  const { handleSnackBar } = useSnackBar();
 
   const init = {
     realName: '',
@@ -18,24 +20,43 @@ const KakaoAuth = () => {
 
   const [userInfo, setUserInfo] = useState(init);
   const code = new URL(window.location.href).searchParams.get('code');
+  const { data } = useKakaoCallback(code ?? '');
 
-  try {
-    const { data } = useKakaoCallback(code ?? '');
-    const tempUserInfo = data?.data;
-    const cleanedString = tempUserInfo.replace(/:/g, '":"').replace(/, /g, '","');
-    const jsonString = `{"${cleanedString}"}`;
-    const userInfo = JSON.parse(jsonString);
+  useEffect(() => {
+    try {
+      const tempUserInfo = data?.data;
+      const cleanedString = tempUserInfo.replace(/:/g, '":"').replace(/, /g, '","');
+      const jsonString = `{"${cleanedString}"}`;
+      const initUserInfo = JSON.parse(jsonString);
 
-    if (userInfo?.token) {
-      sessionStorage.setItem('userToken', userInfo?.token);
+      if (initUserInfo?.token) {
+        sessionStorage.setItem('userToken', initUserInfo?.token);
+      }
+      console.log(initUserInfo);
+    } catch (err) {
+      console.log(err);
     }
+  }, [data]);
 
-    console.log(userInfo);
-  } catch (err) {
-    console.log(err);
-  }
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (
+      !userInfo.realName ||
+      userInfo.phoneNumber === '010' ||
+      !userInfo.birthYear ||
+      !userInfo.gender
+    ) {
+      handleSnackBar({
+        variant: 'error',
+        message: '공백 없이 작성해주세요.',
+      })();
+      // return;
+    }
+    const userUpdateQuery = useUserUpdate(userInfo);
+    userUpdateQuery.refetch();
+  };
 
-  return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} />;
+  return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} onSubmit={onSubmit} />;
 };
 
 export default KakaoAuth;
