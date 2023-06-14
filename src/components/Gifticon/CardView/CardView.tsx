@@ -9,7 +9,7 @@ interface Props {
 const Card = (props: Props) => {
   const { card } = props;
   return (
-    <Flex flexDirection="column" mr={1}>
+    <Flex flexDirection="column" mr={3}>
       <img
         src={`${process.env.PUBLIC_URL}/assets/images/${card.thumbnail}`}
         alt="GIFTICON"

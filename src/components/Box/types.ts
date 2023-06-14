@@ -19,6 +19,7 @@ export interface BoxProps
 
 export interface FlexProps extends BoxProps, FlexboxProps {
   gap?: string;
+  cursor?: string;
 }
 
 export interface LabelProps extends TypographyProps, BoxProps {}
