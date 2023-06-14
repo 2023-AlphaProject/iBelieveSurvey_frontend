@@ -19,12 +19,14 @@ const Survey = () => {
           <Filterbar right="0" />
         </Flex>
         <SurveyCardWrapper>
-          <Card card={dummyCards} />
-          <Card card={dummyCards} />
-          <Card card={dummyCards} />
-          <Card card={dummyCards} />
-          <Card card={dummyCards} />
-          <Card card={dummyCards} />
+          <Flex flexWrap="wrap" gap="40px" mt="10px">
+            <Card card={dummyCards} />
+            <Card card={dummyCards} />
+            <Card card={dummyCards} />
+            <Card card={dummyCards} />
+            <Card card={dummyCards} />
+            <Card card={dummyCards} />
+          </Flex>
         </SurveyCardWrapper>
         {label === '결제한 설문 내역' ? (
           <Label fontFamily="Pr-Bold" fontSize="1.25rem">

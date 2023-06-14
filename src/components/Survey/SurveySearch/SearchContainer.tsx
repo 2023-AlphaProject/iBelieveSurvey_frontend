@@ -24,6 +24,11 @@ const InnerContainer = styled(Flex)`
   width: 100%;
   border-bottom: 2px solid ${COLORS.secondary};
   :nth-child(4) {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 3rem;
+    font-weight: 800;
     border: none;
     background-color: ${COLORS.gray};
     border-radius: 0 0 20px 20px;
@@ -33,8 +38,8 @@ const InnerContainer = styled(Flex)`
 
 const Scroll = styled(Flex)`
   margin-top: 1rem;
-  overflow-x: scroll;
   flex-wrap: nowrap;
+  overflow-x: scroll;
   gap: 10px;
 `;
 
@@ -68,6 +73,15 @@ const ConditionBtn = styled.button<BtnProps>`
       : 'white'};
 `;
 
+const FilterBtn = styled.button`
+  font-size: 0.9rem;
+`;
+
+const FilterCancelBtn = styled.button`
+  font-size: 1rem;
+  color: ${COLORS.secondary};
+`;
+
 const SearchContainer = () => {
   const [category, setCategory] = useState('');
   const [participants, setParticipants] = useState('');
@@ -86,10 +100,32 @@ const SearchContainer = () => {
     '엔터테인먼트',
     '음식과 식습관',
   ];
-
   const participantsConditions = ['1~9명', '10~99명', '100명 이상'];
-
   const surveyStates = ['진행 예정', '진행 중', '종료'];
+
+  const handleFilterClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const filterCancelTarget = e.currentTarget.name;
+
+    switch (filterCancelTarget) {
+      case 'category':
+        setCategory('');
+        break;
+      case 'participants':
+        setParticipants('');
+        break;
+      case 'surveyState':
+        setSurveyState('');
+        break;
+      case 'allCancel':
+        setCategory('');
+        setParticipants('');
+        setSurveyState('');
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <Container>
@@ -137,7 +173,22 @@ const SearchContainer = () => {
           );
         })}
       </InnerContainer>
-      <InnerContainer>asd</InnerContainer>
+      <InnerContainer>
+        <Flex gap="20px">
+          <FilterBtn onClick={handleFilterClick} name="category">
+            {category && `${category} x`}
+          </FilterBtn>
+          <FilterBtn onClick={handleFilterClick} name="participants">
+            {participants && `${participants} x`}
+          </FilterBtn>
+          <FilterBtn onClick={handleFilterClick} name="surveyState">
+            {surveyState && `${surveyState} x`}
+          </FilterBtn>
+        </Flex>
+        <FilterCancelBtn onClick={handleFilterClick} name="allCancel">
+          전체 해제
+        </FilterCancelBtn>
+      </InnerContainer>
     </Container>
   );
 };
