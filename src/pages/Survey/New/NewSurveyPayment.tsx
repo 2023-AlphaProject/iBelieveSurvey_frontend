@@ -15,6 +15,7 @@ const PaymentWrapper = styled(Flex)`
 
   @media (max-width: 1024px) {
     flex-direction: column;
+    margin-bottom: 4rem;
   }
 `;
 

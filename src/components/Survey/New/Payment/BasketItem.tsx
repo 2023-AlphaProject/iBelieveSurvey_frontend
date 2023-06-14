@@ -30,6 +30,16 @@ const CounterWraaper = styled(Flex)`
   }
 `;
 
+const InfoWrapper = styled(Flex)`
+  align-items: center;
+  gap: 1rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: -20px;
+  }
+`;
+
 const BasketItem = () => {
   return (
     <ItemWraaper
@@ -39,25 +49,27 @@ const BasketItem = () => {
       gap="20px"
       justifyContent="space-between"
     >
-      <Flex alignItems="center" gap="20px">
+      <Flex alignItems="center" gap="10px">
         <Checkbox
           color="secondary"
           icon={<RadioButtonUncheckedIcon />}
           checkedIcon={<CheckCircleIcon />}
           sx={{ marginBottom: 'auto' }}
         />
-        <GiftImg
-          loading="lazy"
-          src="https://st.kakaocdn.net/product/gift/product/20220107172532_8a6336605bf447bd8632fe6d72b8d7d9.jpg"
-        />
-        <Flex flexDirection="column" gap="1rem" mb="30px" width="100%">
-          <Label color={COLORS.primary} fontFamily="Pr-SemiBold">
-            스타벅스
-          </Label>
-          <Label style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-            마음을 전하는 선물 아메리카노
-          </Label>
-        </Flex>
+        <InfoWrapper>
+          <GiftImg
+            loading="lazy"
+            src="https://st.kakaocdn.net/product/gift/product/20220107172532_8a6336605bf447bd8632fe6d72b8d7d9.jpg"
+          />
+          <ItemWraaper flexDirection="column" gap="1rem" mb="30px" width="100%">
+            <Label color={COLORS.primary} fontFamily="Pr-SemiBold">
+              스타벅스
+            </Label>
+            <Label style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              마음을 전하는 선물 아메리카노
+            </Label>
+          </ItemWraaper>
+        </InfoWrapper>
       </Flex>
       <CounterWraaper alignItems="center" gap="10px">
         <Label fontFamily="Pr-SemiBold" mr="1.5rem">
