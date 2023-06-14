@@ -25,11 +25,15 @@ const KakaoAuth = () => {
     const cleanedString = tempUserInfo.replace(/:/g, '":"').replace(/, /g, '","');
     const jsonString = `{"${cleanedString}"}`;
     const userInfo = JSON.parse(jsonString);
+
+    if (userInfo?.token) {
+      sessionStorage.setItem('userToken', userInfo?.token);
+    }
+
     console.log(userInfo);
   } catch (err) {
     console.log(err);
   }
-  console.log(userInfo);
 
   return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} />;
 };
