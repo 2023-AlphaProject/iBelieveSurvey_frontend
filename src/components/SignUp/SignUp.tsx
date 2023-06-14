@@ -21,26 +21,14 @@ const KakaoAuth = () => {
 
   try {
     const { data } = useKakaoCallback(code ?? '');
-    console.log(data);
+    const tempUserInfo = data?.data;
+    const cleanedString = tempUserInfo.replace(/:/g, '":"').replace(/, /g, '","');
+    const jsonString = `{"${cleanedString}"}`;
+    const userInfo = JSON.parse(jsonString);
+    console.log(userInfo);
   } catch (err) {
     console.log(err);
   }
-
-  useEffect(() => {
-    const code = new URL(window.location.href).searchParams.get('code');
-    // const { data } = useKakaoCallback(code ?? '');
-
-    axios
-      .get(`https://api.ibelievesurvey.com/user/kakao/callback?code=${code}`)
-      .then((res) => {
-        if (res.status === 200) {
-          console.log('res: ', res);
-        }
-      })
-      .catch((err) => {
-        console.log('err: ', err);
-      });
-  }, []);
   console.log(userInfo);
 
   return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} />;

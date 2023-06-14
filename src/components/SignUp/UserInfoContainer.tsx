@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useUserUpdate } from 'hooks/queries/auth';
 import { useSnackBar } from 'hooks';
 import { Flex } from 'components/Box';
 import { Button } from 'components/common';
@@ -110,6 +111,7 @@ const UserInfoContainer = ({ userInfo, setUserInfo }: UserInfoProps) => {
         variant: 'error',
         message: '공백 없이 작성해주세요.',
       });
+      const { data } = useUserUpdate();
       // return;
     }
     axios
