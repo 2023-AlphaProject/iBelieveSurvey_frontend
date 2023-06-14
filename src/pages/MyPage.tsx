@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Flex, Label } from 'components/Box';
 import { Sidebar, Filterbar } from 'components/common';
-import { Card, SurveyCardWrapper, NewSurveyBtn } from 'components/Survey';
-import dummyCards from 'components/Survey/Card/dummyCards';
+import { SurveyCardWrapper, NewSurveyBtn } from 'components/Survey';
+// import dummyCards from 'components/Survey/Card/dummyCards';
 
 const MyPage = () => {
   const [label, setLabel] = useState('결제한 설문 내역');
@@ -25,13 +25,13 @@ const MyPage = () => {
             </Label>
             <Filterbar right="0" />
           </Flex>
-          <SurveyCardWrapper>
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
+          <SurveyCardWrapper currentPage={1} totalPages={1} setPage={() => ''}>
+            {/* <Card survey={dummyCards} />
+            <Card survey={dummyCards} />
+            <Card survey={dummyCards} />
+            <Card survey={dummyCards} />
+            <Card survey={dummyCards} />
+            <Card survey={dummyCards} /> */}
             <NewSurveyBtn />
           </SurveyCardWrapper>
           {label === '결제한 설문 내역' ? (
