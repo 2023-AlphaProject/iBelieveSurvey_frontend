@@ -21,6 +21,10 @@ const KakaoAuth = () => {
   const [userInfo, setUserInfo] = useState(init);
   const code = new URL(window.location.href).searchParams.get('code');
   const { data } = useKakaoCallback(code ?? '');
+  const userUpdate = async () => {
+    const { refetch } = useUserUpdate(userInfo);
+    return refetch();
+  };
 
   useEffect(() => {
     try {
@@ -50,10 +54,9 @@ const KakaoAuth = () => {
         variant: 'error',
         message: '공백 없이 작성해주세요.',
       })();
-      // return;
+      return;
     }
-    const userUpdateQuery = useUserUpdate(userInfo);
-    userUpdateQuery.refetch();
+    userUpdate();
   };
 
   return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} onSubmit={onSubmit} />;
