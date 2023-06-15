@@ -13,9 +13,6 @@ const Survey = () => {
 
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
-      <Label fontFamily="Pr-Bold" fontSize="1.25rem">
-        설문게시판
-      </Label>
       <Flex gap="1.75rem">
         <Sidebar
           title="카테고리 선택"
@@ -61,11 +58,6 @@ const Survey = () => {
               })}
             </SurveyCardWrapper>
           </Suspense>
-          {label === '결제한 설문 내역' ? (
-            <Label fontFamily="Pr-Bold" fontSize="1.25rem">
-              카카오톡 선물 전달 내역
-            </Label>
-          ) : null}
         </Flex>
       </Flex>
     </Flex>
