@@ -15,3 +15,4 @@ export { default as NewSurveyForm } from 'pages/Survey/New/NewSurveyForm';
 export { default as NewSurveyPayment } from 'pages/Survey/New/NewSurveyPayment';
 export { default as NewSurveyGiftItem } from 'pages/Survey/New/NewSurveyGiftItem';
 export { default as NewSurveyGifts } from 'pages/Survey/New/NewSurveyGifts';
+export { default as SignUp } from 'pages/SignUp';

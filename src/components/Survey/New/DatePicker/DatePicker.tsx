@@ -7,8 +7,8 @@ import { DatePicker as DP } from '@mui/x-date-pickers/DatePicker';
 import dayjs, { Dayjs } from 'dayjs';
 
 interface Props {
-  value: Dayjs | null;
-  setValue: Dispatch<SetStateAction<Dayjs | null>>;
+  value: Dayjs;
+  setValue: Dispatch<SetStateAction<Dayjs>>;
 }
 
 const DatePicker = ({ value, setValue }: Props) => {
@@ -19,7 +19,7 @@ const DatePicker = ({ value, setValue }: Props) => {
         <DemoContainer components={['DatePicker']}>
           <DP
             value={value}
-            onChange={(newValue) => setValue(newValue)}
+            onChange={(newValue) => setValue(newValue || value)}
             minDate={minDate}
             slotProps={{ textField: { size: 'small' } }}
           />

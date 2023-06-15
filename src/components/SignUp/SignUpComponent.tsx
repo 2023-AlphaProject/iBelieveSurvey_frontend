@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Flex } from 'components/Box';
 import { useSnackBar } from 'hooks';
-import { useKakaoCallback, useUserUpdate } from 'hooks/queries/auth';
+import { useUserUpdate } from 'hooks/queries/auth';
+import { useLocation } from 'react-router';
 import UserInfoContainer from './UserInfoContainer';
 
-const KakaoAuth = () => {
-  const navigate = useNavigate();
+const SignUpComponent = () => {
   const { handleSnackBar } = useSnackBar();
+  const { state } = useLocation();
+  console.log(state);
 
   const initInfo = {
     realName: '',
@@ -17,28 +18,10 @@ const KakaoAuth = () => {
   };
 
   const [userInfo, setUserInfo] = useState(initInfo);
-  const code = new URL(window.location.href).searchParams.get('code');
-  const { data } = useKakaoCallback(code ?? '');
   // const userUpdate = async () => {
   //   const { refetch } = useUserUpdate(userInfo);
   //   return refetch();
   // };
-
-  useEffect(() => {
-    try {
-      const tempUserInfo = data?.data;
-      const cleanedString = tempUserInfo.replace(/:/g, '":"').replace(/, /g, '","');
-      const jsonString = `{"${cleanedString}"}`;
-      const initUserInfo = JSON.parse(jsonString);
-
-      if (initUserInfo?.token) {
-        sessionStorage.setItem('userToken', initUserInfo?.token);
-      }
-      console.log(initUserInfo);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [data]);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,4 +44,4 @@ const KakaoAuth = () => {
   return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} onSubmit={onSubmit} />;
 };
 
-export default KakaoAuth;
+export default SignUpComponent;
