@@ -82,8 +82,10 @@ const FilterCancelBtn = styled.button`
   color: ${COLORS.secondary};
 `;
 
-const SearchContainer = () => {
-  const [category, setCategory] = useState('');
+const SearchContainer = (props: any) => {
+  const { category, setCategory } = props;
+  console.log(category);
+  // const [category, setCategory] = useState('');
   const [participants, setParticipants] = useState('');
   const [surveyState, setSurveyState] = useState('');
 
