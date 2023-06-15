@@ -91,10 +91,24 @@ const FilterCancelBtn = styled.button`
   color: ${COLORS.secondary};
 `;
 
-const SearchContainer = (props: any) => {
+const SearchContainer = (props: SearchProps) => {
   const { category, setCategory, participants, setParticipants, surveyState, setSurveyState } =
     props;
+  const [participantsText, setParticipantsText] = useState('');
   console.log(category);
+
+  const handleParticipants = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e.currentTarget.name === '1~9명') {
+      setParticipants('under_ten');
+    }
+    if (e.currentTarget.name === '10~99명') {
+      setParticipants('under_hundred');
+    }
+    if (e.currentTarget.name === '100명 이상') {
+      setParticipants('over_hundred');
+    }
+    setParticipantsText(e.currentTarget.name);
+  };
 
   const categorys = [
     '인구통계',
@@ -159,9 +173,10 @@ const SearchContainer = (props: any) => {
         {participantsConditions.map((e) => {
           return (
             <ConditionBtn
+              name={e}
               participantsSelected={participants === e}
               key={e}
-              onClick={() => setParticipants(e)}
+              onClick={(e) => handleParticipants(e)}
             >
               {e}
             </ConditionBtn>
@@ -188,7 +203,7 @@ const SearchContainer = (props: any) => {
             {category && `${category} x`}
           </FilterBtn>
           <FilterBtn onClick={handleFilterClick} name="participants">
-            {participants && `${participants} x`}
+            {participants && `${participantsText} x`}
           </FilterBtn>
           <FilterBtn onClick={handleFilterClick} name="surveyState">
             {surveyState && `${surveyState} x`}

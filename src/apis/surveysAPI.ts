@@ -7,9 +7,15 @@ const surveysAPI = {
   list: (page: number, ordering: string) => {
     return instance.get(`/surveys/?ordering=${ordering}&page=${page}`);
   },
-  search: (page: number, ordering: string, search: string, category: string) => {
+  search: (
+    page: number,
+    ordering: string,
+    search: string,
+    category: string,
+    participants: string,
+  ) => {
     return instance.get(
-      `/surveys/?ordering=${ordering}&search=${search}&page=${page}&category=${category}`,
+      `/surveys/?ordering=${ordering}&search=${search}&page=${page}&category=${category}&${participants}`,
     );
   },
 };

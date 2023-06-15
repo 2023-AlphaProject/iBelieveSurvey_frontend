@@ -34,7 +34,6 @@ const Filterbar = (props: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const clickOutside = (e: any) => {
       if (visible && !modalRef.current?.contains(e.target)) {
         setVisible(false);
@@ -98,7 +97,7 @@ const Filterbar = (props: Props) => {
             onClick={() => {
               setText('참여자 많은 순');
               setVisible(!visible);
-              setOrderState('participants');
+              setOrderState('Participants');
             }}
           >
             참여자 많은 순
@@ -108,7 +107,7 @@ const Filterbar = (props: Props) => {
             onClick={() => {
               setText('참여자 적은 순');
               setVisible(!visible);
-              setOrderState('-started_at');
+              setOrderState('-Participants');
             }}
           >
             참여자 적은 순

@@ -21,6 +21,7 @@ const SurveySearch = () => {
     page,
     searchParams || '',
     category,
+    participants,
     orderState,
   );
 
