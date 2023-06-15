@@ -1,9 +1,7 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Flex } from 'components/Box';
 import { useSnackBar } from 'hooks';
-import { Button } from 'components/common';
 import { useKakaoCallback, useUserUpdate } from 'hooks/queries/auth';
 import UserInfoContainer from './UserInfoContainer';
 
@@ -11,20 +9,20 @@ const KakaoAuth = () => {
   const navigate = useNavigate();
   const { handleSnackBar } = useSnackBar();
 
-  const init = {
+  const initInfo = {
     realName: '',
     phoneNumber: '010',
     birthYear: '',
     gender: '',
   };
 
-  const [userInfo, setUserInfo] = useState(init);
+  const [userInfo, setUserInfo] = useState(initInfo);
   const code = new URL(window.location.href).searchParams.get('code');
   const { data } = useKakaoCallback(code ?? '');
-  const userUpdate = async () => {
-    const { refetch } = useUserUpdate(userInfo);
-    return refetch();
-  };
+  // const userUpdate = async () => {
+  //   const { refetch } = useUserUpdate(userInfo);
+  //   return refetch();
+  // };
 
   useEffect(() => {
     try {
@@ -56,7 +54,8 @@ const KakaoAuth = () => {
       })();
       return;
     }
-    userUpdate();
+    console.log('asd');
+    // userUpdate();
   };
 
   return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} onSubmit={onSubmit} />;

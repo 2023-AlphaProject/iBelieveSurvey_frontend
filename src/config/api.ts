@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASEURL } from 'constants/BASEURL';
+import userToken from 'utils/userToken';
 
 const createInstance = () => {
   return axios.create({
@@ -8,9 +9,23 @@ const createInstance = () => {
     withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRFToken': sessionStorage.getItem('userToken'),
     },
   });
 };
 
-export const instance = createInstance();
+const instance = createInstance();
+
+if (userToken.user) {
+  instance.interceptors.request.use(
+    async (config) => {
+      const newConfig = { ...config };
+      newConfig.headers.Authorization = `Bearer ${userToken.user}`;
+      return newConfig;
+    },
+    (error) => {
+      return Promise.reject(error);
+    },
+  );
+}
+
+export { instance };
