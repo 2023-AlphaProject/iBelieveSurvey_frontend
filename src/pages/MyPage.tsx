@@ -3,7 +3,7 @@ import { Flex, Label } from 'components/Box';
 import { Sidebar, Filterbar } from 'components/common';
 import { SurveyCardWrapper, NewSurveyBtn, Card } from 'components/Survey';
 import { useSurveyListQuery } from 'hooks/queries/surveys';
-import { surveyType } from 'types/surveyType';
+import surveyType from 'types/surveyType';
 import { Link } from 'react-router-dom';
 
 const MyPage = () => {

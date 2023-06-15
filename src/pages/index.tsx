@@ -8,7 +8,7 @@ export { default as SurveySearch } from 'pages/Survey/SurveySearch';
 export { default as SurveyDetail } from 'pages/Survey/SurveyDetail';
 export { default as SurveyResult } from 'pages/Survey/SurveyResult';
 export { default as SurveyGiftResult } from 'pages/Survey/SurveyGiftResult';
-export { default as SurveySubmit } from 'pages/Survey/SurveySubmit';
+export { default as SurveySubmit } from 'pages/Survey/New/SurveySubmit';
 export { default as NewSurvey } from 'pages/Survey/New/NewSurvey';
 export { default as NewSurveyForm } from 'pages/Survey/New/NewSurveyForm';
 export { default as NewSurveyPayment } from 'pages/Survey/New/NewSurveyPayment';

@@ -18,6 +18,7 @@ const IconContainer = styled(Flex)`
 
 const Card = (props: Props) => {
   const { survey } = props;
+  console.log(survey);
   const navigate = useNavigate();
 
   if (survey.is_survey_hidden) {
@@ -31,7 +32,16 @@ const Card = (props: Props) => {
       cursor="pointer"
       onClick={() => navigate(`/survey/${survey.id}`)}
     >
-      <Box width="14rem" height="10rem" borderRadius="1.25rem" background={COLORS.primaryVariant} />
+      <img
+        alt="thumbnail"
+        style={{
+          width: '14rem',
+          height: '10rem',
+          borderRadius: '1.25rem',
+          backgroundColor: COLORS.primaryVariant,
+        }}
+        src={survey.thumbnail}
+      />
       <Flex p={2} flexDirection="column" gap="8px">
         <Flex>
           <Label

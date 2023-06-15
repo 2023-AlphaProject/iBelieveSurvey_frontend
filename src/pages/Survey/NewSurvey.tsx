@@ -4,7 +4,6 @@ import { useSnackBar, useInput, useModal } from 'hooks';
 import { COLORS } from 'constants/COLOR';
 import { Input, Button, TextArea } from 'components/common';
 import { useState } from 'react';
-import { ThumbnailBtn } from 'components/Survey';
 
 const TempSubmitButton = styled(Button)`
   background-color: transparent;
