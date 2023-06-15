@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { Flex, Label } from 'components/Box';
-import { Sidebar, Filterbar } from 'components/common';
+import { Sidebar, Filterbar, LoadingComponent } from 'components/common';
 import { Card, SurveyCardWrapper } from 'components/Survey';
 import Checkbox from '@mui/material/Checkbox';
 import { useSurveyListQuery } from 'hooks/queries/surveys';
@@ -50,15 +50,17 @@ const Survey = () => {
             </Label>
             <Checkbox sx={{ width: '2rem', height: '1.8rem' }} />
           </Flex>
-          <SurveyCardWrapper
-            currentPage={data?.data?.current_page}
-            totalPages={data?.data?.total_pages}
-            setPage={setPage}
-          >
-            {data?.data?.results?.map((survey: surveyType) => {
-              return <Card key={`survey_${survey.id}`} survey={survey} />;
-            })}
-          </SurveyCardWrapper>
+          <Suspense fallback={<LoadingComponent />}>
+            <SurveyCardWrapper
+              currentPage={data?.data?.current_page}
+              totalPages={data?.data?.total_pages}
+              setPage={setPage}
+            >
+              {data?.data?.results?.map((survey: surveyType) => {
+                return <Card key={`survey_${survey.id}`} survey={survey} />;
+              })}
+            </SurveyCardWrapper>
+          </Suspense>
           {label === '결제한 설문 내역' ? (
             <Label fontFamily="Pr-Bold" fontSize="1.25rem">
               카카오톡 선물 전달 내역

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface Props {
   isEnd: boolean;
   endAt: string;
+  img: string;
 }
 
 const Box = styled.div`
@@ -36,7 +37,7 @@ const Label = styled.div`
 `;
 
 const Thumbnail = (props: Props) => {
-  const { isEnd, endAt } = props;
+  const { isEnd, endAt, img } = props;
   const date = new Date(endAt);
   const dDay = date.getDate() - new Date().getDate();
 
