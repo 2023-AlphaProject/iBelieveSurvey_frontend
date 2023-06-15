@@ -1,17 +1,12 @@
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
-import {
-  Search,
-  SearchIconWrapper,
-  StyledInputBase,
-  IDeskTopNavbar,
-} from 'components/Navbar/NavbarStyles';
+import { Search, SearchIconWrapper, StyledInputBase } from 'components/Navbar/NavbarStyles';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 
-const DeskTopNavbar = ({ handleCloseNavMenu }: IDeskTopNavbar) => {
+const DeskTopNavbar = () => {
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* PC Logo */}
@@ -31,28 +26,21 @@ const DeskTopNavbar = ({ handleCloseNavMenu }: IDeskTopNavbar) => {
           <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
         </Search>
       </Box>
-      {/* PC Components */}
 
+      {/* PC Components */}
       <Box sx={{ flexGrow: 0, display: 'flex', gap: '15px' }}>
         <Link to="/survey">
-          <Button
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
-          >
+          <Button sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}>
             설문 게시판
           </Button>
         </Link>
         <Link to="/mypage">
-          <Button
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
-          >
+          <Button sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}>
             마이페이지
           </Button>
         </Link>
         <Link to="/">
           <Button
-            onClick={handleCloseNavMenu}
             sx={{
               display: 'block',
               width: '7rem',
