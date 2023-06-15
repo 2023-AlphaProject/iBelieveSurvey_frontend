@@ -21,17 +21,64 @@ const TextBox = styled.div<BoxProps>`
   right: ${(props) => props.right};
 `;
 
+const GradBox = styled.div<BoxProps>`
+  width: 100%;
+  height: 36rem;
+  background: linear-gradient(#6795bd, #f08b69);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  @media screen and (max-width: 1275px) {
+    height: 46rem;
+  }
+`;
+
+const LogoBox = styled.div<BoxProps>`
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 15rem;
+  position: relative;
+  @media screen and (max-width: 1275px) {
+    margin: 0 0 4rem 0;
+  }
+`;
+
+const Img = styled.img`
+  width: 10rem;
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  @media screen and (max-width: 770px) {
+    display: none;
+  }
+`;
+
+const Img2 = styled.img`
+  width: 28rem;
+  position: absolute;
+  right: -3rem;
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+`;
+
+const Label2 = styled(Label)`
+  font-family: 'Pr-SemiBold';
+  font-size: 2.6rem;
+  color: white;
+  width: 13rem;
+  line-height: 1.2;
+  margin: 1.25rem 1rem;
+  @media screen and (max-width: 550px) {
+    display: none;
+  }
+`;
+
 const Home = () => {
   return (
     <Flex width="100%" flexDirection="column" alignItems="center">
       <Navbar />
-      <Flex
-        width="100%"
-        height="36rem"
-        background="linear-gradient( #6795BD, #F08B69);"
-        justifyContent="center"
-        position="relative"
-      >
+      <GradBox>
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/one.svg`}
           alt="GIFTICON"
@@ -62,7 +109,7 @@ const Home = () => {
               </Label>
             </TextBox>
           </Flex>
-          <Flex flexDirection="column" gap="0.4rem" mt="15rem" position="relative">
+          <LogoBox>
             <img
               src={`${process.env.PUBLIC_URL}/assets/images/loading.png`}
               alt="IBELEVESURVEY Logo"
@@ -84,20 +131,11 @@ const Home = () => {
                   width: '16.2rem',
                 }}
               />
-              <Label
-                fontFamily="Pr-SemiBold"
-                fontSize="2.6rem"
-                color="white"
-                width="13rem"
-                lineHeight="1.2"
-                m={3}
-              >
-                에 오신 것을 환영해요!
-              </Label>
+              <Label2>에 오신 것을 환영해요!</Label2>
             </Flex>
-          </Flex>
+          </LogoBox>
         </Flex>
-      </Flex>
+      </GradBox>
       <Flex width="80%" position="relative" flexDirection="column" gap="3rem">
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/one.svg`}
@@ -173,7 +211,7 @@ const Home = () => {
       </Flex>
       <Flex position="relative" mt={5}>
         <img src={`${process.env.PUBLIC_URL}/assets/images/main3.svg`} alt="GIFTICON" />
-        <img
+        <Img
           src={`${process.env.PUBLIC_URL}/assets/images/logo-white.svg`}
           alt="LOGO"
           style={{
@@ -301,24 +339,25 @@ const Home = () => {
             3
           </Label>
           <Flex width="65%" flexDirection="column" mt="14rem">
-            <Label fontFamily="Pr-Bold" fontSize="1.9rem" position="absolute" left="15rem">
-              설문 저장 및 참고
-            </Label>
             <img
               src={`${process.env.PUBLIC_URL}/assets/images/phrase4.svg`}
               alt="GIFTICON"
               style={{
                 width: '14rem',
                 position: 'absolute',
-                top: '16.2rem',
+                top: '12.5rem',
                 left: '15rem',
               }}
             />
+            <Label fontFamily="Pr-Bold" fontSize="1.9rem" position="absolute" left="15rem">
+              설문 저장 및 참고
+            </Label>
+
             <Label
               fontFamily="Pr-Bold"
               fontSize="1.3rem"
               width="90%"
-              ml="6%"
+              ml="8%"
               mt="10rem"
               lineHeight="1.25"
             >
@@ -328,15 +367,7 @@ const Home = () => {
               <br /> 이를 통해 유저들은 자신이 하려고 했던 설문과 비슷한 설문을 참고하거나 다른
               유저의 의견을 확인할 수 있어요.
             </Label>
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/images/one5.svg`}
-              alt="GIFTICON"
-              style={{
-                width: '28rem',
-                position: 'absolute',
-                right: '-3rem',
-              }}
-            />
+            <Img2 src={`${process.env.PUBLIC_URL}/assets/images/one5.svg`} alt="GIFTICON" />
           </Flex>
         </Flex>
       </Flex>
