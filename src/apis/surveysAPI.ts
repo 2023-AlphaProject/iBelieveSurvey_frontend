@@ -4,6 +4,9 @@ const surveysAPI = {
   get: (id: number) => {
     return instance.get(`/surveys/${id}/`);
   },
+  post: (survey: FormData) => {
+    return instance.post('surveys/', survey);
+  },
   list: (page: number, ordering: string) => {
     return instance.get(`/surveys/?ordering=${ordering}&page=${page}`);
   },

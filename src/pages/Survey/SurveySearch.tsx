@@ -2,10 +2,7 @@ import { Suspense, useState } from 'react';
 import { Flex, Label } from 'components/Box';
 import { Sidebar, Filterbar, LoadingComponent } from 'components/common';
 import { Card, SurveyCardWrapper, SearchContainer } from 'components/Survey';
-import Checkbox from '@mui/material/Checkbox';
-import dummyCards from 'components/Survey/Card/dummyCards';
-import styled from 'styled-components';
-import { surveyType } from 'types/surveyType';
+import surveyType from 'types/surveyType';
 import { useParams } from 'react-router-dom';
 import { useSurveyListSearchQuery } from 'hooks/queries/surveys';
 

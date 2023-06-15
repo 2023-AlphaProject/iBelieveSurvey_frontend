@@ -5,10 +5,10 @@ export const queryClient = new QueryClient({
     queries: {
       retry: 0,
       suspense: true,
-      useErrorBoundary: true,
+      // useErrorBoundary: true,
     },
     mutations: {
-      useErrorBoundary: true,
+      // useErrorBoundary: true,
     },
   },
 });

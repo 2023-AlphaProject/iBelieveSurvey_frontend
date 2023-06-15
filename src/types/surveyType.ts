@@ -1,9 +1,9 @@
-export interface surveyType {
+interface surveyType {
   id: number;
   writer: number;
   title: string;
   thumbnail: string;
-  category: string;
+  category_name: string;
   is_idle: boolean;
   is_paid: boolean;
   is_ongoing: boolean;
@@ -15,3 +15,5 @@ export interface surveyType {
   created_at: string;
   sinningPercentage: number;
 }
+
+export default surveyType;
