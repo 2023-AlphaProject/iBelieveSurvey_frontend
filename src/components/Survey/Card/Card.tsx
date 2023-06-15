@@ -16,7 +16,6 @@ const IconContainer = styled(Flex)`
 
 const Card = (props: Props) => {
   const { survey } = props;
-  console.log(survey);
 
   if (survey.is_survey_hidden) {
     return <div />;
