@@ -6,7 +6,8 @@ import { Navbar } from 'components/Navbar';
 import { Footer } from 'components/Footer';
 import { Card } from 'components/Survey';
 import { useSurveyListQuery } from 'hooks/queries/surveys';
-import { surveyType } from 'types/surveyType';
+import { surveyType } from 'types';
+
 import { Link } from 'react-router-dom';
 
 interface BoxProps {

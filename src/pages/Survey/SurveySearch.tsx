@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Flex, Label } from 'components/Box';
-import { Sidebar, Filterbar } from 'components/common';
-import { Card, SurveyCardWrapper, SearchContainer } from 'components/Survey';
-import Checkbox from '@mui/material/Checkbox';
-import dummyCards from 'components/Survey/Card/dummyCards';
-import styled from 'styled-components';
+import { Filterbar } from 'components/common';
+import { SurveyCardWrapper, SearchContainer } from 'components/Survey';
+// import Checkbox from '@mui/material/Checkbox';
+// import dummyCards from 'components/Survey/Card/dummyCards';
+// import styled from 'styled-components';
 
 const Survey = () => {
-  const [label, setLabel] = useState('인구통계');
+  const [label] = useState('인구통계');
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
       <Label fontFamily="Pr-Bold" fontSize="1.25rem">
