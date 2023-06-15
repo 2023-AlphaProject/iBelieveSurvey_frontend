@@ -5,5 +5,5 @@ export const COLORS = {
   // secondaryVariant: '#FFB49A',
   secondaryVariant: '#FF7854',
   Tertiary: '#E9DECF',
-  gray: '#888888',
+  gray: '#ccc',
 };

@@ -15,7 +15,7 @@ const StepProgress = () => {
       case '/form':
         return 1;
         break;
-      case '/gift':
+      case '/payment':
         return 2;
         break;
       default:
@@ -26,7 +26,11 @@ const StepProgress = () => {
   }, [location]);
 
   return (
-    <Stepper activeStep={getStep()} alternativeLabel>
+    <Stepper
+      activeStep={getStep()}
+      alternativeLabel
+      sx={{ marginTop: '1rem', marginBottom: '6rem' }}
+    >
       <Step key="new">
         <StepLabel>설문 개요 작성</StepLabel>
       </Step>
@@ -34,7 +38,7 @@ const StepProgress = () => {
         <StepLabel>설문 문항 입력</StepLabel>
       </Step>
       <Step key="gift">
-        <StepLabel>기프티콘 선택</StepLabel>
+        <StepLabel>기프티콘 선택 · 결제</StepLabel>
       </Step>
     </Stepper>
   );
