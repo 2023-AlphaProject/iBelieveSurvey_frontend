@@ -6,7 +6,7 @@ const NewSurveyForm = () => {
   const { state } = useLocation();
 
   useEffect(() => {
-    console.log(state);
+    // console.log(state);
   }, [state]);
 
   return (
