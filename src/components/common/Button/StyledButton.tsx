@@ -50,6 +50,7 @@ const StyledButton = styled.button<BaseButtonProps>`
   line-height: 1;
   opacity: ${getOpacity};
   transition: background-color 0.2s, opactiy 0.2s;
+  text-align: center;
 
   &:hover:not(:disabled):not(.button--disabled):not(.button--disabled):not(:active) {
     opacity: 0.65;
