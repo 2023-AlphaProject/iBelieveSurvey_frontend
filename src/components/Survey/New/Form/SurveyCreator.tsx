@@ -29,7 +29,11 @@ const creatorOptions = {
   ],
 };
 
-const Surveycreator = () => {
+interface Props {
+  formData: FormData;
+}
+
+const Surveycreator = ({ formData }: Props) => {
   const navigate = useNavigate();
 
   const creator = new SurveyCreator(creatorOptions);
