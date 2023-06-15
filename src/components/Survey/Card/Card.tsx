@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Flex, Box, Label } from 'components/Box';
 import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
@@ -16,13 +17,19 @@ const IconContainer = styled(Flex)`
 
 const Card = (props: Props) => {
   const { survey } = props;
+  const navigate = useNavigate();
 
   if (survey.is_survey_hidden) {
     return <div />;
   }
 
   return (
-    <Flex flexDirection="column" pb={3} cursor="pointer">
+    <Flex
+      flexDirection="column"
+      pb={3}
+      cursor="pointer"
+      onClick={() => navigate(`/survey/${survey.id}`)}
+    >
       <Box width="14rem" height="10rem" borderRadius="1.25rem" background={COLORS.primaryVariant} />
       <Flex p={2} flexDirection="column" gap="8px">
         <Flex>
@@ -36,7 +43,7 @@ const Card = (props: Props) => {
             mt={1}
             fontFamily="Pr-Bold"
           >
-            {survey.is_ongoing ? '진행중' : '종료'}
+            {survey.is_end ? '종료' : '진행중'}
           </Label>
           <Label fontSize="0.7rem" color="#888888" fontFamily="Pr-Regular" m={2} mr={3}>
             {useDate(new Date(survey.started_at))} ~ {useDate(new Date(survey.end_at))}
@@ -62,7 +69,7 @@ const Card = (props: Props) => {
             p={1}
             mr={1}
           >
-            {survey.category}
+            {survey.category_name}
           </Label>
         </Flex>
       </Flex>
