@@ -1,11 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, Flex, Label } from 'components/Box';
 import { Checkbox } from '@mui/material';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { COLORS } from 'constants/COLOR';
-import { BasketItem } from 'components/Survey';
+import { AddItem, BasketItem } from 'components/Survey';
 
-const GiftsBasket = () => {
+interface Props {
+  gifts: any;
+}
+
+const GiftsBasket = ({ gifts }: Props) => {
   return (
     <Flex flexDirection="column">
       <Flex background={COLORS.primaryVariant} alignItems="center">
@@ -22,9 +27,10 @@ const GiftsBasket = () => {
         <Label color="white">전체선택</Label>
       </Flex>
       <Box mt="6px" borderBottom={`2px solid ${COLORS.primary}`} />
-      <BasketItem />
-      <BasketItem />
-      <BasketItem />
+      {gifts.map((gift: any) => (
+        <BasketItem key={`gift_${gift?.id}`} />
+      ))}
+      <AddItem only={!gifts.length} />
     </Flex>
   );
 };

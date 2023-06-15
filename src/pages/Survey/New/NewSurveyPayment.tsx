@@ -1,13 +1,14 @@
-import { Flex } from 'components/Box';
+import { Box, Flex } from 'components/Box';
 import {
-  GIftsBasket,
+  GiftsBasket,
   Payment,
   PaymentCaution,
-  RecommendedGifts,
+  // RecommendedGifts,
   StepProgress,
 } from 'components/Survey';
 import styled from 'styled-components';
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 const PaymentWrapper = styled(Flex)`
   flex-direction: row;
@@ -28,15 +29,17 @@ const BasketWrapper = styled(Flex)`
 `;
 
 const NewSurveyPayment = () => {
-  // const location = useLocation();
+  const { state } = useLocation();
+  const [gifts, setGifts] = useState([]);
 
   return (
     <>
       <StepProgress />
       <PaymentWrapper gap="1.5rem">
         <BasketWrapper flexDirection="column" gap="4rem" width="70%">
-          <GIftsBasket />
-          <RecommendedGifts />
+          <GiftsBasket gifts={gifts} />
+          {/* <RecommendedGifts /> */}
+          <Box height="3rem" />
           <PaymentCaution />
         </BasketWrapper>
         <Payment />

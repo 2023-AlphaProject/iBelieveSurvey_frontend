@@ -11,8 +11,9 @@ export {
   DatePicker,
   SurveyCreator,
   Payment,
-  GIftsBasket,
+  GiftsBasket,
   RecommendedGifts,
   PaymentCaution,
   BasketItem,
+  AddItem,
 } from './New';
