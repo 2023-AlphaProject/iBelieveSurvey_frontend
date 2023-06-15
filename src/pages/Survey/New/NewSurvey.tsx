@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { useInput, useSnackBar } from 'hooks';
-import { Link } from 'react-router-dom';
 import { useSnackBar, useInput } from 'hooks';
 import { Input, Button, TextArea, Tag } from 'components/common';
 import {
@@ -13,19 +11,17 @@ import {
 import dayjs, { Dayjs } from 'dayjs';
 import { Box, Flex, Label } from 'components/Box';
 import { useAddSurvey } from 'hooks/queries/surveys';
-  
+
 const NewSurvey = () => {
   const TITLE_LIMIT = 50;
+  const [category, setCategory] = useState('');
+  const [endDate, setEndDate] = useState<Dayjs>(dayjs().add(7, 'day'));
   const [title, onChangeTitle] = useInput('', TITLE_LIMIT);
   const [info, setInfo] = useState('');
-  const [category, setCategory] = useState('');
+  const [thumbnail, setThumbnail] = useState({ file: null, url: '', basic: '' });
   const [agreement, setAgreement] = useState(true);
 
-  const [thumbnail, setThumbnail] = useState({ file: null, url: '', basic: '' });
-  const [endDate, setEndDate] = useState<Dayjs>(dayjs().add(7, 'day'));
-
   const { mutate: addSurvey } = useAddSurvey();
-  const [endDate, setEndDate] = useState<Dayjs | null>(dayjs().add(7, 'day'));
 
   const { handleSnackBar } = useSnackBar();
   // const { openModal, closeModal } = useModal();
@@ -42,7 +38,6 @@ const NewSurvey = () => {
   //   ),
   //   callback: closeModal,
   // };
-
 
   const handleSubmit = () => {
     if (title && info && category && (thumbnail?.file || thumbnail?.basic)) {
@@ -124,7 +119,6 @@ const NewSurvey = () => {
         <Agreement value={agreement} setValue={setAgreement} />
       </Flex>
       <Flex justifyContent="flex-end" gap="1rem">
-
         {/* <Button
           variant="basic"
           onClick={handleSubmit}
