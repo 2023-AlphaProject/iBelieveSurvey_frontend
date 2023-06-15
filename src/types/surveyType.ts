@@ -3,7 +3,7 @@ export interface surveyType {
   writer: number;
   title: string;
   thumbnail: string;
-  category: string;
+  category_name: string;
   is_idle: boolean;
   is_paid: boolean;
   is_ongoing: boolean;
