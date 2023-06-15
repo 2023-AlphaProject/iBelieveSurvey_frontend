@@ -46,7 +46,7 @@ const NewSurvey = () => {
       formData.append('outline', info);
       formData.append('category', '1');
       formData.append('category_name', category);
-      // formData.append('end_at', endDate.format('YYYY-MM-DD'));
+      formData.append('end_at', endDate.format('YYYY-MM-DD'));
       formData.append('is_survey_hidden', JSON.stringify(!agreement));
       if (thumbnail.file) formData.append('thumbnail', thumbnail.file);
       else formData.append('basic_thumbnail', thumbnail.basic);
