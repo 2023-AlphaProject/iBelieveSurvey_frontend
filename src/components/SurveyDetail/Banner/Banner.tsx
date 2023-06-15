@@ -35,6 +35,7 @@ const BannerButton = styled(Button)`
 `;
 
 const Banner = () => {
+  const temp = false;
   const [bannerDataState] = useRecoilState(bannerState);
   const location = useLocation();
 
@@ -42,7 +43,7 @@ const Banner = () => {
   const URLRegex = /^\/survey\/[0-9]+$/;
   const isBanner = URLRegex.test(URL);
 
-  return !isBanner ? (
+  return temp ? (
     <BannerContainer>
       <BannerInnerContainer>
         <BannerTitle>{bannerDataState.title}</BannerTitle>
