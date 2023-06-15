@@ -1,12 +1,13 @@
 import { SurveyCreatorComponent, SurveyCreator } from 'survey-creator-react';
 import { localization, SurveyQuestionEditorDefinition } from 'survey-creator-core';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Button } from 'components/common';
 import { Flex } from 'components/Box';
 import { surveyJSON } from 'constants/SURVEY_DEFAULT_JSON';
 import 'survey-core/defaultV2.min.css';
 import 'survey-creator-core/survey-creator-core.min.css';
 import 'survey-creator-core/survey-creator-core.i18n.js';
+import { useUpdateSurvey } from 'hooks/queries/surveys';
 
 const creatorOptions = {
   showLogicTab: false,
@@ -30,8 +31,8 @@ const creatorOptions = {
 };
 
 const Surveycreator = () => {
-  const navigate = useNavigate();
   const { state } = useLocation();
+  const { mutate: updateSurvey } = useUpdateSurvey(state.id);
 
   const creator = new SurveyCreator(creatorOptions);
   const koLocale = localization.getLocale('ko');
@@ -65,9 +66,7 @@ const Surveycreator = () => {
   // };
 
   const handleSubmit = () => {
-    navigate('/survey/new/payment', { state: { json: creator.JSON } });
-    // console.log(creator.JSON);
-    console.log(state.id);
+    updateSurvey({ data: creator.JSON });
   };
 
   return (

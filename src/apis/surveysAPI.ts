@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { instance } from 'config/api';
 
 const surveysAPI = {
@@ -5,7 +6,10 @@ const surveysAPI = {
     return instance.get(`/surveys/${id}/`);
   },
   post: (survey: FormData) => {
-    return instance.post('surveys/', survey);
+    return instance.post('/surveys/', survey);
+  },
+  patch: (id: number, data: any) => {
+    return instance.patch(`/surveys/${id}/`, data);
   },
   list: (page: number, ordering: string) => {
     return instance.get(`/surveys/?ordering=${ordering}&page=${page}`);
