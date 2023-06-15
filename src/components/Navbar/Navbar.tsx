@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const enterKey = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.keyCode === 13) {
-      navigate(`/survey/search?${searchTitle}`);
+      navigate(`/survey/search/${searchTitle}`);
     }
   };
 
@@ -30,8 +30,6 @@ const Navbar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  console.log(searchTitle);
 
   return (
     <AppBarContainer>

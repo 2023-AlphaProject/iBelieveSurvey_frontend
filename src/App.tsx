@@ -48,7 +48,7 @@ const App = () => {
                     <Route path="/tos" element={<Tos />} />
                     <Route path="/privacy" element={<Privacy />} />
                     <Route path="/survey" element={<Survey />} />
-                    <Route path="/survey/search" element={<SurveySearch />} />
+                    <Route path="/survey/search/:searchParams" element={<SurveySearch />} />
                     <Route path="/survey/:id" element={<SurveyDetail />} />
                     <Route path="/survey/:id/result" element={<SurveyResult />} />
                     <Route path="/survey/:id/gift-result" element={<SurveyGiftResult />} />

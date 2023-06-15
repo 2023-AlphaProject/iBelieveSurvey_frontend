@@ -10,7 +10,7 @@ interface WrapperProps extends PropsWithChildren {
 
 const SurveyCardWrapper = ({ children, currentPage, totalPages, setPage }: WrapperProps) => {
   return (
-    <Flex flexDirection="column" alignItems="center">
+    <Flex flexDirection="column" alignItems="flex-start">
       <Flex flexWrap="wrap" gap="0.1rem">
         {children}
       </Flex>
