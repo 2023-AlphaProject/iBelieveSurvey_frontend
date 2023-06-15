@@ -1,7 +1,13 @@
-import { Flex, Box, Label } from 'components/Box';
+import { Flex, Label } from 'components/Box';
+import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import { Navbar } from 'components/Navbar';
+import { Footer } from 'components/Footer';
+import { Card } from 'components/Survey';
+import { useSurveyListQuery } from 'hooks/queries/surveys';
+import { surveyType } from 'types/surveyType';
+import { Link } from 'react-router-dom';
 
 interface BoxProps {
   right?: string;
@@ -75,6 +81,7 @@ const Label2 = styled(Label)`
 `;
 
 const Home = () => {
+  const { data } = useSurveyListQuery(1);
   return (
     <Flex width="100%" flexDirection="column" alignItems="center">
       <Navbar />
@@ -371,6 +378,38 @@ const Home = () => {
           </Flex>
         </Flex>
       </Flex>
+      <Flex width="95%" flexDirection="column" alignItems="center" gap="0.5rem" m={5}>
+        <Label fontFamily="Pr-Bold" fontSize="1.25rem" mt={5}>
+          진행중인 설문
+        </Label>
+        <Label fontFamily="Pr-Bold" fontSize="2rem">
+          IbelieveSurvey
+        </Label>
+        <Link to="/survey">
+          <Flex cursor="pointer">
+            <Label fontFamily="Pr-Bold" color={COLORS.primary}>
+              설문게시판 전체보기
+            </Label>
+          </Flex>
+        </Link>
+        <Flex mt={3} flexWrap="wrap">
+          {data?.data?.results?.map((survey: surveyType) => {
+            if (survey.is_ongoing === true) {
+              return <Card key={`survey_${survey.id}`} survey={survey} />;
+            }
+            return null;
+          })}
+        </Flex>
+      </Flex>
+      <Label fontFamily="Pr-Bold" mb={3}>
+        나만의 설문을 시작하려면
+      </Label>
+      <Link to="/survey/new">
+        <Button width="12rem" mb={5}>
+          설문 작성하기
+        </Button>
+      </Link>
+      <Footer />
     </Flex>
   );
 };
