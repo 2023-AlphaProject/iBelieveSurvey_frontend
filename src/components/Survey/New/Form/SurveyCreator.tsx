@@ -1,12 +1,12 @@
 import { SurveyCreatorComponent, SurveyCreator } from 'survey-creator-react';
 import { localization, SurveyQuestionEditorDefinition } from 'survey-creator-core';
-import 'survey-core/defaultV2.min.css';
-import 'survey-creator-core/survey-creator-core.min.css';
-import 'survey-creator-core/survey-creator-core.i18n.js';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from 'components/common';
 import { Flex } from 'components/Box';
 import { surveyJSON } from 'constants/SURVEY_DEFAULT_JSON';
-import { useNavigate } from 'react-router-dom';
+import 'survey-core/defaultV2.min.css';
+import 'survey-creator-core/survey-creator-core.min.css';
+import 'survey-creator-core/survey-creator-core.i18n.js';
 
 const creatorOptions = {
   showLogicTab: false,
@@ -31,6 +31,7 @@ const creatorOptions = {
 
 const Surveycreator = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const creator = new SurveyCreator(creatorOptions);
   const koLocale = localization.getLocale('ko');
@@ -59,21 +60,23 @@ const Surveycreator = () => {
   //   // options.canShow = whiteList.indexOf(options.property.name) > -1;
   // });
 
-  const handleTemp = () => {
-    //
-  };
+  // const handleTemp = () => {
+
+  // };
 
   const handleSubmit = () => {
     navigate('/survey/new/payment', { state: { json: creator.JSON } });
+    // console.log(creator.JSON);
+    console.log(state.id);
   };
 
   return (
     <Flex flexDirection="column" gap="1rem" mt="-2rem">
       <SurveyCreatorComponent creator={creator} />
       <Flex justifyContent="flex-end" gap="1rem">
-        <Button type="button" variant="basic" onClick={handleTemp}>
+        {/* <Button type="button" variant="basic" onClick={handleTemp}>
           임시저장
-        </Button>
+        </Button> */}
         <Button onClick={handleSubmit}>다음단계</Button>
       </Flex>
     </Flex>
