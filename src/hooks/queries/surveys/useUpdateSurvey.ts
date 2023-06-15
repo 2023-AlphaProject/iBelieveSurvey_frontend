@@ -15,6 +15,7 @@ const useUpdateSurvey = (id: number, options = {}) => {
     {
       ...options,
       onSuccess: () => {
+        sessionStorage.setItem('surveyId', id.toString());
         navigate('/survey/new/payment', { state: { id } });
       },
       onError: () => {

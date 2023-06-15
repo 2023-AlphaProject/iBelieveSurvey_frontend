@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Flex, Label } from 'components/Box';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
@@ -18,9 +18,8 @@ interface Props {
 }
 
 const AddItem = ({ only }: Props) => {
-  const { state } = useLocation();
   return (
-    <Link to="/survey/new/gift" state={{ id: state.id }}>
+    <Link to="/survey/new/gift">
       <ItemWraaper
         borderBottom={`1px solid ${COLORS.primary}`}
         p={only ? '4rem 0' : '1.5rem 0'}

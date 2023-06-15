@@ -9,6 +9,7 @@ interface Props {
 
 const Card = (props: Props) => {
   const { gift } = props;
+
   return (
     <Link to={`/survey/new/gift/${gift.id}`}>
       <Flex flexDirection="column" mr={3}>

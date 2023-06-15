@@ -2,11 +2,8 @@ import { useState } from 'react';
 import { Flex } from 'components/Box';
 import { Sidebar, CategoryBox } from 'components/Gifticon';
 import { Filterbar } from 'components/common';
-// import { useLocation } from 'react-router-dom';
 
 const NewSurveyGifts = () => {
-  // const { state } = useLocation();
-  // console.log(state.id);
   const [, setLabel] = useState('카테고리별 보기');
   return (
     <Flex alignItems="center" flexDirection="column" gap="3.5rem" m="2rem 0">

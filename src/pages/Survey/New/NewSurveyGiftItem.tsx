@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import useTemplateQuery from 'hooks/queries/templates/useTemplateQuery';
+import { useBasket } from 'hooks/useBasket';
 
 interface ButtonProps {
   isClicked?: boolean;
@@ -34,6 +35,8 @@ const NewSurveyGiftItem = () => {
 
   const { data } = useTemplateQuery(id);
 
+  const { surveyId, basketData, setGifts } = useBasket();
+
   const handleClick = (id: number) => {
     setClicked(
       isClicked.map((data, idx) => {
@@ -50,8 +53,22 @@ const NewSurveyGiftItem = () => {
       }),
     );
   };
-  // const location = useLocation();
-  // console.log(location);
+
+  const handleBasket = () => {
+    setGifts({
+      surveyId,
+      basketData: [
+        ...basketData,
+        {
+          template: id,
+          gift: data?.data,
+          quantity: productCnt,
+        },
+      ],
+    });
+
+    navigate('/survey/new/payment');
+  };
 
   return (
     <Flex flexDirection="column" gap="0.6rem" justifyContent="center" position="relative" pt="5rem">
@@ -118,7 +135,9 @@ const NewSurveyGiftItem = () => {
           <Button variant="secondaryBasic" onClick={() => navigate(-1)}>
             목록으로
           </Button>
-          <Button variant="secondary">장바구니</Button>
+          <Button variant="secondary" onClick={handleBasket}>
+            장바구니
+          </Button>
         </Flex>
       </Flex>
     </Flex>

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ClearIcon from '@mui/icons-material/Clear';
+import { giftType } from 'types';
 
 const GiftImg = styled.img`
   object-fit: cover;
@@ -40,7 +41,12 @@ const InfoWrapper = styled(Flex)`
   }
 `;
 
-const BasketItem = () => {
+interface Props {
+  gift: giftType;
+  quantity: number;
+}
+
+const BasketItem = ({ gift, quantity }: Props) => {
   return (
     <ItemWraaper
       borderBottom={`1px solid ${COLORS.primary}`}
@@ -57,28 +63,25 @@ const BasketItem = () => {
           sx={{ marginBottom: 'auto' }}
         />
         <InfoWrapper>
-          <GiftImg
-            loading="lazy"
-            src="https://st.kakaocdn.net/product/gift/product/20220107172532_8a6336605bf447bd8632fe6d72b8d7d9.jpg"
-          />
+          <GiftImg loading="lazy" src={gift.product_image_url} />
           <ItemWraaper flexDirection="column" gap="1rem" mb="30px" width="100%">
             <Label color={COLORS.primary} fontFamily="Pr-SemiBold">
-              스타벅스
+              {gift.brand_name}
             </Label>
             <Label style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              마음을 전하는 선물 아메리카노
+              {gift.product_name}
             </Label>
           </ItemWraaper>
         </InfoWrapper>
       </Flex>
       <CounterWraaper alignItems="center" gap="10px">
         <Label fontFamily="Pr-SemiBold" mr="1.5rem">
-          4,700원
+          {(quantity * gift.product_price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
         </Label>
         <IconButton aria-label="minus" color="primary">
           <RemoveCircleIcon />
         </IconButton>
-        <Label fontFamily="Pr-SemiBold">1개</Label>
+        <Label fontFamily="Pr-SemiBold">{quantity}개</Label>
         <IconButton aria-label="plus" color="primary">
           <AddCircleIcon />
         </IconButton>

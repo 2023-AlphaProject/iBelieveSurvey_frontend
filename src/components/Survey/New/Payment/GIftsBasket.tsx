@@ -28,7 +28,7 @@ const GiftsBasket = ({ gifts }: Props) => {
       </Flex>
       <Box mt="6px" borderBottom={`2px solid ${COLORS.primary}`} />
       {gifts.map((gift: any) => (
-        <BasketItem key={`gift_${gift?.id}`} />
+        <BasketItem key={`gift_${gift?.template}`} gift={gift?.gift} quantity={gift?.quantity} />
       ))}
       <AddItem only={!gifts.length} />
     </Flex>
