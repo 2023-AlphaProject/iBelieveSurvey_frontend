@@ -13,9 +13,6 @@ const Survey = () => {
 
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
-      <Label fontFamily="Pr-Bold" fontSize="1.25rem">
-        설문게시판
-      </Label>
       <Flex gap="1.75rem">
         <Sidebar
           title="카테고리 선택"
@@ -50,20 +47,17 @@ const Survey = () => {
             </Label>
             <Checkbox sx={{ width: '2rem', height: '1.8rem' }} />
           </Flex>
-          <SurveyCardWrapper
-            currentPage={data?.data?.current_page}
-            totalPages={data?.data?.total_pages}
-            setPage={setPage}
-          >
-            {data?.data?.results?.map((survey: surveyType) => {
-              return <Card key={`survey_${survey.id}`} survey={survey} />;
-            })}
-          </SurveyCardWrapper>
-          {label === '결제한 설문 내역' ? (
-            <Label fontFamily="Pr-Bold" fontSize="1.25rem">
-              카카오톡 선물 전달 내역
-            </Label>
-          ) : null}
+          <Suspense fallback={<LoadingComponent />}>
+            <SurveyCardWrapper
+              currentPage={data?.data?.current_page}
+              totalPages={data?.data?.total_pages}
+              setPage={setPage}
+            >
+              {data?.data?.results?.map((survey: surveyType) => {
+                return <Card key={`survey_${survey.id}`} survey={survey} />;
+              })}
+            </SurveyCardWrapper>
+          </Suspense>
         </Flex>
       </Flex>
     </Flex>

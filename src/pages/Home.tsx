@@ -1,7 +1,13 @@
 import { Flex, Label } from 'components/Box';
+import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import { Navbar } from 'components/Navbar';
+import { Footer } from 'components/Footer';
+import { Card } from 'components/Survey';
+import { useSurveyListQuery } from 'hooks/queries/surveys';
+import { surveyType } from 'types';
+import { Link } from 'react-router-dom';
 
 interface BoxProps {
   right?: string;
@@ -21,17 +27,65 @@ const TextBox = styled.div<BoxProps>`
   right: ${(props) => props.right};
 `;
 
+const GradBox = styled.div<BoxProps>`
+  width: 100%;
+  height: 36rem;
+  background: linear-gradient(#6795bd, #f08b69);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  @media screen and (max-width: 1275px) {
+    height: 46rem;
+  }
+`;
+
+const LogoBox = styled.div<BoxProps>`
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 15rem;
+  position: relative;
+  @media screen and (max-width: 1275px) {
+    margin: 0 0 4rem 20%;
+  }
+`;
+
+const Img = styled.img`
+  width: 10rem;
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  @media screen and (max-width: 770px) {
+    display: none;
+  }
+`;
+
+const Img2 = styled.img`
+  width: 28rem;
+  position: absolute;
+  right: -3rem;
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+`;
+
+const Label2 = styled(Label)`
+  font-family: 'Pr-SemiBold';
+  font-size: 2.6rem;
+  color: white;
+  width: 13rem;
+  line-height: 1.2;
+  margin: 1.25rem 1rem;
+  @media screen and (max-width: 550px) {
+    display: none;
+  }
+`;
+
 const Home = () => {
+  const { data } = useSurveyListQuery(1);
   return (
     <Flex width="100%" flexDirection="column" alignItems="center">
       <Navbar />
-      <Flex
-        width="100%"
-        height="36rem"
-        background="linear-gradient( #6795BD, #F08B69);"
-        justifyContent="center"
-        position="relative"
-      >
+      <GradBox>
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/one.svg`}
           alt="GIFTICON"
@@ -62,7 +116,7 @@ const Home = () => {
               </Label>
             </TextBox>
           </Flex>
-          <Flex flexDirection="column" gap="0.4rem" mt="15rem" position="relative">
+          <LogoBox>
             <img
               src={`${process.env.PUBLIC_URL}/assets/images/loading.png`}
               alt="IBELEVESURVEY Logo"
@@ -84,20 +138,11 @@ const Home = () => {
                   width: '16.2rem',
                 }}
               />
-              <Label
-                fontFamily="Pr-SemiBold"
-                fontSize="2.6rem"
-                color="white"
-                width="13rem"
-                lineHeight="1.2"
-                m={3}
-              >
-                에 오신 것을 환영해요!
-              </Label>
+              <Label2>에 오신 것을 환영해요!</Label2>
             </Flex>
-          </Flex>
+          </LogoBox>
         </Flex>
-      </Flex>
+      </GradBox>
       <Flex width="80%" position="relative" flexDirection="column" gap="3rem">
         <img
           src={`${process.env.PUBLIC_URL}/assets/images/one.svg`}
@@ -173,7 +218,7 @@ const Home = () => {
       </Flex>
       <Flex position="relative" mt={5}>
         <img src={`${process.env.PUBLIC_URL}/assets/images/main3.svg`} alt="GIFTICON" />
-        <img
+        <Img
           src={`${process.env.PUBLIC_URL}/assets/images/logo-white.svg`}
           alt="LOGO"
           style={{
@@ -301,24 +346,25 @@ const Home = () => {
             3
           </Label>
           <Flex width="65%" flexDirection="column" mt="14rem">
-            <Label fontFamily="Pr-Bold" fontSize="1.9rem" position="absolute" left="15rem">
-              설문 저장 및 참고
-            </Label>
             <img
               src={`${process.env.PUBLIC_URL}/assets/images/phrase4.svg`}
               alt="GIFTICON"
               style={{
                 width: '14rem',
                 position: 'absolute',
-                top: '16.2rem',
+                top: '12.5rem',
                 left: '15rem',
               }}
             />
+            <Label fontFamily="Pr-Bold" fontSize="1.9rem" position="absolute" left="15rem">
+              설문 저장 및 참고
+            </Label>
+
             <Label
               fontFamily="Pr-Bold"
               fontSize="1.3rem"
               width="90%"
-              ml="6%"
+              ml="8%"
               mt="10rem"
               lineHeight="1.25"
             >
@@ -328,18 +374,42 @@ const Home = () => {
               <br /> 이를 통해 유저들은 자신이 하려고 했던 설문과 비슷한 설문을 참고하거나 다른
               유저의 의견을 확인할 수 있어요.
             </Label>
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/images/one5.svg`}
-              alt="GIFTICON"
-              style={{
-                width: '28rem',
-                position: 'absolute',
-                right: '-3rem',
-              }}
-            />
+            <Img2 src={`${process.env.PUBLIC_URL}/assets/images/one5.svg`} alt="GIFTICON" />
           </Flex>
         </Flex>
       </Flex>
+      <Flex width="95%" flexDirection="column" alignItems="center" gap="0.5rem" m={5}>
+        <Label fontFamily="Pr-Bold" fontSize="1.25rem" mt={5}>
+          진행중인 설문
+        </Label>
+        <Label fontFamily="Pr-Bold" fontSize="2rem">
+          IbelieveSurvey
+        </Label>
+        <Link to="/survey">
+          <Flex cursor="pointer">
+            <Label fontFamily="Pr-Bold" color={COLORS.primary}>
+              설문게시판 전체보기
+            </Label>
+          </Flex>
+        </Link>
+        <Flex mt={3} flexWrap="wrap">
+          {data?.data?.results?.map((survey: surveyType) => {
+            if (survey.is_ongoing === true) {
+              return <Card key={`survey_${survey.id}`} survey={survey} />;
+            }
+            return null;
+          })}
+        </Flex>
+      </Flex>
+      <Label fontFamily="Pr-Bold" mb={3}>
+        나만의 설문을 시작하려면
+      </Label>
+      <Link to="/survey/new">
+        <Button width="12rem" mb={5}>
+          설문 작성하기
+        </Button>
+      </Link>
+      <Footer />
     </Flex>
   );
 };
