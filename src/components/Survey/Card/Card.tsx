@@ -38,7 +38,6 @@ const Card = (props: Props) => {
           width: '14rem',
           height: '10rem',
           borderRadius: '1.25rem',
-          backgroundColor: COLORS.primaryVariant,
         }}
         src={survey.thumbnail}
       />
