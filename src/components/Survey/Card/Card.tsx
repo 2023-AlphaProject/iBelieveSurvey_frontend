@@ -3,13 +3,25 @@ import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
 import PersonIcon from '@mui/icons-material/Person';
 import { surveyType } from 'types/surveyType';
+import styled from 'styled-components';
 
 interface Props {
   survey: surveyType;
 }
 
+const IconContainer = styled(Flex)`
+  flex-direction: column;
+  align-items: center;
+`;
+
 const Card = (props: Props) => {
   const { survey } = props;
+  console.log(survey);
+
+  if (survey.is_survey_hidden) {
+    return <div />;
+  }
+
   return (
     <Flex flexDirection="column" pb={3} cursor="pointer">
       <Box width="14rem" height="10rem" borderRadius="1.25rem" background={COLORS.primaryVariant} />
@@ -28,14 +40,14 @@ const Card = (props: Props) => {
             {survey.is_ongoing ? '진행중' : '종료'}
           </Label>
           <Label fontSize="0.7rem" color="#888888" fontFamily="Pr-Regular" m={2} mr={3}>
-            {useDate(new Date())} ~ {useDate(new Date())}
+            {useDate(new Date(survey.started_at))} ~ {useDate(new Date(survey.end_at))}
           </Label>
-          <Flex flexDirection="column">
-            <PersonIcon sx={{ color: '#888888', fontSize: 20 }} />
+          <IconContainer>
+            <PersonIcon sx={{ color: COLORS.secondary, fontSize: 20 }} />
             <Label fontSize="0.1px" color="#888888">
               {survey.participants}
             </Label>
-          </Flex>
+          </IconContainer>
         </Flex>
 
         <Label width="13.6rem" fontSize="0.9rem" fontFamily="Pr-Bold">
