@@ -6,6 +6,7 @@ import { SurveyCardWrapper, NewSurveyBtn } from 'components/Survey';
 
 const MyPage = () => {
   const [label, setLabel] = useState('결제한 설문 내역');
+  const [orderState, setOrderState] = useState('created_at');
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
       <Label fontFamily="Pr-Bold" fontSize="1.25rem">
@@ -23,7 +24,7 @@ const MyPage = () => {
             <Label fontFamily="Pr-Bold" fontSize="1.25rem">
               {label}
             </Label>
-            <Filterbar right="0" />
+            <Filterbar setOrderState={setOrderState} right="0" />
           </Flex>
           <SurveyCardWrapper currentPage={1} totalPages={1} setPage={() => ''}>
             {/* <Card survey={dummyCards} />

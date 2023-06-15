@@ -9,6 +9,15 @@ interface BtnProps {
   surveyStateSelected?: boolean;
 }
 
+interface SearchProps {
+  category: string;
+  setCategory: (arg0: string) => void;
+  participants: string;
+  setParticipants: (arg0: string) => void;
+  surveyState: string;
+  setSurveyState: (arg0: string) => void;
+}
+
 const Container = styled(Flex)`
   flex-wrap: wrap;
   width: 100%;
@@ -83,11 +92,9 @@ const FilterCancelBtn = styled.button`
 `;
 
 const SearchContainer = (props: any) => {
-  const { category, setCategory } = props;
+  const { category, setCategory, participants, setParticipants, surveyState, setSurveyState } =
+    props;
   console.log(category);
-  // const [category, setCategory] = useState('');
-  const [participants, setParticipants] = useState('');
-  const [surveyState, setSurveyState] = useState('');
 
   const categorys = [
     '인구통계',
@@ -103,7 +110,7 @@ const SearchContainer = (props: any) => {
     '음식과 식습관',
   ];
   const participantsConditions = ['1~9명', '10~99명', '100명 이상'];
-  const surveyStates = ['진행 예정', '진행 중', '종료'];
+  const surveyStates = ['진행 중', '종료'];
 
   const handleFilterClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

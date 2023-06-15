@@ -5,6 +5,7 @@ import { Filterbar } from 'components/common';
 
 const NewSurveyGifts = () => {
   const [label, setLabel] = useState('카테고리별 보기');
+  const [orderState, setOrderState] = useState('created_at');
   return (
     <Flex alignItems="center" flexDirection="column" gap="3.5rem">
       <Flex gap="2rem">
@@ -14,7 +15,7 @@ const NewSurveyGifts = () => {
           <Category />
           {label === '카테고리별 보기' ? <CategoryBox /> : <BrandBox />}
 
-          <Filterbar right="5rem" />
+          <Filterbar setOrderState={setOrderState} right="5rem" />
         </Flex>
       </Flex>
     </Flex>

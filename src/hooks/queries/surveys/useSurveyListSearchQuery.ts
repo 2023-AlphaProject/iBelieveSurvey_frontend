@@ -8,7 +8,7 @@ const useSurveyListSearchQuery = (
   category: string,
   ordering = 'created_at',
 ) => {
-  return useQuery([QUERY_KEYS.SURVEY_LIST_SEARCH, page, ordering, search, category], () =>
+  return useQuery([QUERY_KEYS.SURVEY_LIST_SEARCH, page, search, category, ordering], () =>
     surveysAPI.search(page, ordering, search, category),
   );
 };

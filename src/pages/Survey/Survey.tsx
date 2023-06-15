@@ -8,6 +8,7 @@ import { surveyType } from 'types/surveyType';
 
 const Survey = () => {
   const [label, setLabel] = useState('인구통계');
+  const [orderState, setOrderState] = useState('created_at');
   const [page, setPage] = useState(1);
   const { data } = useSurveyListQuery(page);
 
@@ -36,7 +37,7 @@ const Survey = () => {
             <Label fontFamily="Pr-Regular" fontSize="0.8rem" mt="0.5rem">
               총 1,000개
             </Label>
-            <Filterbar right="0" />
+            <Filterbar setOrderState={setOrderState} right="0" />
           </Flex>
           <Flex>
             <Label fontFamily="Pr-Bold" fontSize="0.8rem" mt="0.5rem">
