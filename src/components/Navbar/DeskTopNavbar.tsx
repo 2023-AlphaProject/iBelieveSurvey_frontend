@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import { Search, SearchIconWrapper, StyledInputBase } from 'components/Navbar/NavbarStyles';
@@ -11,10 +11,11 @@ import InputBase from '@mui/material/InputBase';
 interface DeskTopNavbarProps {
   kakaoLogin: () => void;
   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  enterKey: (e: KeyboardEvent<HTMLDivElement>) => void;
 }
 
 const DeskTopNavbar = (props: DeskTopNavbarProps) => {
-  const { kakaoLogin, handleSearchChange } = props;
+  const { kakaoLogin, handleSearchChange, enterKey } = props;
 
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
@@ -29,7 +30,7 @@ const DeskTopNavbar = (props: DeskTopNavbarProps) => {
 
       {/* PC SearchBar */}
       <Box sx={{ flexGrow: 2, display: 'flex' }}>
-        <Search>
+        <Search onKeyUp={(e) => enterKey(e)}>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>

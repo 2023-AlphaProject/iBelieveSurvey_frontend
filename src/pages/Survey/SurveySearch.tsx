@@ -5,9 +5,15 @@ import { Card, SurveyCardWrapper, SearchContainer } from 'components/Survey';
 import Checkbox from '@mui/material/Checkbox';
 import dummyCards from 'components/Survey/Card/dummyCards';
 import styled from 'styled-components';
+import { useSurveyListSearchQuery } from 'hooks/queries/surveys';
 
 const Survey = () => {
   const [label, setLabel] = useState('인구통계');
+  const [page, setPage] = useState(1);
+  const searchValue = new URL(window.location.href).search.replace('?', '');
+
+  const { data } = useSurveyListSearchQuery(page, searchValue);
+  console.log(data);
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
       <Label fontFamily="Pr-Bold" fontSize="1.25rem">

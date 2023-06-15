@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { KeyboardEvent } from 'react';
 import {
   Search,
   SearchIconWrapper,
@@ -13,22 +14,30 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
+
 // import './custom.css';
 
 interface MobilenNavbar extends IDeskTopNavbar {
   kakaoLogin: () => void;
   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  enterKey: (e: KeyboardEvent<HTMLDivElement>) => void;
 }
 
 const MobileNavbar = (props: MobilenNavbar) => {
-  const { anchorElNav, handleOpenNavMenu, handleCloseNavMenu, kakaoLogin, handleSearchChange } =
-    props;
+  const {
+    anchorElNav,
+    handleOpenNavMenu,
+    handleCloseNavMenu,
+    kakaoLogin,
+    handleSearchChange,
+    enterKey,
+  } = props;
 
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* Mobile SearchBar */}
       <Box sx={{ flexGrow: 1, display: 'flex' }}>
-        <Search sx={{ width: '80%' }}>
+        <Search sx={{ width: '80%' }} onKeyUp={(e) => enterKey(e)}>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
