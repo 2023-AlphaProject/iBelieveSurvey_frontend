@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Flex, Box, Label } from 'components/Box';
 import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
@@ -16,13 +17,19 @@ const IconContainer = styled(Flex)`
 
 const Card = (props: Props) => {
   const { survey } = props;
+  const navigate = useNavigate();
 
   if (survey.is_survey_hidden) {
     return <div />;
   }
 
   return (
-    <Flex flexDirection="column" pb={3} cursor="pointer">
+    <Flex
+      flexDirection="column"
+      pb={3}
+      cursor="pointer"
+      onClick={() => navigate(`/survey/${survey.id}`)}
+    >
       <Box width="14rem" height="10rem" borderRadius="1.25rem" background={COLORS.primaryVariant} />
       <Flex p={2} flexDirection="column" gap="8px">
         <Flex>

@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+interface Props {
+  isEnd: boolean;
+  endAt: string;
+}
+
 const Box = styled.div`
   width: 24rem;
   height: 24rem;
@@ -30,7 +35,11 @@ const Label = styled.div`
   font-family: 'Pr-Bold';
 `;
 
-const Thumbnail = () => {
+const Thumbnail = (props: Props) => {
+  const { isEnd, endAt } = props;
+  const date = new Date(endAt);
+  const dDay = date.getDate() - new Date().getDate();
+
   return (
     <Box>
       <img
@@ -44,7 +53,7 @@ const Thumbnail = () => {
       />
       <IconBox>
         <Icon src={`${process.env.PUBLIC_URL}/assets/images/d-day-icon.svg`} alt="GIFTICON" />
-        <Label>D-94</Label>
+        <Label> {isEnd === true ? '종료' : `D-${dDay}`}</Label>
       </IconBox>
     </Box>
   );
