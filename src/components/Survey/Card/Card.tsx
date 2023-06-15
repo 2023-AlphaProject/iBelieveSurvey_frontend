@@ -3,7 +3,8 @@ import { Flex, Box, Label } from 'components/Box';
 import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
 import PersonIcon from '@mui/icons-material/Person';
-import { surveyType } from 'types/surveyType';
+import { surveyType } from 'types';
+
 import styled from 'styled-components';
 
 interface Props {

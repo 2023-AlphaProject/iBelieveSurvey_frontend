@@ -6,7 +6,7 @@ import { Thumbnail } from 'components/SurveyDetail';
 import { Tag, Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
-import { useSurveyQuery } from 'hooks/queries/survey';
+import { useSurveyQuery } from 'hooks/queries/surveys';
 
 const Content = styled(Label)`
   font-family: 'Pr-Regular';

@@ -1,4 +1,4 @@
-export interface surveyType {
+interface surveyType {
   id: number;
   writer: number;
   title: string;
@@ -15,3 +15,5 @@ export interface surveyType {
   created_at: string;
   sinningPercentage: number;
 }
+
+export default surveyType;

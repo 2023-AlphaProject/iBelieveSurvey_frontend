@@ -1,13 +1,15 @@
-import { useState, useRef, useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Flex, Box, Label } from 'components/Box';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import dummyImgs from './dummyImgs';
+import thumbnailImgs from './thumbnailImgs';
 
 const Img = styled.img`
+  cursor: pointer;
   width: 14.5rem;
   height: 14.5rem;
 `;
@@ -19,13 +21,17 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const ThumbnailBtn = () => {
+interface Props {
+  image: any;
+  setImage: Dispatch<SetStateAction<any>>;
+}
+
+const ThumbnailBtn = ({ image, setImage }: Props) => {
   const isDesktop = useMediaQuery('(min-width: 1200px)');
   const isMobile = useMediaQuery('(max-width: 960px)');
   const inputRef = useRef<HTMLInputElement>(null);
   const [num, setNum] = useState(3);
   const [cnt, setCnt] = useState(1);
-  const [image, setimage] = useState<{ file: null; url: string }>({ file: null, url: '' });
 
   useEffect(() => {
     if (isDesktop === true) {
@@ -43,15 +49,14 @@ const ThumbnailBtn = () => {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleImageChange = (e: any) => {
     const imageFile = e.target.files[0];
     const imageUrl = URL.createObjectURL(imageFile);
-    setimage({ file: imageFile, url: imageUrl });
+    setImage({ file: imageFile, url: imageUrl });
   };
 
   const cntUp = () => {
-    if (cnt < dummyImgs.length / num) {
+    if (cnt < thumbnailImgs.length / num) {
       setCnt(cnt + 1);
     } else {
       setCnt(1);
@@ -60,20 +65,30 @@ const ThumbnailBtn = () => {
 
   const cntDown = () => {
     if (cnt <= 1) {
-      setCnt(dummyImgs.length / num);
+      setCnt(thumbnailImgs.length / num);
     } else {
       setCnt(cnt - 1);
     }
   };
 
+  const handleClickImg = (e: any) => {
+    setImage({ url: e.target.src, basic: e.target.src });
+  };
+
   const insertImg = (cnt: number) => {
     let range = cnt * num;
-    if (range > dummyImgs.length) {
-      range -= num - (dummyImgs.length % num);
+    if (range > thumbnailImgs.length) {
+      range -= num - (thumbnailImgs.length % num);
     }
     const newArr = [];
     for (let i = cnt * num - num; i < range; i += 1) {
-      newArr.push(<Img key={i} src={`${process.env.PUBLIC_URL}/assets/images/${dummyImgs[i]}`} />);
+      newArr.push(
+        <Img
+          key={i}
+          src={`${process.env.PUBLIC_URL}/assets/images/thumbnails/${thumbnailImgs[i]}`}
+          onClick={(e) => handleClickImg(e)}
+        />,
+      );
     }
     return newArr;
   };

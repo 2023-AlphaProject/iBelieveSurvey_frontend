@@ -4,7 +4,7 @@ import { Sidebar, Filterbar, LoadingComponent } from 'components/common';
 import { Card, SurveyCardWrapper } from 'components/Survey';
 import Checkbox from '@mui/material/Checkbox';
 import { useSurveyListQuery } from 'hooks/queries/surveys';
-import { surveyType } from 'types/surveyType';
+import { surveyType } from 'types';
 
 const Survey = () => {
   const [label, setLabel] = useState('인구통계');

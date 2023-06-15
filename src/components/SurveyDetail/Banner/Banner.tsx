@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { Flex } from 'components/Box';
@@ -37,11 +37,11 @@ const BannerButton = styled(Button)`
 const Banner = () => {
   const temp = false;
   const [bannerDataState] = useRecoilState(bannerState);
-  const location = useLocation();
+  // const location = useLocation();
 
-  const URL = location.pathname;
-  const URLRegex = /^\/survey\/[0-9]+$/;
-  const isBanner = URLRegex.test(URL);
+  // const URL = location.pathname;
+  // const URLRegex = /^\/survey\/[0-9]+$/;
+  // const isBanner = URLRegex.test(URL);
 
   return temp ? (
     <BannerContainer>
