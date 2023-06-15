@@ -42,7 +42,7 @@ const Banner = () => {
   const URLRegex = /^\/survey\/[0-9]+$/;
   const isBanner = URLRegex.test(URL);
 
-  return isBanner ? (
+  return !isBanner ? (
     <BannerContainer>
       <BannerInnerContainer>
         <BannerTitle>{bannerDataState.title}</BannerTitle>

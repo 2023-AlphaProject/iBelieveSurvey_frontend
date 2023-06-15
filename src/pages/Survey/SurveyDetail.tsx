@@ -24,9 +24,6 @@ const SurveyDatail = () => {
 
   return (
     <Flex alignItems="center" flexDirection="column" gap="2rem">
-      <Label fontFamily="Pr-Bold" fontSize="1.25rem">
-        설문 상세페이지
-      </Label>
       <Flex gap="2rem">
         <Thumbnail />
         <Flex flexDirection="column" width="32.5rem" gap="0.75rem">
