@@ -3,25 +3,22 @@ import { Flex } from 'components/Box';
 import { useSnackBar } from 'hooks';
 import { useUserUpdate } from 'hooks/queries/auth';
 import { useLocation } from 'react-router';
+import { userInfo } from 'types';
 import UserInfoContainer from './UserInfoContainer';
 
 const SignUpComponent = () => {
+  const { mutate: userUpdate } = useUserUpdate();
   const { handleSnackBar } = useSnackBar();
   const { state } = useLocation();
-  console.log(state);
+  const userToken = state?.token;
 
-  const initInfo = {
-    realName: '',
-    phoneNumber: '010',
-    birthYear: '',
-    gender: '',
+  const initInfo: userInfo = {
+    realName: state.realName || '',
+    phoneNumber: state.phoneNumber || '010',
+    birthYear: state.birthYear || '',
+    gender: state.gender || '',
   };
-
   const [userInfo, setUserInfo] = useState(initInfo);
-  // const userUpdate = async () => {
-  //   const { refetch } = useUserUpdate(userInfo);
-  //   return refetch();
-  // };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,8 +34,7 @@ const SignUpComponent = () => {
       })();
       return;
     }
-    console.log('asd');
-    // userUpdate();
+    userUpdate(userInfo);
   };
 
   return <UserInfoContainer userInfo={userInfo} setUserInfo={setUserInfo} onSubmit={onSubmit} />;

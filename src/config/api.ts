@@ -7,9 +7,6 @@ const createInstance = () => {
     baseURL: BASEURL,
     timeout: 2000,
     withCredentials: true,
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // },
   });
 };
 
@@ -19,7 +16,7 @@ if (userToken.user) {
   instance.interceptors.request.use(
     async (config) => {
       const newConfig = { ...config };
-      newConfig.headers.Authorization = `Bearer ${userToken.user}`;
+      newConfig.headers.Authorization = `jwt ${userToken.user}`;
       return newConfig;
     },
     (error) => {
