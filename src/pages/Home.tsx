@@ -39,7 +39,7 @@ const LogoBox = styled.div<BoxProps>`
   margin-top: 15rem;
   position: relative;
   @media screen and (max-width: 1275px) {
-    margin: 0 0 4rem 0;
+    margin: 0 0 4rem 20%;
   }
 `;
 
