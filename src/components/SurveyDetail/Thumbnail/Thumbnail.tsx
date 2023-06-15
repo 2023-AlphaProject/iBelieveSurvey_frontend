@@ -44,7 +44,7 @@ const Thumbnail = (props: Props) => {
   return (
     <Box>
       <img
-        src={`${process.env.PUBLIC_URL}/assets/images/starbucks.jpg`}
+        src={img}
         alt="GIFTICON"
         style={{
           width: '24rem',

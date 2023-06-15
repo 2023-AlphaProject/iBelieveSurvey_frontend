@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { bannerState } from 'states/stateBanner';
+// import { useRecoilState } from 'recoil';
+// import { bannerState } from 'states/stateBanner';
 import { Flex, Box, Label } from 'components/Box';
 import { Thumbnail } from 'components/SurveyDetail';
 import { Tag, Button } from 'components/common';
-import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import { useSurveyQuery } from 'hooks/queries/survey';
