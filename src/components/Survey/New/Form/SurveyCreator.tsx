@@ -68,7 +68,7 @@ const Surveycreator = () => {
   };
 
   return (
-    <Flex flexDirection="column" gap="1rem">
+    <Flex flexDirection="column" gap="1rem" mt="-2rem">
       <SurveyCreatorComponent creator={creator} />
       <Flex justifyContent="flex-end" gap="1rem">
         <Button type="button" variant="basic" onClick={handleTemp}>
