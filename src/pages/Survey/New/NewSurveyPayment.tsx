@@ -7,7 +7,7 @@ import {
   StepProgress,
 } from 'components/Survey';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 const PaymentWrapper = styled(Flex)`
@@ -29,8 +29,8 @@ const BasketWrapper = styled(Flex)`
 `;
 
 const NewSurveyPayment = () => {
-  const { state } = useLocation();
-  const [gifts, setGifts] = useState([]);
+  // const { state } = useLocation();
+  const [gifts] = useState([]);
 
   return (
     <>
