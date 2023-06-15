@@ -22,6 +22,7 @@ const SurveySearch = () => {
     searchParams || '',
     category,
     participants,
+    surveyState,
     orderState,
   );
 

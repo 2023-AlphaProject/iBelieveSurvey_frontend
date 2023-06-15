@@ -7,11 +7,12 @@ const useSurveyListSearchQuery = (
   search: string,
   category: string,
   participants: string,
+  surveyState: string,
   ordering = 'created_at',
 ) => {
   return useQuery(
-    [QUERY_KEYS.SURVEY_LIST_SEARCH, page, search, category, participants, ordering],
-    () => surveysAPI.search(page, ordering, search, category, participants),
+    [QUERY_KEYS.SURVEY_LIST_SEARCH, page, search, category, participants, surveyState, ordering],
+    () => surveysAPI.search(page, search, category, participants, surveyState, ordering),
   );
 };
 

@@ -9,13 +9,17 @@ const surveysAPI = {
   },
   search: (
     page: number,
-    ordering: string,
     search: string,
     category: string,
     participants: string,
+    surveyState: string,
+    ordering: string,
   ) => {
     return instance.get(
-      `/surveys/?ordering=${ordering}&search=${search}&page=${page}&category=${category}&${participants}`,
+      // `/surveys/?ordering=${ordering}&search=${search}&page=${page}&category=${category}&${participants}`,
+      `/surveys/?page=${page}&search=${search}${category && `&category=${category}`}${
+        participants && `&${participants}`
+      }${surveyState && `&${surveyState}`}&ordering=${ordering}`,
     );
   },
 };

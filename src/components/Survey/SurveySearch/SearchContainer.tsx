@@ -95,7 +95,7 @@ const SearchContainer = (props: SearchProps) => {
   const { category, setCategory, participants, setParticipants, surveyState, setSurveyState } =
     props;
   const [participantsText, setParticipantsText] = useState('');
-  console.log(category);
+  const [surveyStateText, setSurveyStateText] = useState('');
 
   const handleParticipants = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (e.currentTarget.name === '1~9명') {
@@ -108,6 +108,16 @@ const SearchContainer = (props: SearchProps) => {
       setParticipants('over_hundred');
     }
     setParticipantsText(e.currentTarget.name);
+  };
+
+  const handleSurveyState = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e.currentTarget.name === '진행 중') {
+      setSurveyState('ongoing');
+    }
+    if (e.currentTarget.name === '종료') {
+      setSurveyState('ended');
+    }
+    setSurveyStateText(e.currentTarget.name);
   };
 
   const categorys = [
@@ -188,9 +198,10 @@ const SearchContainer = (props: SearchProps) => {
         {surveyStates.map((e) => {
           return (
             <ConditionBtn
+              name={e}
               surveyStateSelected={surveyState === e}
               key={e}
-              onClick={() => setSurveyState(e)}
+              onClick={(e) => handleSurveyState(e)}
             >
               {e}
             </ConditionBtn>
@@ -206,7 +217,7 @@ const SearchContainer = (props: SearchProps) => {
             {participants && `${participantsText} x`}
           </FilterBtn>
           <FilterBtn onClick={handleFilterClick} name="surveyState">
-            {surveyState && `${surveyState} x`}
+            {surveyState && `${surveyStateText} x`}
           </FilterBtn>
         </Flex>
         <FilterCancelBtn onClick={handleFilterClick} name="allCancel">
