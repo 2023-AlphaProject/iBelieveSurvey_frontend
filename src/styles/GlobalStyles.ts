@@ -30,6 +30,9 @@ const GlobalStyles = createGlobalStyle`
     all: unset; 
     cursor: pointer;
   }
+  .svc-creator__banner {
+    display: none;
+  }
     `;
 
 export default GlobalStyles;

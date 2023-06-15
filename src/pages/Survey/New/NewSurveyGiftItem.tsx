@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Flex, Label, Box } from 'components/Box';
 import { Button } from 'components/common';
 import Selector from 'components/Gifticon/Selector/Selector';
+// import { useLocation } from 'react-router-dom';
 import { StepProgress } from 'components/Survey';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
@@ -43,6 +44,9 @@ const NewSurveyGiftItem = () => {
       }),
     );
   };
+  // const location = useLocation();
+  // console.log(location);
+
   return (
     <Flex flexDirection="column" gap="0.6rem" justifyContent="center" position="relative">
       <StepProgress />
