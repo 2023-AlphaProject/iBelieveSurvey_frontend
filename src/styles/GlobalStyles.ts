@@ -3,6 +3,10 @@ import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
+  body {
+    padding: 0 !important;
+  }
+  
   html {
     font-family: 'Pr-Light';
   }

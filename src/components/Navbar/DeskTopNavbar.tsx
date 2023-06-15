@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import { Search, SearchIconWrapper, StyledInputBase } from 'components/Navbar/NavbarStyles';
@@ -5,8 +6,16 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
+import InputBase from '@mui/material/InputBase';
 
-const DeskTopNavbar = () => {
+interface DeskTopNavbarProps {
+  kakaoLogin: () => void;
+  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const DeskTopNavbar = (props: DeskTopNavbarProps) => {
+  const { kakaoLogin, handleSearchChange } = props;
+
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* PC Logo */}
@@ -17,13 +26,18 @@ const DeskTopNavbar = () => {
           style={{ width: '7rem', marginRight: '2rem' }}
         />
       </Link>
+
       {/* PC SearchBar */}
       <Box sx={{ flexGrow: 2, display: 'flex' }}>
         <Search>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
-          <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(e)}
+          />
         </Search>
       </Box>
 
@@ -41,6 +55,7 @@ const DeskTopNavbar = () => {
         </Link>
         <Link to="/">
           <Button
+            onClick={kakaoLogin}
             sx={{
               display: 'block',
               width: '7rem',

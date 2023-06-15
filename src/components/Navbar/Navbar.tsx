@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
+import { kakaoLogin } from 'utils/kakaoLogin';
 import { useWindowSize } from 'hooks/useWindowSize';
 import { DeskTopNavbar, MobileNavbar } from 'components/Navbar';
 import { AppBarContainer } from 'components/Navbar/NavbarStyles';
@@ -7,6 +8,12 @@ import Container from '@mui/material/Container';
 const Navbar = () => {
   const windowSize = useWindowSize();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [searchTitle, setSearchTitle] = useState('');
+  const { KakaoLogin } = kakaoLogin();
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTitle(e.target.value);
+  };
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -16,16 +23,20 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
+  console.log(searchTitle);
+
   return (
     <AppBarContainer>
       <Container style={{ width: '100%', maxWidth: '1200px' }}>
         {windowSize.width !== undefined && windowSize.width > 900 ? (
-          <DeskTopNavbar />
+          <DeskTopNavbar kakaoLogin={KakaoLogin} handleSearchChange={handleSearchChange} />
         ) : (
           <MobileNavbar
             anchorElNav={anchorElNav}
             handleOpenNavMenu={(e) => handleOpenNavMenu(e)}
             handleCloseNavMenu={() => handleCloseNavMenu()}
+            kakaoLogin={KakaoLogin}
+            handleSearchChange={handleSearchChange}
           />
         )}
       </Container>

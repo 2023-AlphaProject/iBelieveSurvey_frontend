@@ -13,8 +13,17 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
+// import './custom.css';
 
-const MobileNavbar = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }: IDeskTopNavbar) => {
+interface MobilenNavbar extends IDeskTopNavbar {
+  kakaoLogin: () => void;
+  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const MobileNavbar = (props: MobilenNavbar) => {
+  const { anchorElNav, handleOpenNavMenu, handleCloseNavMenu, kakaoLogin, handleSearchChange } =
+    props;
+
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* Mobile SearchBar */}
@@ -23,7 +32,11 @@ const MobileNavbar = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }: ID
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
-          <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(e)}
+          />
         </Search>
       </Box>
 
@@ -77,7 +90,7 @@ const MobileNavbar = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }: ID
             </MenuItem>
           </Link>
           <Link to="/">
-            <MenuItem onClick={handleCloseNavMenu}>
+            <MenuItem onClick={kakaoLogin}>
               <Typography textAlign="center">로그인</Typography>
             </MenuItem>
           </Link>
