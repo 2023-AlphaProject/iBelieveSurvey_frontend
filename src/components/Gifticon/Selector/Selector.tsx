@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { Flex, Label } from 'components/Box';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
+import { giftType } from 'types';
 
 const Container = styled.div`
   width: 28rem;
@@ -13,12 +14,17 @@ const Container = styled.div`
   border-radius: 2.2rem;
 `;
 
-const Selector = () => {
-  const [cnt, setCnt] = useState(1);
+interface Props {
+  product: giftType;
+  cnt: number;
+  setCnt: Dispatch<SetStateAction<number>>;
+}
+
+const Selector = ({ product, cnt, setCnt }: Props) => {
   return (
     <Container>
       <Label fontFamily="Pr-Bold" fontSize="1.1rem">
-        마음을 전하는 선물 아메리카노(T)
+        {product.product_name}
       </Label>
       <Flex background="#FFC2AE" pt={2} pb={3} borderRadius="2rem" mt={4} position="relative">
         <RemoveIcon
@@ -31,10 +37,8 @@ const Selector = () => {
             left: 9,
           }}
           onClick={() => {
-            if (cnt > 0) {
+            if (cnt > 1) {
               setCnt(cnt - 1);
-            } else {
-              setCnt(0);
             }
           }}
         />

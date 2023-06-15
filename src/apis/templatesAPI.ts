@@ -4,7 +4,7 @@ const templatesAPI = {
   list: (page: number) => {
     return instance.get(`/templates/?page=${page}`);
   },
-  get: (id: number) => {
+  get: (id: string | undefined) => {
     return instance.get(`/templates/${id}/`);
   },
 };
