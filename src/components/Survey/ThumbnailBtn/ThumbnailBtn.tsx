@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, Dispatch, SetStateAction } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Flex, Box, Label } from 'components/Box';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { imageType } from 'types';
 import dummyImgs from './dummyImgs';
 
 const Img = styled.img`
@@ -19,13 +20,17 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const ThumbnailBtn = () => {
+interface Props {
+  image: imageType;
+  setImage: Dispatch<SetStateAction<imageType>>;
+}
+
+const ThumbnailBtn = ({ image, setImage }: Props) => {
   const isDesktop = useMediaQuery('(min-width: 1200px)');
   const isMobile = useMediaQuery('(max-width: 960px)');
   const inputRef = useRef<HTMLInputElement>(null);
   const [num, setNum] = useState(3);
   const [cnt, setCnt] = useState(1);
-  const [image, setimage] = useState<{ file: null; url: string }>({ file: null, url: '' });
 
   useEffect(() => {
     if (isDesktop === true) {
@@ -47,7 +52,7 @@ const ThumbnailBtn = () => {
   const handleImageChange = (e: any) => {
     const imageFile = e.target.files[0];
     const imageUrl = URL.createObjectURL(imageFile);
-    setimage({ file: imageFile, url: imageUrl });
+    setImage({ file: imageFile, url: imageUrl });
   };
 
   const cntUp = () => {

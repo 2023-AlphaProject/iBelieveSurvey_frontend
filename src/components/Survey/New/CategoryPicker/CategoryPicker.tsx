@@ -14,6 +14,17 @@ interface BtnProps {
 
 const Scroll = styled(Flex)`
   overflow-x: scroll;
+  padding-bottom: 6px;
+
+  &::-webkit-scrollbar {
+    background-color: #d9d9d9;
+    height: 4px;
+    border-radius: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.primary};
+    border-radius: 6px;
+  }
 `;
 
 const CategoryBtn = styled.button<BtnProps>`
@@ -58,7 +69,7 @@ const CategoryPicker = ({ category, setCategory }: Props) => {
         </Label>
       </Flex>
       <Flex borderRadius="3rem" justifyContent="center" background={COLORS.primaryVariant}>
-        <Scroll m="12px 2rem" gap="10px" flexWrap="nowrap">
+        <Scroll m="12px 2rem 6px 2rem" gap="10px" flexWrap="nowrap">
           {categorys.map((e) => {
             return (
               <CategoryBtn isSelected={category === e} key={e} onClick={() => setCategory(e)}>
