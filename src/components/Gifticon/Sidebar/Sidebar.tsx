@@ -21,7 +21,7 @@ const Category = styled(Label)<CategoryProps>`
 
 const Sidebar = (props: Props) => {
   const { setLabel } = props;
-  const [categorys] = useState(['카테고리별 보기', '브랜드별 보기']);
+  const [categorys] = useState(['카테고리별 보기']);
   const [selected, setSelected] = useState(categorys[0]);
 
   const handleChange = (category: string) => {
@@ -36,7 +36,7 @@ const Sidebar = (props: Props) => {
         alt="GIFTICON"
         style={{ width: '13rem', height: '2.5rem', borderRadius: '1.2rem' }}
       />
-      <Flex flexDirection="column" gap="1.5rem" pl="3.5rem" mt={3}>
+      <Flex flexDirection="column" gap="1.5rem" pl="3rem" mt={3}>
         {categorys.map((category) => (
           <Category
             width="auto"
