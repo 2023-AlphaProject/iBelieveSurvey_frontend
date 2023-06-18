@@ -13,7 +13,6 @@ const usePaySurvey = (id: number, options = {}) => {
       ...options,
       onSuccess: ({ data }) => {
         const { innerWidth: width } = window;
-        console.log(width);
         if (width > 768) {
           window.location.href = data.next_redirect_pc_url;
         } else {
