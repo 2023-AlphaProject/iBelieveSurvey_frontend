@@ -53,7 +53,7 @@ const Card = (props: Props) => {
             mt={1}
             fontFamily="Pr-Bold"
           >
-            {survey.is_end ? '종료' : '진행중'}
+            {survey.is_ongoing ? '진행중' : '종료'}
           </Label>
           <Label fontSize="0.7rem" color="#888888" fontFamily="Pr-Regular" m={2} mr={3}>
             {useDate(new Date(survey.started_at))} ~ {useDate(new Date(survey.end_at))}
