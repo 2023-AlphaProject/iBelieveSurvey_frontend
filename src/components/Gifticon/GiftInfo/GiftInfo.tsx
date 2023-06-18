@@ -10,10 +10,10 @@ const GiftInfo = (props: Props) => {
   const { gift } = props;
   return (
     <>
-      <Flex m="1rem" width="85%" justifyContent="space-between" cursor="pointer">
+      <Flex m="1rem" width="85%" justifyContent="space-between">
         <Flex>
           <img
-            src={`${process.env.PUBLIC_URL}/assets/images/starbucks.jpg`}
+            src={`${process.env.PUBLIC_URL}/assets/images/${gift.thumbnail}`}
             alt="IBELEVESURVEY Logo"
             style={{ width: '6rem', borderRadius: '1.2rem' }}
           />

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Flex } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
@@ -121,6 +120,7 @@ const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) =
             <GenderButton
               name="gender"
               value="male"
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onClick={(e: any) => onUserInfoChange(e)}
               backgroundcolor={userInfo.gender === 'male' ? COLORS.primary : '#fff'}
               color={userInfo.gender === 'male' ? '#fff' : '#000'}

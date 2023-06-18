@@ -15,7 +15,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
-import InputBase from '@mui/material/InputBase';
 import { kakaoLogin } from 'utils/kakaoLogin';
 
 type isUserType = {

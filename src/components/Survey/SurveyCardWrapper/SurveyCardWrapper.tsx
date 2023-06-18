@@ -10,8 +10,8 @@ interface WrapperProps extends PropsWithChildren {
 
 const SurveyCardWrapper = ({ children, currentPage, totalPages, setPage }: WrapperProps) => {
   return (
-    <Flex flexDirection="column" alignItems="center">
-      <Flex flexWrap="wrap" gap="0.1rem">
+    <Flex flexDirection="column" alignItems="center" mb="3rem">
+      <Flex flexWrap="wrap" gap="0.3rem" pb="2rem">
         {children}
       </Flex>
       <Pagination page={currentPage} count={totalPages} onChange={(e, p) => setPage(p)} />
