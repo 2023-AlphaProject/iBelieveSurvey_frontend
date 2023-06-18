@@ -19,7 +19,7 @@ const SurveyDatail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useSurveyQuery(Number(id));
-  // console.log(data?.data.data);
+  console.log(data?.data);
   const startDay = data?.data.created_at.substr(0, 10);
   const endDay = data?.data.created_at.substr(0, 10);
 

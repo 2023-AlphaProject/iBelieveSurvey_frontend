@@ -13,7 +13,7 @@ const Survey = () => {
   const [cnt, setCnt] = useState(0);
   const [isOngoing, setOngoing] = useState(false);
   const { data } = useSurveyListQuery(page);
-  console.log(data?.data);
+  // console.log(data?.data);
 
   useEffect(() => {
     // eslint-disable-next-line no-lone-blocks

@@ -6,7 +6,7 @@ import dummyGifts from '../GiftInfo/dummyGifts';
 
 const GiftList = () => {
   return (
-    <Flex flexDirection="column" alignItems="center">
+    <Flex flexDirection="column" alignItems="center" mt="3rem">
       <Box width="89%" height="2.25rem" background={COLORS.primaryVariant} p={2}>
         <Flex justifyContent="space-around">
           <Label fontSize="0.95rem" fontFamily="Pr-Bold" mr="3rem">
@@ -22,10 +22,9 @@ const GiftList = () => {
       </Box>
       <Box width="89%" height="2px" background={COLORS.primary} />
       <Flex flexDirection="column" width="89%" mb="2rem">
-        <GiftInfo gift={dummyGifts} />
-        <GiftInfo gift={dummyGifts} />
-        <GiftInfo gift={dummyGifts} />
-        <GiftInfo gift={dummyGifts} />
+        <GiftInfo gift={dummyGifts[0]} />
+        <GiftInfo gift={dummyGifts[1]} />
+        <GiftInfo gift={dummyGifts[2]} />
       </Flex>
       <Pagination />
     </Flex>
