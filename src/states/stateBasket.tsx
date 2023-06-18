@@ -2,9 +2,10 @@ import { atom } from 'recoil';
 import { giftType } from 'types';
 
 export type basketItemType = {
-  template?: string;
-  gift?: giftType;
-  quantity?: number;
+  template: number;
+  gift: giftType;
+  quantity: number;
+  price: number;
 };
 
 export type basketType = {
