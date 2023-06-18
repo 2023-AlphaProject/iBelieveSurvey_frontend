@@ -46,7 +46,7 @@ const SurveySearch = () => {
             totalPages={data?.data?.total_pages}
             setPage={setPage}
           >
-            {data?.data?.results?.map((survey: surveyType) => {
+            {data?.data?.map((survey: surveyType) => {
               return <Card key={`survey_${survey.id}`} survey={survey} />;
             })}
           </SurveyCardWrapper>
