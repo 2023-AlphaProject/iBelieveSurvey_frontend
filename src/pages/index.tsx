@@ -1,4 +1,5 @@
 export { default as Home } from 'pages/Home';
+export { default as KakaoAuth } from 'pages/KakaoAuth';
 export { default as MyPage } from 'pages/MyPage';
 export { default as NotFound } from 'pages/NotFound';
 export { default as Tos } from 'pages/Tos';
@@ -14,3 +15,4 @@ export { default as NewSurveyForm } from 'pages/Survey/New/NewSurveyForm';
 export { default as NewSurveyPayment } from 'pages/Survey/New/NewSurveyPayment';
 export { default as NewSurveyGiftItem } from 'pages/Survey/New/NewSurveyGiftItem';
 export { default as NewSurveyGifts } from 'pages/Survey/New/NewSurveyGifts';
+export { default as SignUp } from 'pages/SignUp';
