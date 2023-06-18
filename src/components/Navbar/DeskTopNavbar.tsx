@@ -1,8 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
-import { userState } from 'states/stateUser';
-import { useSnackBar } from 'hooks';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import {
@@ -15,33 +11,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
-import { kakaoLogin } from 'utils/kakaoLogin';
 
 type isUserType = {
   isUser: boolean;
+  useLogOut: () => void;
+  KakaoLogin: () => void;
 };
 
-const DeskTopNavbar = ({ isUser }: isUserType) => {
-  const { KakaoLogin } = kakaoLogin();
-  const navigate = useNavigate();
-  const setUserState = useSetRecoilState(userState);
-  const { handleSnackBar } = useSnackBar();
-
-  const useLogOut = () => {
-    sessionStorage.removeItem('userToken');
-    setUserState({
-      isUser: false,
-      birthyear: '',
-      email: '',
-      gender: '',
-      hidden_realName: '',
-      realName: '',
-      kakaoId: '',
-      phoneNumber: '',
-    });
-    navigate('/');
-  };
-
+const DeskTopNavbar = ({ isUser, useLogOut, KakaoLogin }: isUserType) => {
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* PC Logo */}
@@ -83,10 +60,6 @@ const DeskTopNavbar = ({ isUser }: isUserType) => {
             <Button
               onClick={() => {
                 useLogOut();
-                handleSnackBar({
-                  variant: 'success',
-                  message: '로그아웃 되었습니다.',
-                })();
               }}
               sx={{
                 display: 'block',
@@ -109,9 +82,7 @@ const DeskTopNavbar = ({ isUser }: isUserType) => {
         ) : (
           <Link to="/">
             <Button
-              onClick={() => {
-                KakaoLogin();
-              }}
+              onClick={KakaoLogin}
               sx={{
                 display: 'block',
                 width: '7rem',

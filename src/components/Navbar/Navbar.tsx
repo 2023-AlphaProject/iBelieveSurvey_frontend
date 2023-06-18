@@ -1,17 +1,41 @@
 import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { userState } from 'states/stateUser';
+import { useSnackBar } from 'hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
 import userToken from 'utils/userToken';
-import { useSnackBar } from 'hooks';
 import { useWindowSize } from 'hooks/useWindowSize';
 import { DeskTopNavbar, MobileNavbar } from 'components/Navbar';
 import { AppBarContainer } from 'components/Navbar/NavbarStyles';
+import { kakaoLogin } from 'utils/kakaoLogin';
 import Container from '@mui/material/Container';
 
 const Navbar = () => {
+  const { handleSnackBar } = useSnackBar();
   const user = userToken();
+  const navigate = useNavigate();
+  const { KakaoLogin } = kakaoLogin();
   const isUser = Boolean(user?.user);
+  const setUserState = useSetRecoilState(userState);
+
+  const useLogOut = () => {
+    sessionStorage.removeItem('userToken');
+    setUserState({
+      isUser: false,
+      birthyear: '',
+      email: '',
+      gender: '',
+      hidden_realName: '',
+      realName: '',
+      kakaoId: '',
+      phoneNumber: '',
+    });
+    navigate('/');
+    handleSnackBar({
+      variant: 'success',
+      message: '로그아웃 되었습니다.',
+    })();
+  };
 
   /*
   const navigate = useNavigate();
@@ -48,12 +72,15 @@ const Navbar = () => {
     <AppBarContainer>
       <Container style={{ width: '100%', maxWidth: '1200px' }}>
         {windowSize.width !== undefined && windowSize.width > 900 ? (
-          <DeskTopNavbar isUser={isUser} />
+          <DeskTopNavbar isUser={isUser} useLogOut={() => useLogOut()} KakaoLogin={KakaoLogin} />
         ) : (
           <MobileNavbar
             anchorElNav={anchorElNav}
             handleOpenNavMenu={(e) => handleOpenNavMenu(e)}
             handleCloseNavMenu={() => handleCloseNavMenu()}
+            isUser={isUser}
+            useLogOut={() => useLogOut()}
+            KakaoLogin={KakaoLogin}
           />
         )}
       </Container>
