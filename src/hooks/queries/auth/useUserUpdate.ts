@@ -17,6 +17,10 @@ const useUserUpdate = (options = {}) => {
       onSuccess: ({ data }) => {
         console.log(data);
         navigate('/', { state: { data } });
+        handleSnackBar({
+          variant: 'success',
+          message: '회원가입 되었습니다.',
+        })();
       },
       onError: () => {
         handleSnackBar({
