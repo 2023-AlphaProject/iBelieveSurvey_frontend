@@ -32,7 +32,7 @@ const creatorOptions = {
 
 const Surveycreator = () => {
   const { state } = useLocation();
-  const { mutate: updateSurvey } = useUpdateSurvey(state.id);
+  const { mutate: updateSurvey } = useUpdateSurvey(state.id || sessionStorage.getItem('surveyId'));
 
   const creator = new SurveyCreator(creatorOptions);
   const koLocale = localization.getLocale('ko');

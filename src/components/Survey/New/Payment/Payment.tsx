@@ -2,6 +2,7 @@ import { Flex, Label } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { giftType } from 'types';
 
@@ -78,18 +79,20 @@ const Payment = ({ gifts }: Props) => {
         </Label>
       </Flex>
       <Flex gap="10px">
-        <Button
-          width="50%"
-          style={{
-            backgroundColor: COLORS.gray,
-            borderRadius: '1rem',
+        <Link to="/survey/new/form">
+          <Button
+            width="50%"
+            style={{
+              backgroundColor: COLORS.gray,
+              borderRadius: '1rem',
 
-            paddingLeft: 0,
-            paddingRight: 0,
-          }}
-        >
-          이전으로
-        </Button>
+              paddingLeft: 0,
+              paddingRight: 0,
+            }}
+          >
+            이전으로
+          </Button>
+        </Link>
         <Button width="50%" style={{ borderRadius: '1rem', paddingLeft: 0, paddingRight: 0 }}>
           결제하기
         </Button>

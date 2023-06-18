@@ -15,6 +15,7 @@ const useAddSurvey = (options = {}) => {
       ...options,
       onSuccess: ({ data }) => {
         navigate('/survey/new/form', { state: { id: data?.id } });
+        sessionStorage.setItem('surveyId', data?.id);
       },
       onError: () => {
         handleSnackBar({

@@ -30,13 +30,6 @@ const BasketWrapper = styled(Flex)`
 const NewSurveyPayment = () => {
   const { data } = useCartsQuery(Number(sessionStorage.getItem('surveyId')));
 
-  // useEffect(() => {
-  //   setGifts({
-  //     surveyId: sessionStorage.getItem('surveyId'),
-  //     basketData: [...basketData],
-  //   });
-  // }, []);
-
   return (
     <>
       <StepProgress />
