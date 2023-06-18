@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { userState } from 'states/stateUser';
+import { useSnackBar } from 'hooks';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import {
@@ -20,6 +24,24 @@ type isUserType = {
 
 const DeskTopNavbar = ({ isUser }: isUserType) => {
   const { KakaoLogin } = kakaoLogin();
+  const navigate = useNavigate();
+  const setUserState = useSetRecoilState(userState);
+  const { handleSnackBar } = useSnackBar();
+
+  const useLogOut = () => {
+    sessionStorage.removeItem('userToken');
+    setUserState({
+      isUser: false,
+      birthYear: '',
+      email: '',
+      gender: '',
+      hidden_realName: '',
+      realName: '',
+      kakaoId: '',
+      phoneNumber: '',
+    });
+    navigate('/');
+  };
 
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
@@ -61,7 +83,11 @@ const DeskTopNavbar = ({ isUser }: isUserType) => {
           <Link to="/">
             <Button
               onClick={() => {
-                KakaoLogin();
+                useLogOut();
+                handleSnackBar({
+                  variant: 'success',
+                  message: '로그아웃 되었습니다.',
+                })();
               }}
               sx={{
                 display: 'block',

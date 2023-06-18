@@ -94,7 +94,7 @@ const Home = () => {
     setUserState({
       isUser: true,
       birthYear: data?.birthyear,
-      eamil: data?.email,
+      email: data?.email,
       gender: data?.gender,
       hidden_realName: data?.hidden_realName,
       realName: data?.realName,

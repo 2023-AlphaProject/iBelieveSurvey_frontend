@@ -1,7 +1,7 @@
 export interface UserType {
   isUser: boolean;
   birthYear: string;
-  eamil: string;
+  email: string;
   gender: string;
   hidden_realName: string;
   realName: string;
