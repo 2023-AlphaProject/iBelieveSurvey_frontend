@@ -17,11 +17,11 @@ const KakaoAuth = () => {
       const initUserInfo = JSON.parse(jsonString);
       sessionStorage.setItem('userToken', initUserInfo?.token);
 
-      if (initUserInfo?.exist) {
+      if (initUserInfo?.isMember === 'True') {
         navigate('/', { state: initUserInfo });
       }
 
-      if (!initUserInfo?.exist) {
+      if (initUserInfo?.isMember === 'False') {
         navigate('/signup', { state: initUserInfo });
       }
     } catch (err) {

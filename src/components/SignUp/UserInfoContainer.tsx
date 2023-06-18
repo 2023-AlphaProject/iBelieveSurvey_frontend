@@ -95,22 +95,6 @@ const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) =
     }
   };
 
-  // const onSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   if (
-  //     !userInfo.realName ||
-  //     userInfo.phoneNumber === '010' ||
-  //     !userInfo.birthYear ||
-  //     !userInfo.gender
-  //   ) {
-  //     handleSnackBar({
-  //       variant: 'error',
-  //       message: '공백 없이 작성해주세요.',
-  //     })();
-  //     console.log('asd');
-  //   }
-  // };
-
   return (
     <Flex justifyContent="center" alignItems="center" height="100%">
       <Container>
@@ -155,6 +139,7 @@ const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) =
           </div>
           <InfoLabel width="6rem">출생연도</InfoLabel>
           <Select name="birthyear" onChange={(e) => onUserInfoChange(e)}>
+            <option value="">출생연도</option>
             {Array.from({ length: 2024 - 1960 }, (_, index) => (
               <option key={index}>{1960 + index}</option>
             ))}
