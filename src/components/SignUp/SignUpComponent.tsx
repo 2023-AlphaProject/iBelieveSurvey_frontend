@@ -11,6 +11,7 @@ const SignUpComponent = () => {
   const { handleSnackBar } = useSnackBar();
   const { state } = useLocation();
   const userToken = state?.token;
+  console.log(userToken);
 
   const initInfo: userInfo = {
     realName: state.realName || '',

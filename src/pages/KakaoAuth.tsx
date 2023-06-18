@@ -17,6 +17,7 @@ const KakaoAuth = () => {
       const initUserInfo = JSON.parse(jsonString);
 
       if (initUserInfo?.token) {
+        console.log('initUserInfo', initUserInfo);
         navigate('/signup', { state: initUserInfo });
         sessionStorage.setItem('userToken', initUserInfo?.token);
       }
