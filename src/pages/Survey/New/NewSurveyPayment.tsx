@@ -47,7 +47,7 @@ const NewSurveyPayment = () => {
           <Box height="3rem" />
           <PaymentCaution />
         </BasketWrapper>
-        <Payment gifts={[]} />
+        <Payment gifts={data?.data} />
       </PaymentWrapper>
     </>
   );

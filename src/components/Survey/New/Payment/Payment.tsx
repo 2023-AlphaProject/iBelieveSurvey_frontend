@@ -16,6 +16,7 @@ const PaymentWrapper = styled(Flex)`
 interface Props {
   gifts: {
     template?: number;
+    result_price?: number;
     gift?: giftType;
     quantity?: number;
     price?: number;
@@ -24,9 +25,8 @@ interface Props {
 
 const Payment = ({ gifts }: Props) => {
   const getPaymentInfo = useCallback(() => {
-    const info = { amount: 0, quantity: 0 };
-    gifts.forEach(({ quantity = 0, price = 0 }) => {
-      info.amount += quantity * price;
+    const info = { amount: gifts[0].result_price || 0, quantity: 0 };
+    gifts.forEach(({ quantity = 0 }) => {
       info.quantity += quantity;
     });
 
