@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Flex, Box, Label } from 'components/Box';
+import { Flex, Label } from 'components/Box';
 import { useDate } from 'hooks/useDate';
 import { COLORS } from 'constants/COLOR';
 import PersonIcon from '@mui/icons-material/Person';
@@ -31,7 +31,15 @@ const Card = (props: Props) => {
       cursor="pointer"
       onClick={() => navigate(`/survey/${survey.id}`)}
     >
-      <Box width="14rem" height="10rem" borderRadius="1.25rem" background={COLORS.primaryVariant} />
+      <img
+        alt="thumbnail"
+        style={{
+          width: '14rem',
+          height: '10rem',
+          borderRadius: '1.25rem',
+        }}
+        src={survey.thumbnail}
+      />
       <Flex p={2} flexDirection="column" gap="8px">
         <Flex>
           <Label

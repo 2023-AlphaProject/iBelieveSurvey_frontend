@@ -1,4 +1,8 @@
-import { Flex, Label } from 'components/Box';
+import { useLocation } from 'react-router';
+import { userState } from 'states/stateUser';
+import { useSetRecoilState } from 'recoil';
+import { useSnackBar } from 'hooks';
+import { Flex, Label, Box } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
@@ -7,7 +11,7 @@ import { Footer } from 'components/Footer';
 import { Card } from 'components/Survey';
 import { useSurveyListQuery } from 'hooks/queries/surveys';
 import { surveyType } from 'types';
-
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 interface BoxProps {
@@ -82,6 +86,30 @@ const Label2 = styled(Label)`
 `;
 
 const Home = () => {
+  const { state } = useLocation();
+  const { handleSnackBar } = useSnackBar();
+  const setUserState = useSetRecoilState(userState);
+
+  useEffect(() => {
+    if (state) {
+      const data = state?.data;
+      setUserState({
+        isUser: true,
+        birthyear: data?.birthyear,
+        email: data?.email,
+        gender: data?.gender,
+        hidden_realName: data?.hidden_realName,
+        realName: data?.realName,
+        kakaoId: data?.kakaoId,
+        phoneNumber: data?.phoneNumber,
+      });
+      handleSnackBar({
+        variant: 'success',
+        message: '로그인 되었습니다.',
+      })();
+    }
+  }, []);
+
   const { data } = useSurveyListQuery(1);
   return (
     <Flex width="100%" flexDirection="column" alignItems="center">
@@ -192,7 +220,7 @@ const Home = () => {
         <Flex flexDirection="column" alignItems="center" gap="2.5rem" mt={5}>
           <Flex width="65%" gap="10%" justifyContent="center">
             <img
-              src={`${process.env.PUBLIC_URL}/assets/images/main1.svg`}
+              src={`${process.env.PUBLIC_URL}/assets/images/main1.jpg`}
               alt="GIFTICON"
               style={{
                 width: '38%',
@@ -207,13 +235,15 @@ const Home = () => {
               설문 조사는 여러 개의 질문으로 이루어질 수 있고, 다양한 유형의 답변 형식을 지원해요.
               답변 형식은 주관식, 객관식, 척도형, 별점 등이 있어 다양한 응답을 얻을 수 있어요.
             </Label>
-            <img
-              src={`${process.env.PUBLIC_URL}/assets/images/main2.svg`}
-              alt="GIFTICON"
-              style={{
-                width: '45%',
-              }}
-            />
+            <Box width="46%" background={COLORS.primaryVariant} p={3} borderRadius="1.4rem">
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/images/main2.jpg`}
+                alt="GIFTICON"
+                style={{
+                  width: '100%',
+                }}
+              />
+            </Box>
           </Flex>
         </Flex>
       </Flex>
@@ -394,7 +424,7 @@ const Home = () => {
           </Flex>
         </Link>
         <Flex mt={3} flexWrap="wrap">
-          {data?.data?.results?.map((survey: surveyType) => {
+          {data?.data?.map((survey: surveyType) => {
             if (survey.is_ongoing === true) {
               return <Card key={`survey_${survey.id}`} survey={survey} />;
             }

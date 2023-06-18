@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { atom } from 'recoil';
 
 type ModalType = {
   isOpen: boolean;
   title: string;
   content: JSX.Element | string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   callback?: () => any;
 };
 

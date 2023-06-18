@@ -1,13 +1,13 @@
-import { Flex } from 'components/Box';
+import { Box, Flex } from 'components/Box';
 import {
-  GIftsBasket,
+  GiftsBasket,
   Payment,
   PaymentCaution,
-  RecommendedGifts,
+  // RecommendedGifts,
   StepProgress,
 } from 'components/Survey';
 import styled from 'styled-components';
-// import { useLocation } from 'react-router-dom';
+import { useCartsQuery } from 'hooks/queries/surveys';
 
 const PaymentWrapper = styled(Flex)`
   flex-direction: row;
@@ -28,18 +28,20 @@ const BasketWrapper = styled(Flex)`
 `;
 
 const NewSurveyPayment = () => {
-  // const location = useLocation();
+  const surveyId = Number(sessionStorage.getItem('surveyId'));
+  const { data } = useCartsQuery(surveyId);
 
   return (
     <>
       <StepProgress />
       <PaymentWrapper gap="1.5rem">
         <BasketWrapper flexDirection="column" gap="4rem" width="70%">
-          <GIftsBasket />
-          <RecommendedGifts />
+          <GiftsBasket surveyId={surveyId} gifts={data?.data} />
+          {/* <RecommendedGifts /> */}
+          <Box height="3rem" />
           <PaymentCaution />
         </BasketWrapper>
-        <Payment />
+        <Payment surveyId={surveyId} gifts={data?.data} />
       </PaymentWrapper>
     </>
   );
