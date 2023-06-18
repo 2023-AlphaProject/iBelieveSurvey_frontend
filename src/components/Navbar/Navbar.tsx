@@ -15,13 +15,9 @@ const Navbar = () => {
 
   /*
   const navigate = useNavigate();
+  const location = useLocation();
   const { handleSnackBar } = useSnackBar();
   const userInfo = useRecoilValue(userState);
-  
-
-  
-  const location = useLocation();
-
   const URL = location.pathname;
   const isNeedSignUp = URL === '/signup';
 
