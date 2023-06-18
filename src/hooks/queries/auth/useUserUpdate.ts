@@ -16,6 +16,7 @@ const useUserUpdate = (options = {}) => {
       ...options,
       onSuccess: ({ data }) => {
         // Recoil User Info 추가
+        // eslint-disable-next-line no-console
         console.log(data);
         navigate('/');
       },

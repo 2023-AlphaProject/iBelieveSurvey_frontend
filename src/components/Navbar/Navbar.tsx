@@ -21,8 +21,8 @@ const Navbar = () => {
       <Container style={{ width: '100%', maxWidth: '1200px' }}>
         {windowSize.width !== undefined && windowSize.width > 900 ? (
           <DeskTopNavbar
-            anchorElNav={anchorElNav}
-            handleCloseNavMenu={() => handleCloseNavMenu()}
+          // anchorElNav={anchorElNav}
+          // handleCloseNavMenu={() => handleCloseNavMenu()}
           />
         ) : (
           <MobileNavbar

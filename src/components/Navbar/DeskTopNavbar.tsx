@@ -1,20 +1,19 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import {
   Search,
   SearchIconWrapper,
   StyledInputBase,
-  IDeskTopNavbar,
+  // IDeskTopNavbar,
 } from 'components/Navbar/NavbarStyles';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
-import InputBase from '@mui/material/InputBase';
+// import InputBase from '@mui/material/InputBase';
 import { kakaoLogin } from 'utils/kakaoLogin';
 
-const DeskTopNavbar = ({ anchorElNav }: IDeskTopNavbar) => {
+const DeskTopNavbar = () => {
   const { KakaoLogin } = kakaoLogin();
 
   return (
