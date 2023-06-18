@@ -1,7 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import surveysAPI from 'apis/surveysAPI';
 import { useSnackBar } from 'hooks';
-import useWindowDimensions from 'hooks/useWindowDimensions';
 
 const usePaySurvey = (id: number, options = {}) => {
   const { handleSnackBar } = useSnackBar();
@@ -13,8 +12,9 @@ const usePaySurvey = (id: number, options = {}) => {
     {
       ...options,
       onSuccess: ({ data }) => {
-        const windowSize = useWindowDimensions();
-        if (windowSize.width > 768) {
+        const { innerWidth: width } = window;
+        console.log(width);
+        if (width > 768) {
           window.location.href = data.next_redirect_pc_url;
         } else {
           window.location.href = data.next_redirect_mobile_url;

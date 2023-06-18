@@ -51,7 +51,7 @@ const NewSurveyGiftItem = () => {
 
   const handleBasket = () => {
     addCarts({
-      template: Number(id),
+      template_id: Number(id),
       quantity: productCnt,
     });
   };
