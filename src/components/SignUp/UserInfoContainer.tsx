@@ -87,10 +87,10 @@ const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) =
         gender: value,
       });
     }
-    if (name === 'birthYear') {
+    if (name === 'birthyear') {
       setUserInfo({
         ...userInfo,
-        birthYear: value,
+        birthyear: value,
       });
     }
   };
@@ -154,7 +154,7 @@ const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) =
             </GenderButton>
           </div>
           <InfoLabel width="6rem">출생연도</InfoLabel>
-          <Select name="birthYear" onChange={(e) => onUserInfoChange(e)}>
+          <Select name="birthyear" onChange={(e) => onUserInfoChange(e)}>
             {Array.from({ length: 2024 - 1960 }, (_, index) => (
               <option key={index}>{1960 + index}</option>
             ))}

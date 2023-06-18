@@ -1,7 +1,7 @@
 export interface userInfo {
   realName: string;
   phoneNumber: string;
-  birthYear: string;
+  birthyear: string;
   gender: string;
 }
 

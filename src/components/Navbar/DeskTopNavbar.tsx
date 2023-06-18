@@ -32,7 +32,7 @@ const DeskTopNavbar = ({ isUser }: isUserType) => {
     sessionStorage.removeItem('userToken');
     setUserState({
       isUser: false,
-      birthYear: '',
+      birthyear: '',
       email: '',
       gender: '',
       hidden_realName: '',

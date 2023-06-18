@@ -15,7 +15,6 @@ const useUserUpdate = (options = {}) => {
     {
       ...options,
       onSuccess: ({ data }) => {
-        console.log(data);
         navigate('/', { state: { data } });
         handleSnackBar({
           variant: 'success',

@@ -5,7 +5,7 @@ export const userState = atom<userType>({
   key: 'userState',
   default: {
     isUser: false,
-    birthYear: '',
+    birthyear: '',
     email: '',
     gender: '',
     hidden_realName: '',

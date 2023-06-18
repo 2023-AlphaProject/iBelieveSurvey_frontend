@@ -15,7 +15,7 @@ const SignUpComponent = () => {
   const initInfo: userInfo = {
     realName: state?.realName || '',
     phoneNumber: state?.phoneNumber || '010',
-    birthYear: state?.birthYear || '',
+    birthyear: state?.birthyear || '',
     gender: state?.gender || '',
   };
   const [userInfo, setUserInfo] = useState(initInfo);
@@ -25,7 +25,7 @@ const SignUpComponent = () => {
     if (
       !userInfo.realName ||
       userInfo.phoneNumber === '010' ||
-      !userInfo.birthYear ||
+      !userInfo.birthyear ||
       !userInfo.gender
     ) {
       handleSnackBar({
