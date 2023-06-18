@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router';
 import { userState } from 'states/stateUser';
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useSnackBar } from 'hooks';
 import { Flex, Label, Box } from 'components/Box';
 import { Button } from 'components/common';
@@ -90,6 +90,13 @@ const Home = () => {
   const { state } = useLocation();
   const { handleSnackBar } = useSnackBar();
   const setUserState = useSetRecoilState(userState);
+  const userInfo = useRecoilValue(userState);
+
+  useEffect(() => {
+    console.log(userInfo);
+    if (userInfo.birthYear) console.log('asd');
+  }, []);
+
   useEffect(() => {
     if (!state) return;
     const data = state?.data;
