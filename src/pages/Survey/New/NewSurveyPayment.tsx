@@ -7,8 +7,7 @@ import {
   StepProgress,
 } from 'components/Survey';
 import styled from 'styled-components';
-import { useBasket } from 'hooks/useBasket';
-import { useEffect } from 'react';
+import { useCartsQuery } from 'hooks/queries/surveys';
 
 const PaymentWrapper = styled(Flex)`
   flex-direction: row;
@@ -29,26 +28,26 @@ const BasketWrapper = styled(Flex)`
 `;
 
 const NewSurveyPayment = () => {
-  const { basketData, setGifts } = useBasket();
+  const { data } = useCartsQuery(Number(sessionStorage.getItem('surveyId')));
 
-  useEffect(() => {
-    setGifts({
-      surveyId: sessionStorage.getItem('surveyId'),
-      basketData: [...basketData],
-    });
-  }, []);
+  // useEffect(() => {
+  //   setGifts({
+  //     surveyId: sessionStorage.getItem('surveyId'),
+  //     basketData: [...basketData],
+  //   });
+  // }, []);
 
   return (
     <>
       <StepProgress />
       <PaymentWrapper gap="1.5rem">
         <BasketWrapper flexDirection="column" gap="4rem" width="70%">
-          <GiftsBasket gifts={basketData} />
+          <GiftsBasket gifts={data?.data} />
           {/* <RecommendedGifts /> */}
           <Box height="3rem" />
           <PaymentCaution />
         </BasketWrapper>
-        <Payment gifts={basketData} />
+        <Payment gifts={[]} />
       </PaymentWrapper>
     </>
   );

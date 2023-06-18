@@ -8,7 +8,6 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ClearIcon from '@mui/icons-material/Clear';
 import { giftType } from 'types';
-import { useBasket } from 'hooks/useBasket';
 
 const GiftImg = styled.img`
   object-fit: cover;
@@ -48,41 +47,6 @@ interface Props {
 }
 
 const BasketItem = ({ gift, quantity }: Props) => {
-  const { surveyId, basketData, setGifts } = useBasket();
-
-  const handlePlus = () => {
-    const idx = basketData.findIndex((g) => g.template === gift.id);
-    const temp = { ...[...basketData][idx] };
-    temp.quantity += 1;
-    const tempBasket = [...basketData];
-    tempBasket.splice(idx, 1, temp);
-
-    setGifts({
-      surveyId,
-      basketData: tempBasket,
-    });
-  };
-
-  const handleMinus = () => {
-    const idx = basketData.findIndex((g) => g.template === gift.id);
-    const temp = { ...[...basketData][idx] };
-    temp.quantity -= temp.quantity > 1 ? 1 : 0;
-    const tempBasket = [...basketData];
-    tempBasket.splice(idx, 1, temp);
-
-    setGifts({
-      surveyId,
-      basketData: tempBasket,
-    });
-  };
-
-  const handleRemove = () => {
-    setGifts({
-      surveyId,
-      basketData: basketData.filter((g) => g.template !== gift.id),
-    });
-  };
-
   return (
     <ItemWraaper
       borderBottom={`1px solid ${COLORS.primary}`}
@@ -114,14 +78,14 @@ const BasketItem = ({ gift, quantity }: Props) => {
         <Label fontFamily="Pr-SemiBold" mr="1.5rem">
           {(quantity * gift.product_price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
         </Label>
-        <IconButton onClick={handleMinus} aria-label="minus" color="primary">
+        <IconButton aria-label="minus" color="primary">
           <RemoveCircleIcon />
         </IconButton>
         <Label fontFamily="Pr-SemiBold">{quantity}개</Label>
-        <IconButton onClick={handlePlus} aria-label="plus" color="primary">
+        <IconButton aria-label="plus" color="primary">
           <AddCircleIcon />
         </IconButton>
-        <IconButton onClick={handleRemove} aira-label="delete" size="small">
+        <IconButton aira-label="delete" size="small">
           <ClearIcon />
         </IconButton>
       </CounterWraaper>
