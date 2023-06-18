@@ -76,9 +76,8 @@ const NewSurveyGiftItem = () => {
           },
         ],
       });
+      navigate('/survey/new/payment');
     }
-
-    navigate('/survey/new/payment');
   };
 
   return (
