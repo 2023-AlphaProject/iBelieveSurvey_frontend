@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import {
@@ -10,8 +11,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
+import InputBase from '@mui/material/InputBase';
+import { kakaoLogin } from 'utils/kakaoLogin';
 
-const DeskTopNavbar = ({ handleCloseNavMenu }: IDeskTopNavbar) => {
+const DeskTopNavbar = ({ anchorElNav }: IDeskTopNavbar) => {
+  const { KakaoLogin } = kakaoLogin();
+
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* PC Logo */}
@@ -22,6 +27,7 @@ const DeskTopNavbar = ({ handleCloseNavMenu }: IDeskTopNavbar) => {
           style={{ width: '7rem', marginRight: '2rem' }}
         />
       </Link>
+
       {/* PC SearchBar */}
       <Box sx={{ flexGrow: 2, display: 'flex' }}>
         <Search>
@@ -35,24 +41,20 @@ const DeskTopNavbar = ({ handleCloseNavMenu }: IDeskTopNavbar) => {
 
       <Box sx={{ flexGrow: 0, display: 'flex', gap: '15px' }}>
         <Link to="/survey">
-          <Button
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
-          >
+          <Button sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}>
             설문 게시판
           </Button>
         </Link>
         <Link to="/mypage">
-          <Button
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}
-          >
+          <Button sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}>
             마이페이지
           </Button>
         </Link>
         <Link to="/">
           <Button
-            onClick={handleCloseNavMenu}
+            onClick={() => {
+              KakaoLogin();
+            }}
             sx={{
               display: 'block',
               width: '7rem',

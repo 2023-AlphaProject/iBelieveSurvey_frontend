@@ -18,6 +18,7 @@ const IconContainer = styled(Flex)`
 
 const Card = (props: Props) => {
   const { survey } = props;
+  console.log(survey);
   const navigate = useNavigate();
 
   if (survey.is_survey_hidden) {

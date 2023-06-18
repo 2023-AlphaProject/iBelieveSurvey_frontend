@@ -20,6 +20,7 @@
     "@types/react-dom": "^18.0.0",
     "axios": "^1.4.0",
     "dayjs": "^1.11.8",
+    "axios": "^1.4.0",
     "moment": "^2.29.4",
     "notistack": "^3.0.1",
     "react": "^18.2.0",
@@ -34,6 +35,7 @@
     "styled-system": "^5.1.5",
     "survey-core": "^1.9.91",
     "survey-creator-react": "^1.9.90",
+    "survey-react": "^1.9.92",
     "survey-react-ui": "^1.9.90",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
