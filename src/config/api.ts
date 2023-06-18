@@ -16,7 +16,7 @@ if (userToken.user) {
   instance.interceptors.request.use(
     async (config) => {
       const newConfig = { ...config };
-      newConfig.headers.Authorization = `jwt ${userToken.user}`;
+      newConfig.headers.Authorization = `Bearer ${userToken.user}`;
       return newConfig;
     },
     (error) => {
