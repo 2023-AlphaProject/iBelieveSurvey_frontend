@@ -16,10 +16,16 @@ const KakaoAuth = () => {
       const jsonString = `{"${cleanedString}"}`;
       const initUserInfo = JSON.parse(jsonString);
 
-      if (initUserInfo?.token) {
+      if (initUserInfo.exist) {
+        navigate('/', { state: initUserInfo });
+        sessionStorage.setItem('userToken', initUserInfo?.token);
+      }
+
+      if (!initUserInfo?.exist) {
         navigate('/signup', { state: initUserInfo });
         sessionStorage.setItem('userToken', initUserInfo?.token);
       }
+
     } catch (err) {
       handleSnackBar({
         variant: 'error',
