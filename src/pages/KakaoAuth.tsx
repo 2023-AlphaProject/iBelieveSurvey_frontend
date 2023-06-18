@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSnackBar } from 'hooks';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useKakaoCallback, useUserUpdate } from 'hooks/queries/auth';
 
 const KakaoAuth = () => {
@@ -16,11 +15,14 @@ const KakaoAuth = () => {
       const cleanedString = tempUserInfo.replace(/:/g, '":"').replace(/, /g, '","');
       const jsonString = `{"${cleanedString}"}`;
       const initUserInfo = JSON.parse(jsonString);
+      sessionStorage.setItem('userToken', initUserInfo?.token);
 
-      if (initUserInfo?.token) {
-        // console.log('initUserInfo', initUserInfo);
+      if (initUserInfo?.isMember === 'True') {
+        navigate('/', { state: initUserInfo });
+      }
+
+      if (initUserInfo?.isMember === 'False') {
         navigate('/signup', { state: initUserInfo });
-        sessionStorage.setItem('userToken', initUserInfo?.token);
       }
     } catch (err) {
       handleSnackBar({
