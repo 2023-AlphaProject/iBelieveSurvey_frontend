@@ -8,6 +8,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ClearIcon from '@mui/icons-material/Clear';
 import { giftType } from 'types';
+import { useDeleteCarts } from 'hooks/queries/surveys';
 
 const GiftImg = styled.img`
   object-fit: cover;
@@ -42,11 +43,19 @@ const InfoWrapper = styled(Flex)`
 `;
 
 interface Props {
+  surveyId: number;
+  uuid: number;
   gift: giftType;
   quantity: number;
 }
 
-const BasketItem = ({ gift, quantity }: Props) => {
+const BasketItem = ({ surveyId, uuid, gift, quantity }: Props) => {
+  const { mutate: deleteCarts } = useDeleteCarts(surveyId, uuid);
+
+  const removeItem = () => {
+    deleteCarts();
+  };
+
   return (
     <ItemWraaper
       borderBottom={`1px solid ${COLORS.primary}`}
@@ -85,7 +94,7 @@ const BasketItem = ({ gift, quantity }: Props) => {
         <IconButton aria-label="plus" color="primary">
           <AddCircleIcon />
         </IconButton>
-        <IconButton aira-label="delete" size="small">
+        <IconButton onClick={removeItem} aira-label="delete" size="small">
           <ClearIcon />
         </IconButton>
       </CounterWraaper>

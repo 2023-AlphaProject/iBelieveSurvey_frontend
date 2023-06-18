@@ -2,13 +2,13 @@ import { useMutation } from '@tanstack/react-query';
 import surveysAPI from 'apis/surveysAPI';
 import { useSnackBar } from 'hooks';
 
-const useUpdateCarts = (id: number, templateId: number, options = {}) => {
+const useUpdateCarts = (id: number, uuid: number, options = {}) => {
   const { handleSnackBar } = useSnackBar();
 
   return useMutation(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (payload: any) => {
-      return surveysAPI.carts.patch(id, templateId, payload);
+      return surveysAPI.carts.patch(id, uuid, payload);
     },
     {
       ...options,

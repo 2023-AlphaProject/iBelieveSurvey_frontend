@@ -24,11 +24,11 @@ const surveysAPI = {
     post: (id: number, data: any) => {
       return instance.post(`/surveys/${id}/carts/`, data);
     },
-    patch: (id: number, templateId: number, data: any) => {
-      return instance.patch(`/surveys/${id}/carts/${templateId}/`, data);
+    patch: (id: number, uuid: number, data: any) => {
+      return instance.patch(`/surveys/${id}/carts/${uuid}/`, data);
     },
-    delete: (id: number, templateId: number) => {
-      return instance.delete(`/surveys/${id}/carts/${templateId}/`);
+    delete: (id: number, uuid: number) => {
+      return instance.delete(`/surveys/${id}/carts/${uuid}/`);
     },
   },
   payments: {

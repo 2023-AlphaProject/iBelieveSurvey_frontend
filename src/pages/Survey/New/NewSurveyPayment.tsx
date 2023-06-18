@@ -28,14 +28,15 @@ const BasketWrapper = styled(Flex)`
 `;
 
 const NewSurveyPayment = () => {
-  const { data } = useCartsQuery(Number(sessionStorage.getItem('surveyId')));
+  const surveyId = Number(sessionStorage.getItem('surveyId'));
+  const { data } = useCartsQuery(surveyId);
 
   return (
     <>
       <StepProgress />
       <PaymentWrapper gap="1.5rem">
         <BasketWrapper flexDirection="column" gap="4rem" width="70%">
-          <GiftsBasket gifts={data?.data} />
+          <GiftsBasket surveyId={surveyId} gifts={data?.data} />
           {/* <RecommendedGifts /> */}
           <Box height="3rem" />
           <PaymentCaution />
