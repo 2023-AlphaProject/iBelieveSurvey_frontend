@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { Flex } from 'components/Box';
+import { useState } from 'react';
 import { useSnackBar } from 'hooks';
 import { useUserUpdate } from 'hooks/queries/auth';
 import { useLocation } from 'react-router';
@@ -10,8 +9,7 @@ const SignUpComponent = () => {
   const { mutate: userUpdate } = useUserUpdate();
   const { handleSnackBar } = useSnackBar();
   const { state } = useLocation();
-  const userToken = state?.token;
-  console.log(userToken);
+  // const userToken = state?.token;
 
   const initInfo: userInfo = {
     realName: state.realName || '',

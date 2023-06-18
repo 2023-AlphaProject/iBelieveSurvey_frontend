@@ -12843,6 +12843,11 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
+recoil-persist@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/recoil-persist/-/recoil-persist-4.2.0.tgz#9fbb4a8c158cbb83ceb9dedf795aee24ed15395d"
+  integrity sha512-MHVfML9GxJP3RpkKR4F5rp7DtvzIvjWhowtMao/b7h2k4afMio/4sMAdUtltIrDaeVegH0Iga8Sx5XQ3oD7CzA==
+
 recoil@^0.7.7:
   version "0.7.7"
   resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.7.7.tgz#c5f2c843224384c9c09e4a62c060fb4c1454dc8e"
@@ -14161,42 +14166,37 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-survey-core@1.9.90:
-  version "1.9.90"
-  resolved "https://registry.yarnpkg.com/survey-core/-/survey-core-1.9.90.tgz#af26a3af5e753818f2127977aa297fab5cca2120"
-  integrity sha512-hwke6n4kUtDEChJM+xPO9Okd3ND1ExjQXuuqZOFhv28x3qRpzTb8DZydlfcei0Yt5o3I3DHxI4p+UHFvjKNBhA==
+survey-core@1.9.92, survey-core@^1.9.92:
+  version "1.9.92"
+  resolved "https://registry.yarnpkg.com/survey-core/-/survey-core-1.9.92.tgz#e70a717888d218c6664a6dafda798e70e8a62a04"
+  integrity sha512-nuUj/bqhTDjcbI1b7OjHv3raFVnmsEfXPvQP+i0chPNLqj44aCeBdYsYaQEJSC5CDk6yU2gAS4swu+zM9RaeeA==
 
-survey-core@^1.9.91:
-  version "1.9.91"
-  resolved "https://registry.yarnpkg.com/survey-core/-/survey-core-1.9.91.tgz#b6d43a05819e7d585308ea43445ad1cc68008308"
-  integrity sha512-jUUJEu2gzQGDbN/tRVE9TXEjqHwnjK477CsOTr/gJbIHMw1omgM+kpNLrdp2wTit2CgB2G/0wEV7BfBR1JOGCw==
-
-survey-creator-core@1.9.90:
-  version "1.9.90"
-  resolved "https://registry.yarnpkg.com/survey-creator-core/-/survey-creator-core-1.9.90.tgz#c39131ed66c221cbbc3346298cd1fc3296f3adcd"
-  integrity sha512-vyg85cBpatWrByATkOjqfI4Ki9p81DqUvdokj7KsDK4TEnJpEXlVn2yVIP55ywD2ol2YtYrmfLWT+yMKar2aJw==
+survey-creator-core@1.9.92, survey-creator-core@^1.9.92:
+  version "1.9.92"
+  resolved "https://registry.yarnpkg.com/survey-creator-core/-/survey-creator-core-1.9.92.tgz#7195084fa4220b8340b3ce63715b3cf1c6cf6569"
+  integrity sha512-45lsxUTiUUql35yc7KfPKqJ5XH9E3pZ9OTRtsSPgQr769NUmE72xHaS0AdMO5kR+Iu+NRxWH9dZq6SSJOGLXmQ==
   dependencies:
-    survey-core "1.9.90"
+    survey-core "1.9.92"
 
-survey-creator-react@^1.9.90:
-  version "1.9.90"
-  resolved "https://registry.yarnpkg.com/survey-creator-react/-/survey-creator-react-1.9.90.tgz#031c44c29a2d5f6be9e9443adf8171e418595cd7"
-  integrity sha512-1SQgKFeGWrFuEc0RCfkcekdOTNjQTJ9RcrHC6uWU47xnP1nW8clEcwIaXyPFzkJK58NdD63g577Fy5JObmeLnw==
+survey-creator-react@^1.9.92:
+  version "1.9.92"
+  resolved "https://registry.yarnpkg.com/survey-creator-react/-/survey-creator-react-1.9.92.tgz#8d76d8513e310a123bc8867ae9b8b07d0dc13d82"
+  integrity sha512-L7BsUtLxE/IeDFlLeUwBq89++bEbhgq9f2GwkZ2IM44RtcKHJgkl/SJyHQ9mDTMZq5PcJLcgBWrS1A5eQ1IfJQ==
   dependencies:
     react "^16.5.0 || ^17.0.1 || ^18.1.0"
     react-dom "^16.5.0 || ^17.0.1 || ^18.1.0"
-    survey-core "1.9.90"
-    survey-creator-core "1.9.90"
-    survey-react-ui "1.9.90"
+    survey-core "1.9.92"
+    survey-creator-core "1.9.92"
+    survey-react-ui "1.9.92"
 
-survey-react-ui@1.9.90, survey-react-ui@^1.9.90:
-  version "1.9.90"
-  resolved "https://registry.yarnpkg.com/survey-react-ui/-/survey-react-ui-1.9.90.tgz#9719241a3a20579fee45f7f0c73844638a7e7805"
-  integrity sha512-NKgQoJEgdc58YE+BweVDIhv7/9IqDbn1N8tu+oDSP4pOjRlohRABUSbPqusGELLVCT2SHrWWJK4WklY8jpYwOA==
+survey-react-ui@1.9.92, survey-react-ui@^1.9.92:
+  version "1.9.92"
+  resolved "https://registry.yarnpkg.com/survey-react-ui/-/survey-react-ui-1.9.92.tgz#e62d1d44ff2cee251e4ae13a2dadf5597bd9e713"
+  integrity sha512-e1pc8z0r0M/vZ9otCuAQ+GY+yTqBf7w6O8plnmJnHAMAeuj3qX9rnKvrKEGJsen37VU9a/2EImzqdSOuUNWyXg==
   dependencies:
     react "^16.5.0 || ^17.0.1 || ^18.1.0"
     react-dom "^16.5.0 || ^17.0.1 || ^18.1.0"
-    survey-core "1.9.90"
+    survey-core "1.9.92"
 
 survey-react@^1.9.92:
   version "1.9.92"

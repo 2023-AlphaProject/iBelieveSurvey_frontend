@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from 'react-router-dom';
 import { Survey } from 'survey-react-ui';
 import { Model } from 'survey-core';
@@ -12,7 +13,7 @@ const SurveySubmit = () => {
   const { mutate: addParticipant } = useAddParticipant(Number(id));
 
   survey.onComplete.add((sender: any) => {
-    console.log(JSON.stringify(sender.data, null, 3));
+    // console.log(JSON.stringify(sender.data, null, 3));
     addParticipant(JSON.stringify(sender.data, null, 3));
   });
   survey.locale = 'ko';

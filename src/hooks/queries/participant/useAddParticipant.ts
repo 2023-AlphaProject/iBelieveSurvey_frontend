@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import participantAPI from 'apis/participantAPI';
@@ -9,8 +10,8 @@ const useAddParticipant = (id: number) => {
 
   return useMutation(
     (data: any) => {
-      console.log(id);
-      console.log(data);
+      // console.log(id);
+      // console.log(data);
       return participantAPI.post(id, data);
     },
     {

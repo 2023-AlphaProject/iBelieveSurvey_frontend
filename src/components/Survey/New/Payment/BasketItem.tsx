@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ClearIcon from '@mui/icons-material/Clear';
+import { giftType } from 'types';
+import { useBasket } from 'hooks/useBasket';
 
 const GiftImg = styled.img`
   object-fit: cover;
@@ -40,7 +42,47 @@ const InfoWrapper = styled(Flex)`
   }
 `;
 
-const BasketItem = () => {
+interface Props {
+  gift: giftType;
+  quantity: number;
+}
+
+const BasketItem = ({ gift, quantity }: Props) => {
+  const { surveyId, basketData, setGifts } = useBasket();
+
+  const handlePlus = () => {
+    const idx = basketData.findIndex((g) => g.template === gift.id);
+    const temp = { ...[...basketData][idx] };
+    temp.quantity += 1;
+    const tempBasket = [...basketData];
+    tempBasket.splice(idx, 1, temp);
+
+    setGifts({
+      surveyId,
+      basketData: tempBasket,
+    });
+  };
+
+  const handleMinus = () => {
+    const idx = basketData.findIndex((g) => g.template === gift.id);
+    const temp = { ...[...basketData][idx] };
+    temp.quantity -= temp.quantity > 1 ? 1 : 0;
+    const tempBasket = [...basketData];
+    tempBasket.splice(idx, 1, temp);
+
+    setGifts({
+      surveyId,
+      basketData: tempBasket,
+    });
+  };
+
+  const handleRemove = () => {
+    setGifts({
+      surveyId,
+      basketData: basketData.filter((g) => g.template !== gift.id),
+    });
+  };
+
   return (
     <ItemWraaper
       borderBottom={`1px solid ${COLORS.primary}`}
@@ -57,32 +99,29 @@ const BasketItem = () => {
           sx={{ marginBottom: 'auto' }}
         />
         <InfoWrapper>
-          <GiftImg
-            loading="lazy"
-            src="https://st.kakaocdn.net/product/gift/product/20220107172532_8a6336605bf447bd8632fe6d72b8d7d9.jpg"
-          />
+          <GiftImg loading="lazy" src={gift.product_image_url} />
           <ItemWraaper flexDirection="column" gap="1rem" mb="30px" width="100%">
             <Label color={COLORS.primary} fontFamily="Pr-SemiBold">
-              스타벅스
+              {gift.brand_name}
             </Label>
             <Label style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              마음을 전하는 선물 아메리카노
+              {gift.product_name}
             </Label>
           </ItemWraaper>
         </InfoWrapper>
       </Flex>
       <CounterWraaper alignItems="center" gap="10px">
         <Label fontFamily="Pr-SemiBold" mr="1.5rem">
-          4,700원
+          {(quantity * gift.product_price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
         </Label>
-        <IconButton aria-label="minus" color="primary">
+        <IconButton onClick={handleMinus} aria-label="minus" color="primary">
           <RemoveCircleIcon />
         </IconButton>
-        <Label fontFamily="Pr-SemiBold">1개</Label>
-        <IconButton aria-label="plus" color="primary">
+        <Label fontFamily="Pr-SemiBold">{quantity}개</Label>
+        <IconButton onClick={handlePlus} aria-label="plus" color="primary">
           <AddCircleIcon />
         </IconButton>
-        <IconButton aira-label="delete" size="small">
+        <IconButton onClick={handleRemove} aira-label="delete" size="small">
           <ClearIcon />
         </IconButton>
       </CounterWraaper>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSnackBar } from 'hooks';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useKakaoCallback, useUserUpdate } from 'hooks/queries/auth';
 
 const KakaoAuth = () => {
@@ -17,7 +18,7 @@ const KakaoAuth = () => {
       const initUserInfo = JSON.parse(jsonString);
 
       if (initUserInfo?.token) {
-        console.log('initUserInfo', initUserInfo);
+        // console.log('initUserInfo', initUserInfo);
         navigate('/signup', { state: initUserInfo });
         sessionStorage.setItem('userToken', initUserInfo?.token);
       }
