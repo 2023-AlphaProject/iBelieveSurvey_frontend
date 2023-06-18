@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
-import { UserType } from 'types/userType';
+import { userType } from 'types/userUpdateType';
 
-export const userState = atom<UserType>({
+export const userState = atom<userType>({
   key: 'userState',
   default: {
     isUser: false,
