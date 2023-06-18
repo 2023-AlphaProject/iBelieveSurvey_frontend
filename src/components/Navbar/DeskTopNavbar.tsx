@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import {
   Search,
   SearchIconWrapper,
   StyledInputBase,
-  IDeskTopNavbar,
+  // IDeskTopNavbar,
 } from 'components/Navbar/NavbarStyles';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
