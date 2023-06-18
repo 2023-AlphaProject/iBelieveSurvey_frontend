@@ -1,4 +1,5 @@
 export { default as Home } from 'pages/Home';
+export { default as KakaoAuth } from 'pages/KakaoAuth';
 export { default as MyPage } from 'pages/MyPage';
 export { default as NotFound } from 'pages/NotFound';
 export { default as Tos } from 'pages/Tos';
@@ -8,9 +9,10 @@ export { default as SurveySearch } from 'pages/Survey/SurveySearch';
 export { default as SurveyDetail } from 'pages/Survey/SurveyDetail';
 export { default as SurveyResult } from 'pages/Survey/SurveyResult';
 export { default as SurveyGiftResult } from 'pages/Survey/SurveyGiftResult';
-export { default as SurveySubmit } from 'pages/Survey/SurveySubmit';
+export { default as SurveySubmit } from 'pages/Survey/New/SurveySubmit';
 export { default as NewSurvey } from 'pages/Survey/New/NewSurvey';
 export { default as NewSurveyForm } from 'pages/Survey/New/NewSurveyForm';
 export { default as NewSurveyPayment } from 'pages/Survey/New/NewSurveyPayment';
 export { default as NewSurveyGiftItem } from 'pages/Survey/New/NewSurveyGiftItem';
 export { default as NewSurveyGifts } from 'pages/Survey/New/NewSurveyGifts';
+export { default as SignUp } from 'pages/SignUp';
