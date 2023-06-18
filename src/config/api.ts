@@ -17,19 +17,17 @@ const createInstance = () => {
 const instance = createInstance();
 
 const AxiosInterceptor = (props: Props) => {
-  if (userToken.user) {
-    instance.interceptors.request.use(
-      async (config) => {
-        console.log(config);
-        const newConfig = { ...config };
-        newConfig.headers.Authorization = `Bearer ${userToken.user}`;
-        return newConfig;
-      },
-      async (error) => {
-        return Promise.reject(error);
-      },
-    );
-  }
+  instance.interceptors.request.use(
+    async (config) => {
+      const newConfig = { ...config };
+      const user = userToken();
+      if (user.user) newConfig.headers.Authorization = `Bearer ${user.user}`;
+      return newConfig;
+    },
+    async (error) => {
+      return Promise.reject(error);
+    },
+  );
   return props.children;
 };
 
