@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router';
 import { userState } from 'states/stateUser';
-import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useSnackBar } from 'hooks';
 import { Flex, Label, Box } from 'components/Box';
 import { Button } from 'components/common';
@@ -90,30 +90,25 @@ const Home = () => {
   const { state } = useLocation();
   const { handleSnackBar } = useSnackBar();
   const setUserState = useSetRecoilState(userState);
-  const userInfo = useRecoilValue(userState);
 
   useEffect(() => {
-    console.log(userInfo);
-    if (userInfo.birthYear) console.log('asd');
-  }, []);
-
-  useEffect(() => {
-    if (!state) return;
-    const data = state?.data;
-    setUserState({
-      isUser: true,
-      birthYear: data?.birthyear,
-      email: data?.email,
-      gender: data?.gender,
-      hidden_realName: data?.hidden_realName,
-      realName: data?.realName,
-      kakaoId: data?.kakaoId,
-      phoneNumber: data?.phoneNumber,
-    });
-    handleSnackBar({
-      variant: 'success',
-      message: '로그인 되었습니다.',
-    })();
+    if (state) {
+      const data = state?.data;
+      setUserState({
+        isUser: true,
+        birthYear: data?.birthyear,
+        email: data?.email,
+        gender: data?.gender,
+        hidden_realName: data?.hidden_realName,
+        realName: data?.realName,
+        kakaoId: data?.kakaoId,
+        phoneNumber: data?.phoneNumber,
+      });
+      handleSnackBar({
+        variant: 'success',
+        message: '로그인 되었습니다.',
+      })();
+    }
   }, []);
 
   const { data } = useSurveyListQuery(1);

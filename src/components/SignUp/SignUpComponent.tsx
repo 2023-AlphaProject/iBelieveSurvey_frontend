@@ -13,10 +13,10 @@ const SignUpComponent = () => {
   const userToken = state?.token;
 
   const initInfo: userInfo = {
-    realName: state.realName || '',
-    phoneNumber: state.phoneNumber || '010',
-    birthYear: state.birthYear || '',
-    gender: state.gender || '',
+    realName: state?.realName || '',
+    phoneNumber: state?.phoneNumber || '010',
+    birthYear: state?.birthYear || '',
+    gender: state?.gender || '',
   };
   const [userInfo, setUserInfo] = useState(initInfo);
 
