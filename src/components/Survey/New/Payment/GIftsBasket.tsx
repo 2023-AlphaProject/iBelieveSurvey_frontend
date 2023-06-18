@@ -29,7 +29,7 @@ const GiftsBasket = ({ gifts }: Props) => {
       <Box mt="6px" borderBottom={`2px solid ${COLORS.primary}`} />
       {gifts.map((gift: any) => (
         <BasketItem
-          key={`gift_${gift?.template}`}
+          key={`gift_${gift?.template.id}`}
           gift={gift?.template}
           quantity={gift?.quantity}
         />

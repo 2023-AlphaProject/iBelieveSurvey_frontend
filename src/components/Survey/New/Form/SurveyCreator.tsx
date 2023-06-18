@@ -7,7 +7,7 @@ import { surveyJSON } from 'constants/SURVEY_DEFAULT_JSON';
 import 'survey-core/defaultV2.min.css';
 import 'survey-creator-core/survey-creator-core.min.css';
 import 'survey-creator-core/survey-creator-core.i18n.js';
-import { useUpdateSurvey } from 'hooks/queries/surveys';
+import { useSurveyQuery, useUpdateSurvey } from 'hooks/queries/surveys';
 
 const creatorOptions = {
   showLogicTab: false,
@@ -32,7 +32,9 @@ const creatorOptions = {
 
 const Surveycreator = () => {
   const { state } = useLocation();
-  const { mutate: updateSurvey } = useUpdateSurvey(state.id || sessionStorage.getItem('surveyId'));
+  const { mutate: updateSurvey } = useUpdateSurvey(state?.id || sessionStorage.getItem('surveyId'));
+
+  const { data: survey } = useSurveyQuery(state?.id || sessionStorage.getItem('surveyId'));
 
   const creator = new SurveyCreator(creatorOptions);
   const koLocale = localization.getLocale('ko');
@@ -51,7 +53,7 @@ const Surveycreator = () => {
 
   SurveyQuestionEditorDefinition.definition = {};
   creator.toolbox.forceCompact = true;
-  creator.JSON = surveyJSON;
+  creator.JSON = survey?.data?.data || surveyJSON;
 
   // // 프로퍼티 사이드바 안보이게 처리
   // const whiteList = ['name', 't'];

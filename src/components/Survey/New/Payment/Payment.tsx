@@ -2,7 +2,7 @@ import { Flex, Label } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import { useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { giftType } from 'types';
 
@@ -25,8 +25,10 @@ interface Props {
 }
 
 const Payment = ({ gifts }: Props) => {
+  const navigate = useNavigate();
+
   const getPaymentInfo = useCallback(() => {
-    const info = { amount: gifts[0].result_price || 0, quantity: 0 };
+    const info = { amount: gifts[0]?.result_price || 0, quantity: 0 };
     gifts.forEach(({ quantity = 0 }) => {
       info.quantity += quantity;
     });
@@ -79,20 +81,19 @@ const Payment = ({ gifts }: Props) => {
         </Label>
       </Flex>
       <Flex gap="10px">
-        <Link to="/survey/new/form">
-          <Button
-            width="50%"
-            style={{
-              backgroundColor: COLORS.gray,
-              borderRadius: '1rem',
+        <Button
+          onClick={() => navigate('/survey/new/form')}
+          width="50%"
+          style={{
+            backgroundColor: COLORS.gray,
+            borderRadius: '1rem',
 
-              paddingLeft: 0,
-              paddingRight: 0,
-            }}
-          >
-            이전으로
-          </Button>
-        </Link>
+            paddingLeft: 0,
+            paddingRight: 0,
+          }}
+        >
+          이전으로
+        </Button>
         <Button width="50%" style={{ borderRadius: '1rem', paddingLeft: 0, paddingRight: 0 }}>
           결제하기
         </Button>
