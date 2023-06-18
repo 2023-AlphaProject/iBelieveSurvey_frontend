@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSnackBar } from 'hooks';
-import { useKakaoCallback, useUserUpdate } from 'hooks/queries/auth';
+import { useKakaoCallback } from 'hooks/queries/auth';
 
 const KakaoAuth = () => {
   const navigate = useNavigate();

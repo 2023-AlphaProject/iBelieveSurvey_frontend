@@ -7,10 +7,11 @@ import { COLORS } from 'constants/COLOR';
 import { AddItem, BasketItem } from 'components/Survey';
 
 interface Props {
+  surveyId: number;
   gifts: any;
 }
 
-const GiftsBasket = ({ gifts }: Props) => {
+const GiftsBasket = ({ surveyId, gifts }: Props) => {
   return (
     <Flex flexDirection="column">
       <Flex background={COLORS.primaryVariant} alignItems="center">
@@ -28,7 +29,13 @@ const GiftsBasket = ({ gifts }: Props) => {
       </Flex>
       <Box mt="6px" borderBottom={`2px solid ${COLORS.primary}`} />
       {gifts.map((gift: any) => (
-        <BasketItem key={`gift_${gift?.template}`} gift={gift?.gift} quantity={gift?.quantity} />
+        <BasketItem
+          key={`gift_${gift?.template.id}`}
+          surveyId={surveyId}
+          uuid={gift?.uuid}
+          gift={gift?.template}
+          quantity={gift?.quantity}
+        />
       ))}
       <AddItem only={!gifts.length} />
     </Flex>

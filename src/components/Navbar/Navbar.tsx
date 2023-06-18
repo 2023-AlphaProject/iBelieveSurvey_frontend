@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { userState } from 'states/stateUser';
 import { useSnackBar } from 'hooks';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import userToken from 'utils/userToken';
 import { useWindowSize } from 'hooks/useWindowSize';
 import { DeskTopNavbar, MobileNavbar } from 'components/Navbar';
