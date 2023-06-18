@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Suspense, useState } from 'react';
 import { Flex, Label } from 'components/Box';
 import { Sidebar, Filterbar, LoadingComponent } from 'components/common';
@@ -10,7 +11,25 @@ const Survey = () => {
   const [label, setLabel] = useState('인구통계');
   const [orderState, setOrderState] = useState('created_at');
   const [page, setPage] = useState(1);
+  const [cnt, setCnt] = useState(0);
+  const [isOngoing, setOngoing] = useState(false);
   const { data } = useSurveyListQuery(page);
+  // console.log(data?.data);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-lone-blocks
+    {
+      // eslint-disable-next-line array-callback-return
+      let tmp = 0;
+      // eslint-disable-next-line array-callback-return
+      data?.data?.map((survey: surveyType) => {
+        if (survey.category_name === label) {
+          tmp += 1;
+        }
+      });
+      setCnt(tmp);
+    }
+  }, [label]);
 
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
@@ -35,7 +54,7 @@ const Survey = () => {
         <Flex flexDirection="column" gap="1.25rem">
           <Flex position="relative">
             <Label fontFamily="Pr-Regular" fontSize="0.8rem" mt="0.5rem">
-              총 1,000개
+              총 {cnt}개
             </Label>
             <Filterbar setOrderState={setOrderState} right="0" />
           </Flex>
@@ -43,7 +62,10 @@ const Survey = () => {
             <Label fontFamily="Pr-Bold" fontSize="0.8rem" mt="0.5rem">
               설문 진행중
             </Label>
-            <Checkbox sx={{ width: '2rem', height: '1.8rem' }} />
+            <Checkbox
+              sx={{ width: '2rem', height: '1.8rem' }}
+              onClick={() => setOngoing(!isOngoing)}
+            />
           </Flex>
           <Suspense fallback={<LoadingComponent />}>
             <SurveyCardWrapper
@@ -51,8 +73,15 @@ const Survey = () => {
               totalPages={data?.data?.total_pages}
               setPage={setPage}
             >
-              {data?.data?.results?.map((survey: surveyType) => {
-                return <Card key={`survey_${survey.id}`} survey={survey} />;
+              {data?.data?.map((survey: surveyType) => {
+                if (isOngoing === true) {
+                  if (survey.category_name === label && survey.is_ongoing === true) {
+                    return <Card key={`survey_${survey.id}`} survey={survey} />;
+                  }
+                } else if (survey.category_name === label) {
+                  return <Card key={`survey_${survey.id}`} survey={survey} />;
+                }
+                return null;
               })}
             </SurveyCardWrapper>
           </Suspense>

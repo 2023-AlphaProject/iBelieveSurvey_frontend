@@ -1,23 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
-import kakaoAuthAPI from 'apis/kakaoAuthAPI';
-import { useSnackBar } from 'hooks/useSnackBar';
-import { userInfo } from 'types';
+import participantAPI from 'apis/participantAPI';
+import { useSnackBar } from 'hooks';
 
-const useUserUpdate = (options = {}) => {
+const useAddParticipant = (id: number) => {
   const navigate = useNavigate();
   const { handleSnackBar } = useSnackBar();
 
   return useMutation(
-    (payload: userInfo) => {
-      return kakaoAuthAPI.put(payload);
+    (data: any) => {
+      console.log(id);
+      console.log(data);
+      return participantAPI.post(id, data);
     },
     {
-      ...options,
-      onSuccess: ({ data }) => {
-        // Recoil User Info 추가
-        console.log(data);
-        navigate('/');
+      onSuccess: () => {
+        navigate(`/survey/${id}`);
       },
       onError: () => {
         handleSnackBar({
@@ -29,4 +27,4 @@ const useUserUpdate = (options = {}) => {
   );
 };
 
-export default useUserUpdate;
+export default useAddParticipant;

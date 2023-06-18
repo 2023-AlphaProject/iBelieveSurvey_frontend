@@ -15,8 +15,8 @@ const Img = styled.img`
 `;
 
 const Image = styled.img`
-  width: 13.45rem;
-  height: 13.45rem;
+  width: 14.2rem;
+  height: 14.2em;
   border-radius: 1.75rem;
   object-fit: cover;
 `;
