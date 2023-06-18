@@ -8,7 +8,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ClearIcon from '@mui/icons-material/Clear';
 import { giftType } from 'types';
-import { useDeleteCarts } from 'hooks/queries/surveys';
+import { useDeleteCarts, useUpdateCarts } from 'hooks/queries/surveys';
 
 const GiftImg = styled.img`
   object-fit: cover;
@@ -51,6 +51,22 @@ interface Props {
 
 const BasketItem = ({ surveyId, uuid, gift, quantity }: Props) => {
   const { mutate: deleteCarts } = useDeleteCarts(surveyId, uuid);
+  const { mutate: updateCarts } = useUpdateCarts(surveyId, uuid);
+
+  const decreaseItem = () => {
+    if (quantity > 1)
+      updateCarts({
+        template: gift.id,
+        quantity: quantity - 1,
+      });
+  };
+
+  const increaseItem = () => {
+    updateCarts({
+      template: gift.id,
+      quantity: quantity + 1,
+    });
+  };
 
   const removeItem = () => {
     deleteCarts();
@@ -87,11 +103,11 @@ const BasketItem = ({ surveyId, uuid, gift, quantity }: Props) => {
         <Label fontFamily="Pr-SemiBold" mr="1.5rem">
           {(quantity * gift.product_price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
         </Label>
-        <IconButton aria-label="minus" color="primary">
+        <IconButton onClick={decreaseItem} aria-label="minus" color="primary">
           <RemoveCircleIcon />
         </IconButton>
         <Label fontFamily="Pr-SemiBold">{quantity}개</Label>
-        <IconButton aria-label="plus" color="primary">
+        <IconButton onClick={increaseItem} aria-label="plus" color="primary">
           <AddCircleIcon />
         </IconButton>
         <IconButton onClick={removeItem} aira-label="delete" size="small">

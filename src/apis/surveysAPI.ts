@@ -32,8 +32,8 @@ const surveysAPI = {
     },
   },
   payments: {
-    get: (id: number) => {
-      return instance.get(`/surveys/${id}/carts/payments/`);
+    post: (id: number) => {
+      return instance.post(`/surveys/${id}/carts/payments/`);
     },
     success: (id: number) => {
       return instance.get(`/surveys/${id}/carts/payments/success/`);

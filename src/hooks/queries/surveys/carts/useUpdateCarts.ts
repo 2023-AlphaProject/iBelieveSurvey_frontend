@@ -1,6 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 import surveysAPI from 'apis/surveysAPI';
+import { queryClient } from 'config/quertClients';
 import { useSnackBar } from 'hooks';
+import * as QUERY_KEYS from 'constants/QUERY_KEYS';
 
 const useUpdateCarts = (id: number, uuid: number, options = {}) => {
   const { handleSnackBar } = useSnackBar();
@@ -12,6 +14,9 @@ const useUpdateCarts = (id: number, uuid: number, options = {}) => {
     },
     {
       ...options,
+      onSuccess: () => {
+        queryClient.invalidateQueries([QUERY_KEYS.CARTS, id]);
+      },
       onError: () => {
         handleSnackBar({
           variant: 'error',

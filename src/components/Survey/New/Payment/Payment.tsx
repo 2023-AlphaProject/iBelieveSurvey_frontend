@@ -1,6 +1,7 @@
 import { Flex, Label } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
+import { usePaySurvey } from 'hooks/queries/surveys';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -15,6 +16,7 @@ const PaymentWrapper = styled(Flex)`
 `;
 
 interface Props {
+  surveyId: number;
   gifts: {
     template?: number;
     result_price?: number;
@@ -24,8 +26,10 @@ interface Props {
   }[];
 }
 
-const Payment = ({ gifts }: Props) => {
+const Payment = ({ surveyId, gifts }: Props) => {
   const navigate = useNavigate();
+
+  const { mutate: payKaKao } = usePaySurvey(surveyId);
 
   const getPaymentInfo = useCallback(() => {
     const info = { amount: gifts[0]?.result_price || 0, quantity: 0 };
@@ -35,6 +39,10 @@ const Payment = ({ gifts }: Props) => {
 
     return info;
   }, [gifts]);
+
+  const handlePay = () => {
+    payKaKao();
+  };
 
   return (
     <PaymentWrapper
@@ -94,7 +102,11 @@ const Payment = ({ gifts }: Props) => {
         >
           이전으로
         </Button>
-        <Button width="50%" style={{ borderRadius: '1rem', paddingLeft: 0, paddingRight: 0 }}>
+        <Button
+          onClick={handlePay}
+          width="50%"
+          style={{ borderRadius: '1rem', paddingLeft: 0, paddingRight: 0 }}
+        >
           결제하기
         </Button>
       </Flex>
