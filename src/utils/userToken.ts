@@ -3,4 +3,4 @@ const userToken = () => {
   return { user: user || false };
 };
 
-export default userToken();
+export default userToken;

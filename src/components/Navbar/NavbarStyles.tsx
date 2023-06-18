@@ -5,8 +5,11 @@ import { COLORS } from 'constants/COLOR';
 
 export interface IDeskTopNavbar {
   anchorElNav: null | HTMLElement;
-  handleCloseNavMenu?: () => void;
+  handleCloseNavMenu: () => void;
   handleOpenNavMenu?: (e: React.MouseEvent<HTMLElement>) => void;
+  isUser: boolean;
+  useLogOut: () => void;
+  KakaoLogin: () => void;
 }
 
 export const AppBarContainer = styled(AppBar)`

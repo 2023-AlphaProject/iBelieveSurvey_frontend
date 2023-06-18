@@ -1,3 +1,7 @@
+import { useLocation } from 'react-router';
+import { userState } from 'states/stateUser';
+import { useSetRecoilState } from 'recoil';
+import { useSnackBar } from 'hooks';
 import { Flex, Label, Box } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
@@ -9,6 +13,7 @@ import { useSurveyListQuery } from 'hooks/queries/surveys';
 import { surveyType } from 'types';
 
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 interface BoxProps {
   right?: string;
@@ -82,6 +87,30 @@ const Label2 = styled(Label)`
 `;
 
 const Home = () => {
+  const { state } = useLocation();
+  const { handleSnackBar } = useSnackBar();
+  const setUserState = useSetRecoilState(userState);
+
+  useEffect(() => {
+    if (state) {
+      const data = state?.data;
+      setUserState({
+        isUser: true,
+        birthyear: data?.birthyear,
+        email: data?.email,
+        gender: data?.gender,
+        hidden_realName: data?.hidden_realName,
+        realName: data?.realName,
+        kakaoId: data?.kakaoId,
+        phoneNumber: data?.phoneNumber,
+      });
+      handleSnackBar({
+        variant: 'success',
+        message: '로그인 되었습니다.',
+      })();
+    }
+  }, []);
+
   const { data } = useSurveyListQuery(1);
   return (
     <Flex width="100%" flexDirection="column" alignItems="center">

@@ -14,7 +14,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
-const MobileNavbar = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }: IDeskTopNavbar) => {
+const MobileNavbar = ({
+  anchorElNav,
+  handleOpenNavMenu,
+  handleCloseNavMenu,
+  isUser,
+  useLogOut,
+  KakaoLogin,
+}: IDeskTopNavbar) => {
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* Mobile SearchBar */}
@@ -71,16 +78,36 @@ const MobileNavbar = ({ anchorElNav, handleOpenNavMenu, handleCloseNavMenu }: ID
               <Typography textAlign="center">설문 게시판</Typography>
             </MenuItem>
           </Link>
-          <Link to="/mypage">
-            <MenuItem onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">마이페이지</Typography>
-            </MenuItem>
-          </Link>
-          <Link to="/">
-            <MenuItem onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">로그인</Typography>
-            </MenuItem>
-          </Link>
+          {isUser ? (
+            <div>
+              <Link to="/mypage">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">마이페이지</Typography>
+                </MenuItem>
+              </Link>
+              <Link to="/">
+                <MenuItem
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    useLogOut();
+                  }}
+                >
+                  <Typography textAlign="center">로그아웃</Typography>
+                </MenuItem>
+              </Link>
+            </div>
+          ) : (
+            <Link to="/">
+              <MenuItem
+                onClick={() => {
+                  KakaoLogin();
+                  handleCloseNavMenu();
+                }}
+              >
+                <Typography textAlign="center">로그인</Typography>
+              </MenuItem>
+            </Link>
+          )}
         </Menu>
       </Box>
     </Toolbar>
