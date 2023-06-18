@@ -19,7 +19,7 @@ const SurveyDatail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useSurveyQuery(Number(id));
-  console.log(data?.data.data);
+  // console.log(data?.data.data);
   const startDay = data?.data.created_at.substr(0, 10);
   const endDay = data?.data.created_at.substr(0, 10);
 
@@ -29,10 +29,10 @@ const SurveyDatail = () => {
         <Thumbnail isEnd={data?.data.is_end} endAt={data?.data.end_at} img={data?.data.thumbnail} />
         <Flex flexDirection="column" width="29rem" gap="0.75rem" pl={3}>
           <Flex gap="0.5rem">
-            {data?.data.is_end === true ? (
-              <Tag variant="primary">설문종료</Tag>
+            {data?.data.is_ongoing === true ? (
+              <Tag variant="primary">진행중</Tag>
             ) : (
-              <Tag variant="secondary">진행중</Tag>
+              <Tag variant="secondary">설문종료</Tag>
             )}
 
             <Tag>{data?.data.category_name}</Tag>
@@ -46,9 +46,13 @@ const SurveyDatail = () => {
           </Flex>
 
           <Flex gap="1rem">
-            {/* {data?.data.is_end === false ? (
+            {data?.data.is_ongoing === false ? (
               <Flex gap="0.6rem">
-                <Button scale="xs" variant="secondary">
+                <Button
+                  scale="xs"
+                  variant="secondary"
+                  onClick={() => navigate(`/survey/${id}/result`)}
+                >
                   설문 결과 보기
                 </Button>
 
@@ -57,11 +61,11 @@ const SurveyDatail = () => {
                 </Button>
               </Flex>
             ) : (
-              <Button scale="xs">설문 응답 조회</Button>
-            )} */}
-            <Button scale="xs" onClick={() => navigate(`/survey/${data?.data.id}/submit`)}>
-              설문 참여하기
-            </Button>
+              <Button scale="xs" onClick={() => navigate(`/survey/${data?.data.id}/submit`)}>
+                설문 참여하기
+              </Button>
+            )}
+
             <Flex flexDirection="column" gap="0.1rem" mt="0.4rem" alignItems="center">
               <img
                 src={`${process.env.PUBLIC_URL}/assets/images/human.svg`}
