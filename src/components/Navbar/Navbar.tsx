@@ -1,10 +1,15 @@
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { userState } from 'states/stateUser';
 import { useWindowSize } from 'hooks/useWindowSize';
 import { DeskTopNavbar, MobileNavbar } from 'components/Navbar';
 import { AppBarContainer } from 'components/Navbar/NavbarStyles';
 import Container from '@mui/material/Container';
 
 const Navbar = () => {
+  const userInfo = useRecoilValue(userState);
+  const isUser = userInfo?.isUser;
+  console.log(userInfo.isUser);
   const windowSize = useWindowSize();
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
@@ -20,10 +25,7 @@ const Navbar = () => {
     <AppBarContainer>
       <Container style={{ width: '100%', maxWidth: '1200px' }}>
         {windowSize.width !== undefined && windowSize.width > 900 ? (
-          <DeskTopNavbar
-            anchorElNav={anchorElNav}
-            handleCloseNavMenu={() => handleCloseNavMenu()}
-          />
+          <DeskTopNavbar isUser={isUser} />
         ) : (
           <MobileNavbar
             anchorElNav={anchorElNav}

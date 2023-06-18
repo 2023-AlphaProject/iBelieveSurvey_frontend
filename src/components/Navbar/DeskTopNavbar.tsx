@@ -14,7 +14,11 @@ import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
 import { kakaoLogin } from 'utils/kakaoLogin';
 
-const DeskTopNavbar = ({ anchorElNav }: IDeskTopNavbar) => {
+type isUserType = {
+  isUser: boolean;
+};
+
+const DeskTopNavbar = ({ isUser }: isUserType) => {
   const { KakaoLogin } = kakaoLogin();
 
   return (
@@ -45,34 +49,63 @@ const DeskTopNavbar = ({ anchorElNav }: IDeskTopNavbar) => {
             설문 게시판
           </Button>
         </Link>
-        <Link to="/mypage">
-          <Button sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}>
-            마이페이지
-          </Button>
-        </Link>
-        <Link to="/">
-          <Button
-            onClick={() => {
-              KakaoLogin();
-            }}
-            sx={{
-              display: 'block',
-              width: '7rem',
-              textAlign: 'center',
-              color: '#fff',
-              backgroundColor: `${COLORS.secondary}`,
-              my: 2,
-              fontWeight: '700',
-              borderRadius: '30px',
-              boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
-              '&:hover': {
-                backgroundColor: `${COLORS.secondaryVariant}`,
-              },
-            }}
-          >
-            로그인
-          </Button>
-        </Link>
+        {isUser && (
+          <Link to="/mypage">
+            <Button sx={{ my: 2, color: '#000', display: 'block', fontWeight: '700' }}>
+              마이페이지
+            </Button>
+          </Link>
+        )}
+
+        {isUser ? (
+          <Link to="/">
+            <Button
+              onClick={() => {
+                KakaoLogin();
+              }}
+              sx={{
+                display: 'block',
+                width: '7rem',
+                textAlign: 'center',
+                color: '#fff',
+                backgroundColor: `${COLORS.secondary}`,
+                my: 2,
+                fontWeight: '700',
+                borderRadius: '30px',
+                boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
+                '&:hover': {
+                  backgroundColor: `${COLORS.secondaryVariant}`,
+                },
+              }}
+            >
+              로그아웃
+            </Button>
+          </Link>
+        ) : (
+          <Link to="/">
+            <Button
+              onClick={() => {
+                KakaoLogin();
+              }}
+              sx={{
+                display: 'block',
+                width: '7rem',
+                textAlign: 'center',
+                color: '#fff',
+                backgroundColor: `${COLORS.secondary}`,
+                my: 2,
+                fontWeight: '700',
+                borderRadius: '30px',
+                boxShadow: '-3px 5px 5px -3px rgba(0,0,0,0.74)',
+                '&:hover': {
+                  backgroundColor: `${COLORS.secondaryVariant}`,
+                },
+              }}
+            >
+              로그인
+            </Button>
+          </Link>
+        )}
       </Box>
     </Toolbar>
   );
