@@ -97,7 +97,7 @@ const Filterbar = (props: Props) => {
             onClick={() => {
               setText('참여자 많은 순');
               setVisible(!visible);
-              setOrderState('Participants');
+              setOrderState('participants');
             }}
           >
             참여자 많은 순
@@ -107,7 +107,7 @@ const Filterbar = (props: Props) => {
             onClick={() => {
               setText('참여자 적은 순');
               setVisible(!visible);
-              setOrderState('-Participants');
+              setOrderState('-participants');
             }}
           >
             참여자 적은 순
