@@ -111,6 +111,7 @@ const Home = () => {
   }, []);
 
   const { data } = useSurveyListQuery(1, 1);
+
   return (
     <Flex width="100%" flexDirection="column" alignItems="center">
       <Navbar />
