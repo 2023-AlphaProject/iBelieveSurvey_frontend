@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 const MyPage = () => {
   const [label, setLabel] = useState('결제한 설문 내역');
   const { data } = useSurveyListQuery(1, 1);
-  let mydata1 = data?.data;
+  let mydata1 = data?.data?.results;
   mydata1 = mydata1.slice(1, 5);
-  let mydata2 = data?.data;
+  let mydata2 = data?.data?.results;
   mydata2 = mydata2.slice(6, 12);
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
