@@ -425,7 +425,7 @@ const Home = () => {
           </Flex>
         </Link>
         <Flex mt={3} flexWrap="wrap">
-          {data?.data?.map((survey: surveyType) => {
+          {data?.data?.results.map((survey: surveyType) => {
             if (survey.is_ongoing === true) {
               return <Card key={`survey_${survey.id}`} survey={survey} />;
             }
