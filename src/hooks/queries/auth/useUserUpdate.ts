@@ -15,9 +15,11 @@ const useUserUpdate = (options = {}) => {
     {
       ...options,
       onSuccess: ({ data }) => {
-        // Recoil User Info 추가
-        console.log(data);
-        navigate('/');
+        navigate('/', { state: { data } });
+        handleSnackBar({
+          variant: 'success',
+          message: '회원가입 되었습니다.',
+        })();
       },
       onError: () => {
         handleSnackBar({

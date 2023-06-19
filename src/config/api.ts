@@ -2,6 +2,10 @@ import axios from 'axios';
 import { BASEURL } from 'constants/BASEURL';
 import userToken from 'utils/userToken';
 
+interface Props {
+  children: React.ReactElement;
+}
+
 const createInstance = () => {
   return axios.create({
     baseURL: BASEURL,
@@ -12,17 +16,19 @@ const createInstance = () => {
 
 const instance = createInstance();
 
-if (userToken.user) {
+const AxiosInterceptor = (props: Props) => {
   instance.interceptors.request.use(
     async (config) => {
       const newConfig = { ...config };
-      newConfig.headers.Authorization = `Bearer ${userToken.user}`;
+      const user = userToken();
+      if (user.user) newConfig.headers.Authorization = `Bearer ${user.user}`;
       return newConfig;
     },
-    (error) => {
+    async (error) => {
       return Promise.reject(error);
     },
   );
-}
+  return props.children;
+};
 
-export { instance };
+export { instance, AxiosInterceptor };

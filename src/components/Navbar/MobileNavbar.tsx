@@ -15,24 +15,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 
-// import './custom.css';
-
-interface MobilenNavbar extends IDeskTopNavbar {
-  kakaoLogin: () => void;
-  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  enterKey: (e: KeyboardEvent<HTMLDivElement>) => void;
-}
-
-const MobileNavbar = (props: MobilenNavbar) => {
-  const {
-    anchorElNav,
-    handleOpenNavMenu,
-    handleCloseNavMenu,
-    kakaoLogin,
-    handleSearchChange,
-    enterKey,
-  } = props;
-
+const MobileNavbar = ({
+  anchorElNav,
+  handleOpenNavMenu,
+  handleCloseNavMenu,
+  isUser,
+  useLogOut,
+  KakaoLogin,
+  handleSearchChange,
+  enterKey,
+}: IDeskTopNavbar) => {
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* Mobile SearchBar */}
@@ -93,16 +85,36 @@ const MobileNavbar = (props: MobilenNavbar) => {
               <Typography textAlign="center">설문 게시판</Typography>
             </MenuItem>
           </Link>
-          <Link to="/mypage">
-            <MenuItem onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">마이페이지</Typography>
-            </MenuItem>
-          </Link>
-          <Link to="/">
-            <MenuItem onClick={kakaoLogin}>
-              <Typography textAlign="center">로그인</Typography>
-            </MenuItem>
-          </Link>
+          {isUser ? (
+            <div>
+              <Link to="/mypage">
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">마이페이지</Typography>
+                </MenuItem>
+              </Link>
+              <Link to="/">
+                <MenuItem
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    useLogOut();
+                  }}
+                >
+                  <Typography textAlign="center">로그아웃</Typography>
+                </MenuItem>
+              </Link>
+            </div>
+          ) : (
+            <Link to="/">
+              <MenuItem
+                onClick={() => {
+                  KakaoLogin();
+                  handleCloseNavMenu();
+                }}
+              >
+                <Typography textAlign="center">로그인</Typography>
+              </MenuItem>
+            </Link>
+          )}
         </Menu>
       </Box>
     </Toolbar>

@@ -8,7 +8,7 @@ export interface StyleProps {
 export interface UserInfoType {
   realName: string;
   phoneNumber: string;
-  birthYear: string;
+  birthyear: string;
   gender: string;
 }
 

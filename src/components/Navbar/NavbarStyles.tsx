@@ -2,11 +2,17 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import AppBar from '@mui/material/AppBar';
 import { COLORS } from 'constants/COLOR';
+import { KeyboardEvent } from 'react';
 
 export interface IDeskTopNavbar {
   anchorElNav: null | HTMLElement;
-  handleCloseNavMenu?: () => void;
+  handleCloseNavMenu: () => void;
   handleOpenNavMenu?: (e: React.MouseEvent<HTMLElement>) => void;
+  isUser: boolean;
+  useLogOut: () => void;
+  KakaoLogin: () => void;
+  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  enterKey: (e: KeyboardEvent<HTMLDivElement>) => void;
 }
 
 export const AppBarContainer = styled(AppBar)`

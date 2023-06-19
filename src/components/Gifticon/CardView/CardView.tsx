@@ -1,33 +1,41 @@
 import { Flex, Label } from 'components/Box';
 import { COLORS } from 'constants/COLOR';
-import cardType from './types';
+import { Link } from 'react-router-dom';
+import { giftType } from 'types';
 
 interface Props {
-  card: cardType;
+  gift: giftType;
 }
 
 const Card = (props: Props) => {
-  const { card } = props;
-  return (
-    <Flex flexDirection="column" mr={3}>
-      <img
-        src={`${process.env.PUBLIC_URL}/assets/images/${card.thumbnail}`}
-        alt="GIFTICON"
-        style={{ width: '12.5rem', height: '12.75rem', borderRadius: '1.2rem', cursor: 'pointer' }}
-      />
-      <Flex p={2} flexDirection="column" gap="0.5rem">
-        <Label fontFamily="Pr-Bold" fontSize="0.85rem" color={COLORS.primary}>
-          {card.brand}
-        </Label>
-        <Label fontFamily="Pr-Regular" fontSize="0.85rem">
-          {card.gift}
-        </Label>
+  const { gift } = props;
 
-        <Label fontFamily="Pr-Bold" mt={1}>
-          {card.price}원
-        </Label>
+  return (
+    <Link to={`/survey/new/gift/${gift.id}`}>
+      <Flex flexDirection="column" mr={3}>
+        <img
+          src={gift.product_image_url}
+          alt="GIFTICON"
+          style={{
+            width: '12.5rem',
+            height: '12.75rem',
+            borderRadius: '1.2rem',
+            cursor: 'pointer',
+          }}
+        />
+        <Flex p={2} flexDirection="column" gap="0.5rem">
+          <Label fontFamily="Pr-Bold" fontSize="0.85rem" color={COLORS.primary}>
+            {gift.brand_name}
+          </Label>
+          <Label fontFamily="Pr-Regular" fontSize="0.85rem">
+            {gift.product_name}
+          </Label>
+          <Label fontFamily="Pr-Bold" mt={1}>
+            {gift.product_price}원
+          </Label>
+        </Flex>
       </Flex>
-    </Flex>
+    </Link>
   );
 };
 

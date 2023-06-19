@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Flex } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
@@ -87,29 +86,13 @@ const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) =
         gender: value,
       });
     }
-    if (name === 'birthYear') {
+    if (name === 'birthyear') {
       setUserInfo({
         ...userInfo,
-        birthYear: value,
+        birthyear: value,
       });
     }
   };
-
-  // const onSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   if (
-  //     !userInfo.realName ||
-  //     userInfo.phoneNumber === '010' ||
-  //     !userInfo.birthYear ||
-  //     !userInfo.gender
-  //   ) {
-  //     handleSnackBar({
-  //       variant: 'error',
-  //       message: '공백 없이 작성해주세요.',
-  //     })();
-  //     console.log('asd');
-  //   }
-  // };
 
   return (
     <Flex justifyContent="center" alignItems="center" height="100%">
@@ -137,6 +120,7 @@ const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) =
             <GenderButton
               name="gender"
               value="male"
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onClick={(e: any) => onUserInfoChange(e)}
               backgroundcolor={userInfo.gender === 'male' ? COLORS.primary : '#fff'}
               color={userInfo.gender === 'male' ? '#fff' : '#000'}
@@ -154,7 +138,8 @@ const UserInfoContainer = ({ userInfo, setUserInfo, onSubmit }: UserInfoProps) =
             </GenderButton>
           </div>
           <InfoLabel width="6rem">출생연도</InfoLabel>
-          <Select name="birthYear" onChange={(e) => onUserInfoChange(e)}>
+          <Select name="birthyear" onChange={(e) => onUserInfoChange(e)}>
+            <option value="">출생연도</option>
             {Array.from({ length: 2024 - 1960 }, (_, index) => (
               <option key={index}>{1960 + index}</option>
             ))}
