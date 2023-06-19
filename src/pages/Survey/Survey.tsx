@@ -24,8 +24,6 @@ const Survey = () => {
   const [page, setPage] = useState(1);
   const [isOngoing, setOngoing] = useState(false);
   const { data } = useSurveyListQuery(page, cateNum);
-  console.log(isOngoing);
-  console.log(data?.data?.results);
 
   useEffect(() => {
     const idx = categorys.indexOf(label);
