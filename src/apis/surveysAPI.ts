@@ -11,8 +11,8 @@ const surveysAPI = {
   patch: (id: number, data: any) => {
     return instance.patch(`/surveys/${id}/`, data);
   },
-  list: (page: number, ordering: string) => {
-    return instance.get(`/surveys/?ordering=${ordering}&page=${page}`);
+  list: (page: number, cateNum: number, ordering: string) => {
+    return instance.get(`/surveys/?ordering=${ordering}&page=${page}&category=${cateNum}`);
   },
   search: (page: number, ordering: string, search: string) => {
     return instance.get(`/surveys/?ordering=${ordering}&search=${search}&page=${page}`);
