@@ -11,7 +11,7 @@ const CategoryBox = () => {
   return (
     <SurveyCardWrapper currentPage={page} totalPages={data?.data?.total_pages} setPage={setPage}>
       {/* {data?.data.results.map((gift: giftType) => ( */}
-      {data?.data.map((gift: giftType) => (
+      {data?.data?.results.map((gift: giftType) => (
         <CardView key={`gift_${gift.id}`} gift={gift} />
       ))}
     </SurveyCardWrapper>
