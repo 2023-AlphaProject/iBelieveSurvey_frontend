@@ -1,21 +1,21 @@
-import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import surveysAPI from 'apis/surveysAPI';
+import { queryClient } from 'config/quertClients';
 import { useSnackBar } from 'hooks';
+import * as QUERY_KEYS from 'constants/QUERY_KEYS';
 
-const useAddSurvey = (options = {}) => {
-  const navigate = useNavigate();
+const useDeleteCarts = (id: number, uuid: number, options = {}) => {
   const { handleSnackBar } = useSnackBar();
 
   return useMutation(
-    (payload: FormData) => {
-      return surveysAPI.post(payload);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    () => {
+      return surveysAPI.carts.delete(id, uuid);
     },
     {
       ...options,
-      onSuccess: ({ data }) => {
-        navigate('/survey/new/form', { state: { id: data?.id } });
-        sessionStorage.setItem('surveyId', data?.id);
+      onSuccess: () => {
+        queryClient.invalidateQueries([QUERY_KEYS.CARTS, id]);
       },
       onError: () => {
         handleSnackBar({
@@ -27,4 +27,4 @@ const useAddSurvey = (options = {}) => {
   );
 };
 
-export default useAddSurvey;
+export default useDeleteCarts;

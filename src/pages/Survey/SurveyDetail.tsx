@@ -5,6 +5,7 @@ import { Tag, Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import { useSurveyQuery } from 'hooks/queries/surveys';
+import { useEffect } from 'react';
 
 const Content = styled(Label)`
   font-family: 'Pr-Regular';
@@ -22,6 +23,10 @@ const SurveyDatail = () => {
   // console.log(data?.data);
   const startDay = data?.data.created_at.substr(0, 10);
   const endDay = data?.data.created_at.substr(0, 10);
+
+  useEffect(() => {
+    if (id === sessionStorage.getItem('surveyId')) sessionStorage.removeItem('surveyId');
+  }, [id]);
 
   return (
     <Flex alignItems="center" flexDirection="column" gap="2rem">

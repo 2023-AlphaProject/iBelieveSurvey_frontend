@@ -6,8 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
 import styled from 'styled-components';
 import useTemplateQuery from 'hooks/queries/templates/useTemplateQuery';
-import { useSnackBar } from 'hooks';
-import { useBasket } from 'hooks/useBasket';
+import { useAddCarts } from 'hooks/queries/surveys';
 
 interface ButtonProps {
   isClicked?: boolean;
@@ -20,17 +19,8 @@ const CategoryBtn = styled.button<ButtonProps>`
   color: ${(props) => (props.isClicked ? 'black' : '#888888')};
 `;
 
-// const PayBtn = styled.button`
-//   width: 9rem;
-//   text-align: center;
-//   font-family: 'Pr-Bold';
-//   border: solid ${COLORS.secondary};
-//   border-radius: 1.5rem;
-// `;
-
 const NewSurveyGiftItem = () => {
   const navigate = useNavigate();
-  const { handleSnackBar } = useSnackBar();
 
   const { id } = useParams();
   const [productCnt, setProductCnt] = useState(1);
@@ -38,7 +28,9 @@ const NewSurveyGiftItem = () => {
 
   const { data } = useTemplateQuery(id);
 
-  const { surveyId, basketData, setGifts } = useBasket();
+  const { mutate: addCarts } = useAddCarts(Number(sessionStorage.getItem('surveyId')), {
+    onSuccess: () => navigate('/survey/new/payment'),
+  });
 
   const handleClick = (id: number) => {
     setClicked(
@@ -58,26 +50,10 @@ const NewSurveyGiftItem = () => {
   };
 
   const handleBasket = () => {
-    if (basketData.some((g) => g.template === Number(id))) {
-      handleSnackBar({
-        variant: 'warning',
-        message: '이미 장바구니에 있는 기프티콘입니다.',
-      })();
-    } else {
-      setGifts({
-        surveyId,
-        basketData: [
-          ...basketData,
-          {
-            template: Number(id),
-            gift: data?.data,
-            quantity: productCnt,
-            price: data?.data.product_price,
-          },
-        ],
-      });
-      navigate('/survey/new/payment');
-    }
+    addCarts({
+      template_id: Number(id),
+      quantity: productCnt,
+    });
   };
 
   return (

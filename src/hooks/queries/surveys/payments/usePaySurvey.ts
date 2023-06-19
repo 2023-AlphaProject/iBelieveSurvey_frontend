@@ -1,21 +1,23 @@
-import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import surveysAPI from 'apis/surveysAPI';
 import { useSnackBar } from 'hooks';
 
-const useAddSurvey = (options = {}) => {
-  const navigate = useNavigate();
+const usePaySurvey = (id: number, options = {}) => {
   const { handleSnackBar } = useSnackBar();
 
   return useMutation(
-    (payload: FormData) => {
-      return surveysAPI.post(payload);
+    () => {
+      return surveysAPI.payments.post(id);
     },
     {
       ...options,
       onSuccess: ({ data }) => {
-        navigate('/survey/new/form', { state: { id: data?.id } });
-        sessionStorage.setItem('surveyId', data?.id);
+        const { innerWidth: width } = window;
+        if (width > 768) {
+          window.location.href = data.next_redirect_pc_url;
+        } else {
+          window.location.href = data.next_redirect_mobile_url;
+        }
       },
       onError: () => {
         handleSnackBar({
@@ -27,4 +29,4 @@ const useAddSurvey = (options = {}) => {
   );
 };
 
-export default useAddSurvey;
+export default usePaySurvey;

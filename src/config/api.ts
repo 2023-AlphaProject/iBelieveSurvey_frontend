@@ -11,6 +11,9 @@ const createInstance = () => {
     baseURL: BASEURL,
     timeout: 2000,
     withCredentials: true,
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
   });
 };
 

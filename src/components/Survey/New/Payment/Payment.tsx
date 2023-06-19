@@ -1,7 +1,9 @@
 import { Flex, Label } from 'components/Box';
 import { Button } from 'components/common';
 import { COLORS } from 'constants/COLOR';
+import { usePaySurvey } from 'hooks/queries/surveys';
 import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { giftType } from 'types';
 
@@ -14,24 +16,33 @@ const PaymentWrapper = styled(Flex)`
 `;
 
 interface Props {
+  surveyId: number;
   gifts: {
     template?: number;
+    result_price?: number;
     gift?: giftType;
     quantity?: number;
     price?: number;
   }[];
 }
 
-const Payment = ({ gifts }: Props) => {
+const Payment = ({ surveyId, gifts }: Props) => {
+  const navigate = useNavigate();
+
+  const { mutate: payKaKao } = usePaySurvey(surveyId);
+
   const getPaymentInfo = useCallback(() => {
-    const info = { amount: 0, quantity: 0 };
-    gifts.forEach(({ quantity = 0, price = 0 }) => {
-      info.amount += quantity * price;
+    const info = { amount: gifts[0]?.result_price || 0, quantity: 0 };
+    gifts.forEach(({ quantity = 0 }) => {
       info.quantity += quantity;
     });
 
     return info;
   }, [gifts]);
+
+  const handlePay = () => {
+    payKaKao();
+  };
 
   return (
     <PaymentWrapper
@@ -79,6 +90,7 @@ const Payment = ({ gifts }: Props) => {
       </Flex>
       <Flex gap="10px">
         <Button
+          onClick={() => navigate('/survey/new/form')}
           width="50%"
           style={{
             backgroundColor: COLORS.gray,
@@ -90,7 +102,11 @@ const Payment = ({ gifts }: Props) => {
         >
           이전으로
         </Button>
-        <Button width="50%" style={{ borderRadius: '1rem', paddingLeft: 0, paddingRight: 0 }}>
+        <Button
+          onClick={handlePay}
+          width="50%"
+          style={{ borderRadius: '1rem', paddingLeft: 0, paddingRight: 0 }}
+        >
           결제하기
         </Button>
       </Flex>

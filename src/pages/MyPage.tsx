@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const MyPage = () => {
   const [label, setLabel] = useState('결제한 설문 내역');
   const [orderState, setOrderState] = useState('created_at');
-  const { data } = useSurveyListQuery(1);
+  const { data } = useSurveyListQuery(1, 1);
   let mydata1 = data?.data;
   mydata1 = mydata1.slice(1, 5);
   let mydata2 = data?.data;
