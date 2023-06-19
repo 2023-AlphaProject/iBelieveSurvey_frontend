@@ -7,46 +7,35 @@ import { useSurveyListQuery } from 'hooks/queries/surveys';
 import { surveyType } from 'types';
 
 const Survey = () => {
+  const categorys = [
+    '인구통계',
+    '라이프스타일',
+    '기술',
+    '건강과 웰빙',
+    '정치 및 사회문제',
+    '소비자 행동',
+    '직장과 경력',
+    '교육',
+    '여행 및 관광',
+    '엔터테인먼트',
+  ];
   const [label, setLabel] = useState('인구통계');
+  const [cateNum, setCateNums] = useState(1);
   const [page, setPage] = useState(1);
-  const [cnt, setCnt] = useState(0);
   const [isOngoing, setOngoing] = useState(false);
-  const { data } = useSurveyListQuery(page);
-  // console.log(data?.data);
+  const { data } = useSurveyListQuery(page, cateNum);
+  console.log(isOngoing);
+  console.log(data?.data?.results);
 
   useEffect(() => {
-    // eslint-disable-next-line no-lone-blocks
-    {
-      let tmp = 0;
-      // eslint-disable-next-line array-callback-return
-      data?.data?.results.map((survey: surveyType) => {
-        if (survey.category_name === label) {
-          tmp += 1;
-        }
-      });
-      setCnt(tmp);
-    }
+    const idx = categorys.indexOf(label);
+    setCateNums(idx + 1);
   }, [label]);
 
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
       <Flex gap="1.75rem">
-        <Sidebar
-          title="카테고리 선택"
-          categorys={[
-            '인구통계',
-            '라이프스타일',
-            '기술',
-            '건강과 웰빙',
-            '정치 및 사회문제',
-            '소비자 행동',
-            '직장과 경력',
-            '교육',
-            '여행 및 관광',
-            '엔터테인먼트',
-          ]}
-          setLabel={setLabel}
-        />
+        <Sidebar title="카테고리 선택" categorys={categorys} setLabel={setLabel} />
 
         <Flex flexDirection="column" gap="1.25rem">
           <Flex position="relative">
@@ -54,7 +43,7 @@ const Survey = () => {
               {label}
             </Label>
             <Label fontFamily="Pr-Regular" fontSize="0.8rem" mt="0.5rem">
-              총 {cnt}개
+              총 {data?.data?.results.length}개
             </Label>
             <Filterbar right="0" />
           </Flex>
@@ -75,12 +64,10 @@ const Survey = () => {
             >
               {data?.data?.results.map((survey: surveyType) => {
                 if (isOngoing === true) {
-                  if (survey.category_name === label && survey.is_ongoing === true) {
-                    // console.log(survey);
+                  if (survey.is_ongoing === true) {
                     return <Card key={`survey_${survey.id}`} survey={survey} />;
                   }
-                } else if (survey.category_name === label) {
-                  // console.log(survey);
+                } else {
                   return <Card key={`survey_${survey.id}`} survey={survey} />;
                 }
                 return null;
