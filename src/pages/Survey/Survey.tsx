@@ -17,10 +17,9 @@ const Survey = () => {
   useEffect(() => {
     // eslint-disable-next-line no-lone-blocks
     {
-      // eslint-disable-next-line array-callback-return
       let tmp = 0;
       // eslint-disable-next-line array-callback-return
-      data?.data?.map((survey: surveyType) => {
+      data?.data?.results.map((survey: surveyType) => {
         if (survey.category_name === label) {
           tmp += 1;
         }
@@ -70,16 +69,18 @@ const Survey = () => {
           </Flex>
           <Suspense fallback={<LoadingComponent />}>
             <SurveyCardWrapper
-              currentPage={data?.data?.current_page}
-              totalPages={data?.data?.total_pages}
+              currentPage={data?.data?.results.current_page}
+              totalPages={data?.data?.results.total_pages}
               setPage={setPage}
             >
-              {data?.data?.map((survey: surveyType) => {
+              {data?.data?.results.map((survey: surveyType) => {
                 if (isOngoing === true) {
                   if (survey.category_name === label && survey.is_ongoing === true) {
+                    // console.log(survey);
                     return <Card key={`survey_${survey.id}`} survey={survey} />;
                   }
                 } else if (survey.category_name === label) {
+                  // console.log(survey);
                   return <Card key={`survey_${survey.id}`} survey={survey} />;
                 }
                 return null;
