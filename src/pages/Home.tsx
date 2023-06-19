@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import { userState } from 'states/stateUser';
 import { useSetRecoilState } from 'recoil';
@@ -11,8 +13,6 @@ import { Footer } from 'components/Footer';
 import { Card } from 'components/Survey';
 import { useSurveyListQuery } from 'hooks/queries/surveys';
 import { surveyType } from 'types';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 interface BoxProps {
   right?: string;

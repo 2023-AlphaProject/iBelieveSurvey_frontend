@@ -17,6 +17,7 @@ const Survey = () => {
   useEffect(() => {
     // eslint-disable-next-line no-lone-blocks
     {
+      // eslint-disable-next-line array-callback-return
       let tmp = 0;
       // eslint-disable-next-line array-callback-return
       data?.data?.results.map((survey: surveyType) => {
@@ -76,11 +77,9 @@ const Survey = () => {
               {data?.data?.results.map((survey: surveyType) => {
                 if (isOngoing === true) {
                   if (survey.category_name === label && survey.is_ongoing === true) {
-                    // console.log(survey);
                     return <Card key={`survey_${survey.id}`} survey={survey} />;
                   }
                 } else if (survey.category_name === label) {
-                  // console.log(survey);
                   return <Card key={`survey_${survey.id}`} survey={survey} />;
                 }
                 return null;
