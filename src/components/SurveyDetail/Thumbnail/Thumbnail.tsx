@@ -50,6 +50,7 @@ const Thumbnail = (props: Props) => {
           width: '24rem',
           height: '24rem',
           borderRadius: '1.2rem',
+          objectFit: 'cover',
         }}
       />
       <IconBox>
