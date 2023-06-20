@@ -146,14 +146,18 @@ const SearchContainer = (props: SearchProps) => {
         break;
       case 'participants':
         setParticipants('');
+        setParticipantsText('');
         break;
       case 'surveyState':
         setSurveyState('');
+        setSurveyStateText('');
         break;
       case 'allCancel':
         setCategory('');
         setParticipants('');
         setSurveyState('');
+        setParticipantsText('');
+        setSurveyStateText('');
         break;
       default:
         break;
@@ -184,7 +188,7 @@ const SearchContainer = (props: SearchProps) => {
           return (
             <ConditionBtn
               name={e}
-              participantsSelected={participants === e}
+              participantsSelected={participantsText === e}
               key={e}
               onClick={(e) => handleParticipants(e)}
             >
@@ -199,7 +203,7 @@ const SearchContainer = (props: SearchProps) => {
           return (
             <ConditionBtn
               name={e}
-              surveyStateSelected={surveyState === e}
+              surveyStateSelected={surveyStateText === e}
               key={e}
               onClick={(e) => handleSurveyState(e)}
             >
