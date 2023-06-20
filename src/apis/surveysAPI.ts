@@ -23,7 +23,7 @@ const surveysAPI = {
     ordering: string,
   ) => {
     return instance.get(
-      `/surveys/?page=${page}&search=${search}${category && `&category=${category}`}${
+      `/surveys/?page=${page}&search=${search}${category && `&category__type=${category}`}${
         participants && `&${participants}`
       }${surveyState && `&${surveyState}`}&ordering=${ordering}`,
     );
