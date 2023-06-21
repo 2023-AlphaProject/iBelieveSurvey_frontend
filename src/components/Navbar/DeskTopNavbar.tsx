@@ -1,24 +1,24 @@
-// import { useState, useEffect } from 'react';
+import { KeyboardEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/COLOR';
-import {
-  Search,
-  SearchIconWrapper,
-  StyledInputBase,
-  // IDeskTopNavbar,
-} from 'components/Navbar/NavbarStyles';
+import { Search, SearchIconWrapper, StyledInputBase } from 'components/Navbar/NavbarStyles';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
+import InputBase from '@mui/material/InputBase';
 
-type isUserType = {
+interface DeskTopNavbarProps {
   isUser: boolean;
   useLogOut: () => void;
   KakaoLogin: () => void;
-};
+  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  enterKey: (e: KeyboardEvent<HTMLDivElement>) => void;
+}
 
-const DeskTopNavbar = ({ isUser, useLogOut, KakaoLogin }: isUserType) => {
+const DeskTopNavbar = (props: DeskTopNavbarProps) => {
+  const { isUser, useLogOut, KakaoLogin, handleSearchChange, enterKey } = props;
+
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* PC Logo */}
@@ -32,11 +32,15 @@ const DeskTopNavbar = ({ isUser, useLogOut, KakaoLogin }: isUserType) => {
 
       {/* PC SearchBar */}
       <Box sx={{ flexGrow: 2, display: 'flex' }}>
-        <Search>
+        <Search onKeyUp={(e) => enterKey(e)}>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
-          <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(e)}
+          />
         </Search>
       </Box>
       {/* PC Components */}

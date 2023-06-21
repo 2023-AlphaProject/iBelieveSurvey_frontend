@@ -19,6 +19,7 @@ const Survey = () => {
     '여행 및 관광',
     '엔터테인먼트',
   ];
+  const [orderState, setOrderState] = useState('created_at');
   const [label, setLabel] = useState('인구통계');
   const [cateNum, setCateNums] = useState(1);
   const [page, setPage] = useState(1);
@@ -43,7 +44,7 @@ const Survey = () => {
             <Label fontFamily="Pr-Regular" fontSize="0.8rem" mt="0.5rem">
               총 {data?.data?.results.length}개
             </Label>
-            <Filterbar right="0" />
+            <Filterbar setOrderState={setOrderState} right="0" />
           </Flex>
           <Flex>
             <Label fontFamily="Pr-Bold" fontSize="0.8rem" mt="0.5rem">

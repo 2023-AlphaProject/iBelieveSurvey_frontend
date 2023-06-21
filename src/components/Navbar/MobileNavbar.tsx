@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { KeyboardEvent } from 'react';
 import {
   Search,
   SearchIconWrapper,
@@ -21,16 +22,22 @@ const MobileNavbar = ({
   isUser,
   useLogOut,
   KakaoLogin,
+  handleSearchChange,
+  enterKey,
 }: IDeskTopNavbar) => {
   return (
     <Toolbar disableGutters style={{ height: '4.3rem' }}>
       {/* Mobile SearchBar */}
       <Box sx={{ flexGrow: 1, display: 'flex' }}>
-        <Search sx={{ width: '80%' }}>
+        <Search sx={{ width: '80%' }} onKeyUp={(e) => enterKey(e)}>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
-          <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(e)}
+          />
         </Search>
       </Box>
 

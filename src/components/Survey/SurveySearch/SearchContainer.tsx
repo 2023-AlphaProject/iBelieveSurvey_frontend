@@ -9,6 +9,15 @@ interface BtnProps {
   surveyStateSelected?: boolean;
 }
 
+interface SearchProps {
+  category: string;
+  setCategory: (arg0: string) => void;
+  participants: string;
+  setParticipants: (arg0: string) => void;
+  surveyState: string;
+  setSurveyState: (arg0: string) => void;
+}
+
 const Container = styled(Flex)`
   flex-wrap: wrap;
   width: 100%;
@@ -82,10 +91,34 @@ const FilterCancelBtn = styled.button`
   color: ${COLORS.secondary};
 `;
 
-const SearchContainer = () => {
-  const [category, setCategory] = useState('');
-  const [participants, setParticipants] = useState('');
-  const [surveyState, setSurveyState] = useState('');
+const SearchContainer = (props: SearchProps) => {
+  const { category, setCategory, participants, setParticipants, surveyState, setSurveyState } =
+    props;
+  const [participantsText, setParticipantsText] = useState('');
+  const [surveyStateText, setSurveyStateText] = useState('');
+
+  const handleParticipants = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e.currentTarget.name === '1~9명') {
+      setParticipants('under_ten');
+    }
+    if (e.currentTarget.name === '10~99명') {
+      setParticipants('under_hundred');
+    }
+    if (e.currentTarget.name === '100명 이상') {
+      setParticipants('over_hundred');
+    }
+    setParticipantsText(e.currentTarget.name);
+  };
+
+  const handleSurveyState = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e.currentTarget.name === '진행 중') {
+      setSurveyState('ongoing');
+    }
+    if (e.currentTarget.name === '종료') {
+      setSurveyState('ended');
+    }
+    setSurveyStateText(e.currentTarget.name);
+  };
 
   const categorys = [
     '인구통계',
@@ -101,7 +134,7 @@ const SearchContainer = () => {
     '음식과 식습관',
   ];
   const participantsConditions = ['1~9명', '10~99명', '100명 이상'];
-  const surveyStates = ['진행 예정', '진행 중', '종료'];
+  const surveyStates = ['진행 중', '종료'];
 
   const handleFilterClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -113,14 +146,18 @@ const SearchContainer = () => {
         break;
       case 'participants':
         setParticipants('');
+        setParticipantsText('');
         break;
       case 'surveyState':
         setSurveyState('');
+        setSurveyStateText('');
         break;
       case 'allCancel':
         setCategory('');
         setParticipants('');
         setSurveyState('');
+        setParticipantsText('');
+        setSurveyStateText('');
         break;
       default:
         break;
@@ -150,9 +187,10 @@ const SearchContainer = () => {
         {participantsConditions.map((e) => {
           return (
             <ConditionBtn
-              participantsSelected={participants === e}
+              name={e}
+              participantsSelected={participantsText === e}
               key={e}
-              onClick={() => setParticipants(e)}
+              onClick={(e) => handleParticipants(e)}
             >
               {e}
             </ConditionBtn>
@@ -164,9 +202,10 @@ const SearchContainer = () => {
         {surveyStates.map((e) => {
           return (
             <ConditionBtn
-              surveyStateSelected={surveyState === e}
+              name={e}
+              surveyStateSelected={surveyStateText === e}
               key={e}
-              onClick={() => setSurveyState(e)}
+              onClick={(e) => handleSurveyState(e)}
             >
               {e}
             </ConditionBtn>
@@ -179,10 +218,10 @@ const SearchContainer = () => {
             {category && `${category} x`}
           </FilterBtn>
           <FilterBtn onClick={handleFilterClick} name="participants">
-            {participants && `${participants} x`}
+            {participants && `${participantsText} x`}
           </FilterBtn>
           <FilterBtn onClick={handleFilterClick} name="surveyState">
-            {surveyState && `${surveyState} x`}
+            {surveyState && `${surveyStateText} x`}
           </FilterBtn>
         </Flex>
         <FilterCancelBtn onClick={handleFilterClick} name="allCancel">

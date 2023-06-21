@@ -1,4 +1,5 @@
 export const SURVEY_LIST = 'SURVEY_LIST';
+export const SURVEY_LIST_SEARCH = 'SURVEY_LIST_SEARCH';
 export const SURVEY = 'SURVEY';
 
 export const CARTS = 'CARTS';

@@ -14,8 +14,19 @@ const surveysAPI = {
   list: (page: number, cateNum: number, ordering: string) => {
     return instance.get(`/surveys/?ordering=${ordering}&page=${page}&category=${cateNum}`);
   },
-  search: (page: number, ordering: string, search: string) => {
-    return instance.get(`/surveys/?ordering=${ordering}&search=${search}&page=${page}`);
+  search: (
+    page: number,
+    search: string,
+    category: string,
+    participants: string,
+    surveyState: string,
+    ordering: string,
+  ) => {
+    return instance.get(
+      `/surveys/?page=${page}&search=${search}${category && `&category__type=${category}`}${
+        participants && `&${participants}`
+      }${surveyState && `&${surveyState}`}&ordering=${ordering}`,
+    );
   },
   carts: {
     get: (id: number) => {

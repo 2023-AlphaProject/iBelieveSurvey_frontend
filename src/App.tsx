@@ -1,4 +1,3 @@
-import { AxiosInterceptor } from 'config/api';
 import { muiTheme, styledTheme, GlobalStyles } from 'styles';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from 'layouts/Layout';
@@ -32,6 +31,7 @@ import 'styles/fonts.css';
 import { queryClient } from 'config/quertClients';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Suspense } from 'react';
+import { AxiosInterceptor } from 'config/api';
 
 const App = () => {
   return (
@@ -54,7 +54,7 @@ const App = () => {
                         <Route path="/tos" element={<Tos />} />
                         <Route path="/privacy" element={<Privacy />} />
                         <Route path="/survey" element={<Survey />} />
-                        <Route path="/survey/search" element={<SurveySearch />} />
+                        <Route path="/survey/search/:searchParams" element={<SurveySearch />} />
                         <Route path="/survey/:id" element={<SurveyDetail />} />
                         <Route path="/survey/:id/result" element={<SurveyResult />} />
                         <Route path="/survey/:id/gift-result" element={<SurveyGiftResult />} />

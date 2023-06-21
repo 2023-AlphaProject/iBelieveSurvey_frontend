@@ -1,41 +1,59 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { Flex, Label } from 'components/Box';
-import { Filterbar } from 'components/common';
-import { SurveyCardWrapper, SearchContainer } from 'components/Survey';
-// import Checkbox from '@mui/material/Checkbox';
-// import dummyCards from 'components/Survey/Card/dummyCards';
-// import styled from 'styled-components';
+import { Sidebar, Filterbar, LoadingComponent } from 'components/common';
+import { Card, SurveyCardWrapper, SearchContainer } from 'components/Survey';
+import surveyType from 'types/surveyType';
+import { useParams } from 'react-router-dom';
+import { useSurveyListSearchQuery } from 'hooks/queries/surveys';
 
-const Survey = () => {
-  const [label] = useState('인구통계');
+const SurveySearch = () => {
+  const [label, setLabel] = useState('');
+  const [page, setPage] = useState(1);
+  const [category, setCategory] = useState('');
+  const [participants, setParticipants] = useState('');
+  const [surveyState, setSurveyState] = useState('');
+  const [orderState, setOrderState] = useState('created_at');
+  const { searchParams } = useParams();
+  const { data, isLoading } = useSurveyListSearchQuery(
+    page,
+    searchParams || '',
+    category,
+    participants,
+    surveyState,
+    orderState,
+  );
+
   return (
     <Flex alignItems="center" flexDirection="column" gap="2.5rem">
       <Label fontFamily="Pr-Bold" fontSize="1.25rem">
-        &quot;알파프로젝트&quot;에 대한 검색 결과입니다.
+        &quot;{searchParams}&quot;에 대한 검색 결과입니다.
       </Label>
-      <SearchContainer />
+      <SearchContainer
+        category={category}
+        setCategory={setCategory}
+        participants={participants}
+        setParticipants={setParticipants}
+        surveyState={surveyState}
+        setSurveyState={setSurveyState}
+      />
       <Flex flexDirection="column" gap="2rem" width="90%">
         <Flex position="relative">
-          <Filterbar right="0" />
+          <Filterbar setOrderState={setOrderState} right="0" />
         </Flex>
-        <SurveyCardWrapper currentPage={1} totalPages={1} setPage={() => ''}>
-          <Flex flexWrap="wrap" gap="40px" mt="10px">
-            {/* <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} />
-            <Card card={dummyCards} /> */}
-          </Flex>
-        </SurveyCardWrapper>
-        {label === '결제한 설문 내역' ? (
-          <Label fontFamily="Pr-Bold" fontSize="1.25rem">
-            카카오톡 선물 전달 내역
-          </Label>
-        ) : null}
+        <Suspense fallback={<LoadingComponent />}>
+          <SurveyCardWrapper
+            currentPage={data?.data?.current_page}
+            totalPages={data?.data?.total_pages}
+            setPage={setPage}
+          >
+            {data?.data?.results.map((survey: surveyType) => {
+              return <Card key={`survey_${survey.id}`} survey={survey} />;
+            })}
+          </SurveyCardWrapper>
+        </Suspense>
       </Flex>
     </Flex>
   );
 };
 
-export default Survey;
+export default SurveySearch;

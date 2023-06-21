@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { KeyboardEvent, SetStateAction, useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { userState } from 'states/stateUser';
 import { useSnackBar } from 'hooks';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import userToken from 'utils/userToken';
 import { useWindowSize } from 'hooks/useWindowSize';
 import { DeskTopNavbar, MobileNavbar } from 'components/Navbar';
@@ -17,6 +17,7 @@ const Navbar = () => {
   const { KakaoLogin } = kakaoLogin();
   const isUser = Boolean(user?.user);
   const setUserState = useSetRecoilState(userState);
+  const [searchTitle, setSearchTitle] = useState('');
 
   const useLogOut = () => {
     sessionStorage.removeItem('userToken');
@@ -35,6 +36,16 @@ const Navbar = () => {
       variant: 'success',
       message: '로그아웃 되었습니다.',
     })();
+  };
+
+  const enterKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.keyCode === 13) {
+      navigate(`/survey/search/${searchTitle}`);
+    }
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTitle(e.target.value);
   };
 
   /*
@@ -72,7 +83,13 @@ const Navbar = () => {
     <AppBarContainer>
       <Container style={{ width: '100%', maxWidth: '1200px' }}>
         {windowSize.width !== undefined && windowSize.width > 900 ? (
-          <DeskTopNavbar isUser={isUser} useLogOut={() => useLogOut()} KakaoLogin={KakaoLogin} />
+          <DeskTopNavbar
+            isUser={isUser}
+            useLogOut={() => useLogOut()}
+            KakaoLogin={KakaoLogin}
+            handleSearchChange={handleSearchChange}
+            enterKey={enterKey}
+          />
         ) : (
           <MobileNavbar
             anchorElNav={anchorElNav}
@@ -81,6 +98,8 @@ const Navbar = () => {
             isUser={isUser}
             useLogOut={() => useLogOut()}
             KakaoLogin={KakaoLogin}
+            handleSearchChange={handleSearchChange}
+            enterKey={enterKey}
           />
         )}
       </Container>
